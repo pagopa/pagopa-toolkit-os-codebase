@@ -1,0 +1,295 @@
+package it.pagoPA.toolkit.debtPositionGenerator.bean;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import it.pagoPA.toolkit.common.ErrorMessages;
+
+/**
+ * Debt Position Payer class
+ */
+public class DPPayer {
+
+	/**
+	 * Debt Position Payer builder class
+	 */
+	public static class Builder {
+
+		private String uniqueIdentificationCode;
+		private String uniqueIdentificationType;
+		private String payerRegistry;
+		private String address;
+		private String numberStreet;
+		private String locality;
+		private String province;
+		private String nation;
+		private String postalCode;
+		private String email;
+		private String mobile;
+
+		/**
+		 * Build the Debt Position Payer
+		 * 
+		 * @return the Debt Position Payer
+		 */
+		public DPPayer build() {
+			return new DPPayer(this);
+		}
+
+		/**
+		 * 
+		 * @param address
+		 *            the address
+		 */
+		public Builder setAddress(String address) {
+			this.address = address;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param email
+		 *            the email
+		 */
+		public Builder setEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param locality
+		 *            the locality
+		 */
+		public Builder setLocality(String locality) {
+			this.locality = locality;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param mobile
+		 *            the mobile
+		 */
+		public Builder setMobile(String mobile) {
+			this.mobile = mobile;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param nation
+		 *            the nation
+		 */
+		public Builder setNation(String nation) {
+			this.nation = nation;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param postalCode
+		 *            the postalCode
+		 */
+		public Builder setPostalCode(String postalCode) {
+			this.postalCode = postalCode;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param province
+		 *            the province
+		 */
+		public Builder setProvince(String province) {
+			this.province = province;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param payerRegistry
+		 *            the payerRegistry
+		 */
+		public Builder setPayerRegistry(String payerRegistry) {
+			this.payerRegistry = payerRegistry;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param numberStreet
+		 *            the numberStreet
+		 */
+		public Builder setNumberStreet(String numberStreet) {
+			this.numberStreet = numberStreet;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param uniqueIdentificationType
+		 *            the uniqueIdentificationType
+		 */
+		public Builder setUniqueIdentificationType(String uniqueIdentificationType) {
+			this.uniqueIdentificationType = uniqueIdentificationType;
+			return this;
+		}
+
+		/**
+		 * 
+		 * @param uniqueIdentificationCode
+		 *            the uniqueIdentificationCode
+		 */
+		public Builder setUniqueIdentificationCode(String uniqueIdentificationCode) {
+			this.uniqueIdentificationCode = uniqueIdentificationCode;
+			return this;
+		}
+
+	}
+
+	@NotNull
+	@NotEmpty
+	@Size(max = 35)
+	private String uniqueIdentificationCode;
+
+	@NotNull
+	@NotEmpty
+	@Size(max = 1)
+	private String uniqueIdentificationType;
+
+	@NotNull
+	@NotEmpty
+	@Size(max = 70)
+	private String payerRegistry;
+
+	@Size(max = 70)
+	private String address;
+
+	@Size(max = 16)
+	private String numberStreet;
+
+	@Size(max = 35)
+	private String locality;
+
+	@Size(max = 35)
+	private String province;
+
+	@Size(max = 2)
+	private String nation;
+
+	@Size(max = 16)
+	private String postalCode;
+
+	@Size(max = 256)
+	@Email(message = ErrorMessages.VALIDATION_EMAIL_ERROR)
+	private String email;
+
+	@Size(max = 19)
+	private String mobile;
+
+	/**
+	 * Private constructor
+	 */
+	private DPPayer() {
+		// NOPE
+	}
+
+	/**
+	 * Private constructor
+	 * 
+	 * @param builder
+	 */
+	private DPPayer(Builder builder) {
+		this.uniqueIdentificationCode = builder.uniqueIdentificationCode;
+		this.uniqueIdentificationType = builder.uniqueIdentificationType;
+		this.payerRegistry = builder.payerRegistry;
+		this.address = builder.address;
+		this.numberStreet = builder.numberStreet;
+		this.locality = builder.locality;
+		this.province = builder.province;
+		this.nation = builder.nation;
+		this.postalCode = builder.postalCode;
+		this.email = builder.email;
+		this.mobile = builder.mobile;
+	}
+
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @return the locality
+	 */
+	public String getLocality() {
+		return locality;
+	}
+
+	/**
+	 * @return the mobile
+	 */
+	public String getMobile() {
+		return mobile;
+	}
+
+	/**
+	 * @return the nation
+	 */
+	public String getNation() {
+		return nation;
+	}
+
+	/**
+	 * @return the postalCode
+	 */
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	/**
+	 * @return the province
+	 */
+	public String getProvince() {
+		return province;
+	}
+
+	/**
+	 * @return the registry
+	 */
+	public String getPayerRegistry() {
+		return payerRegistry;
+	}
+
+	/**
+	 * @return the numberStreet
+	 */
+	public String getNumberStreet() {
+		return numberStreet;
+	}
+
+	/**
+	 * @return the uniqueIdentificationType
+	 */
+	public String getUniqueIdentificationType() {
+		return uniqueIdentificationType;
+	}
+
+	/**
+	 * @return the uniqueIdentificationCode
+	 */
+	public String getUniqueIdentificationCode() {
+		return uniqueIdentificationCode;
+	}
+}
