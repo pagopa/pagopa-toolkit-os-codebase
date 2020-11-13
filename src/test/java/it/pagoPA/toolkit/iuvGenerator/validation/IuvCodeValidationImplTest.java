@@ -25,20 +25,18 @@ public class IuvCodeValidationImplTest {
 	@Before
 	public void setUp() throws Exception {
 		iuvCodeValidation = new IuvCodeValidationImpl();
-		
-		iuvCodeGenerator = new IuvCodeGenerator.Builder()
-				.setAuxDigit(3)
-				.setApplicationCode(new Integer(5))
-				.setSegregationCode(new Integer(25))
-				.build();
+
+		iuvCodeGenerator = new IuvCodeGenerator.Builder().setAuxDigit(3).setApplicationCode(new Integer(5))
+				.setSegregationCode(new Integer(25)).build();
 	}
 
 	/**
-	 * Test method for {@link it.pagoPA.toolkit.iuvGenerator.validation.IuvCodeValidationImpl#validate(it.pagoPA.toolkit.iuvGenerator.bean.IuvCodeGenerator)}.
+	 * Test method for
+	 * {@link it.pagoPA.toolkit.iuvGenerator.validation.IuvCodeValidationImpl#validate(it.pagoPA.toolkit.iuvGenerator.bean.IuvCodeGenerator)}
+	 * .
 	 */
 	@Test
 	public void testValidate() {
 		iuvCodeValidation.validate(iuvCodeGenerator);
 	}
-
 }

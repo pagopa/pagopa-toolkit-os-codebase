@@ -10,7 +10,7 @@ import it.pagoPA.toolkit.iuvGenerator.common.IuvSequenceReaderImpl;
 public abstract class IuvAlghoritm implements IuvAlghoritmGenerator {
 
 	private static final String DIGIT_OF_2 = "%02d";
-	
+
 	/**
 	 * Generate the check digit
 	 * 
@@ -19,7 +19,8 @@ public abstract class IuvAlghoritm implements IuvAlghoritmGenerator {
 	 * @return the generated check digit
 	 */
 	protected String generateCheckDigit(String checkDigitComponent) {
-		return String.format(DIGIT_OF_2, (new BigDecimal(checkDigitComponent).remainder(new BigDecimal(93))).intValue());
+		return String.format(DIGIT_OF_2,
+				(new BigDecimal(checkDigitComponent).remainder(new BigDecimal(93))).intValue());
 	}
 
 	/**

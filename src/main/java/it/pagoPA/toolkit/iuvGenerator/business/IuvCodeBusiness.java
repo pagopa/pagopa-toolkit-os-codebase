@@ -29,5 +29,4 @@ public class IuvCodeBusiness {
 		IuvCodeValidation iuvCodeValidation = new IuvCodeValidationImpl();
 		iuvCodeValidation.validate(iuvCodeGenerator);
 	}
-	
 }

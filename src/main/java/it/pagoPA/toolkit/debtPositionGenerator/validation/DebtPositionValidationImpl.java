@@ -60,7 +60,7 @@ public class DebtPositionValidationImpl implements DebtPositionValidation {
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param debtPosition
@@ -70,13 +70,12 @@ public class DebtPositionValidationImpl implements DebtPositionValidation {
 		int auxDigit = debtPosition.getPaymentDetail().getAuxDigit();
 		Integer applicationCode = debtPosition.getPaymentDetail().getApplicationCode();
 		if (iuv != null && !iuv.trim().isEmpty()) {
-			IuvCodeGenerator iuvCodeGenerator = new IuvCodeGenerator.Builder()
-					.setAuxDigit(auxDigit)
+			IuvCodeGenerator iuvCodeGenerator = new IuvCodeGenerator.Builder().setAuxDigit(auxDigit)
 					.setApplicationCode(debtPosition.getPaymentDetail().getApplicationCode())
 					.setSegregationCode(debtPosition.getPaymentDetail().getSegregationCode()).build();
 			IuvCodeValidation iuvCodeValidation = new IuvCodeValidationImpl();
 			iuvCodeValidation.validate(iuvCodeGenerator);
-			
+
 			BigDecimal checkDigitReceived;
 			BigDecimal checkDigitCalculated;
 			if (auxDigit == Constants.AUX_DIGIT_0) {
@@ -84,12 +83,12 @@ public class DebtPositionValidationImpl implements DebtPositionValidation {
 					throw new ValidationException(ErrorMessages.VALIDATION_APPLICATION_CODE_ERROR);
 				}
 				checkDigitReceived = new BigDecimal(iuv.substring(13));
-				checkDigitCalculated = new BigDecimal(auxDigit + applicationCode + iuv.substring(0, 13)).remainder(new BigDecimal(93));			}
-			else if (auxDigit == Constants.AUX_DIGIT_3) {
+				checkDigitCalculated = new BigDecimal(auxDigit + applicationCode + iuv.substring(0, 13))
+						.remainder(new BigDecimal(93));
+			} else if (auxDigit == Constants.AUX_DIGIT_3) {
 				checkDigitReceived = new BigDecimal(iuv.substring(15));
 				checkDigitCalculated = new BigDecimal(auxDigit + iuv.substring(0, 15)).remainder(new BigDecimal(93));
-			}
-			else {
+			} else {
 				throw new ValidationException(ErrorMessages.VALIDATION_AUXDIGIT_ERROR);
 			}
 			if (checkDigitReceived.compareTo(checkDigitCalculated) != 0) {
@@ -97,7 +96,7 @@ public class DebtPositionValidationImpl implements DebtPositionValidation {
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param debtPosition
@@ -107,7 +106,7 @@ public class DebtPositionValidationImpl implements DebtPositionValidation {
 			throw new ValidationException(ErrorMessages.VALIDATION_SINGLE_PAYMENT_LIST_SIZE_ERROR);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param debtPosition

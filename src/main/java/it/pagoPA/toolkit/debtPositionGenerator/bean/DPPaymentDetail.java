@@ -14,8 +14,8 @@ import it.pagoPA.toolkit.debtPositionGenerator.enumeration.PaymentStatusEnum;
 /**
  * Debt Position Payment Detail class
  * 
- * installmentNumber = 0 Rata unica 
- * installmentNumber da 1 a n =  numero di rate
+ * installmentNumber = 0 Rata unica
+ * installmentNumber da 1 a n = numero di rate
  */
 public class DPPaymentDetail {
 
@@ -154,7 +154,6 @@ public class DPPaymentDetail {
 			this.segregationCode = segregationCode;
 			return this;
 		}
-		
 	}
 
 	@NotNull
@@ -164,13 +163,13 @@ public class DPPaymentDetail {
 
 	@Digits(integer = 1, fraction = 0)
 	private int auxDigit;
-	
+
 	@Digits(integer = 2, fraction = 0)
 	private Integer segregationCode;
 
 	@Digits(integer = 2, fraction = 0)
 	private Integer applicationCode;
-	
+
 	@Size(max = 35)
 	private String iuv;
 
@@ -183,7 +182,7 @@ public class DPPaymentDetail {
 
 	@NotNull
 	@NotEmpty
-	@Size(max = 140)
+	@Size(max = 60)
 	private String causal;
 
 	@Future
@@ -201,7 +200,7 @@ public class DPPaymentDetail {
 	private Date creationDate;
 	private String noticeNumber;
 	private PaymentStatusEnum paymentStatus;
-	
+
 	/**
 	 * Private constructor
 	 */
@@ -293,7 +292,7 @@ public class DPPaymentDetail {
 	public String getSpecificCollectionData() {
 		return specificCollectionData;
 	}
-	
+
 	/**
 	 * @return the auxDigit
 	 */
@@ -321,7 +320,11 @@ public class DPPaymentDetail {
 	public PaymentStatusEnum getPaymentStatus() {
 		return paymentStatus;
 	}
-	
+
+	/**
+	 * 
+	 * @param paymentStatus
+	 */
 	public void setPaymentStatus(PaymentStatusEnum paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}

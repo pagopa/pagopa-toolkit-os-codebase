@@ -18,8 +18,7 @@ public class IuvAlghoritmAuxDigit3 extends IuvAlghoritm implements IuvAlghoritmG
 
 	/**
 	 * Generate the IUV Code <br>
-	 * IUV (17 digits) = <codice segregazione (2n)><IUV base (max 13n)><IUV check
-	 * digit (2n)>
+	 * IUV (17 digits) = <codice segregazione (2n)><IUV base (max 13n)><IUV check digit (2n)>
 	 */
 	@Override
 	public String generate(Integer segregationCode, Integer applicationCode) {
