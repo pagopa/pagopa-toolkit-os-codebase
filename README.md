@@ -1,1 +1,1 @@
-# shadow-pagopa-toolkit-os
+# pagopa-toolkit-os
