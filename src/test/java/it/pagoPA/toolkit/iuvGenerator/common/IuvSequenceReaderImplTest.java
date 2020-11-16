@@ -29,7 +29,9 @@ public class IuvSequenceReaderImplTest {
 	}
 
 	/**
-	 * Test method for {@link it.pagoPA.toolkit.iuvGenerator.common.IuvSequenceReaderImpl#next()}.
+	 * Test method for
+	 * {@link it.pagoPA.toolkit.iuvGenerator.common.IuvSequenceReaderImpl#next()}
+	 * .
 	 */
 	@Test
 	public void testNext() {
@@ -38,5 +40,4 @@ public class IuvSequenceReaderImplTest {
 
 		assertEquals(new BigInteger(value).add(BigInteger.ONE), new BigInteger(next));
 	}
-
 }

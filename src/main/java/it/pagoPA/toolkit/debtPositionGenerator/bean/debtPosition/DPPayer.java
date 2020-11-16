@@ -1,4 +1,4 @@
-package it.pagoPA.toolkit.debtPositionGenerator.bean;
+package it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -19,7 +19,7 @@ public class DPPayer {
 
 		private String uniqueIdentificationCode;
 		private String uniqueIdentificationType;
-		private String payerRegistry;
+		private String registry;
 		private String address;
 		private String numberStreet;
 		private String locality;
@@ -110,11 +110,11 @@ public class DPPayer {
 
 		/**
 		 * 
-		 * @param payerRegistry
-		 *            the payerRegistry
+		 * @param registry
+		 *            the registry
 		 */
-		public Builder setPayerRegistry(String payerRegistry) {
-			this.payerRegistry = payerRegistry;
+		public Builder setRegistry(String registry) {
+			this.registry = registry;
 			return this;
 		}
 
@@ -147,7 +147,6 @@ public class DPPayer {
 			this.uniqueIdentificationCode = uniqueIdentificationCode;
 			return this;
 		}
-
 	}
 
 	@NotNull
@@ -163,7 +162,7 @@ public class DPPayer {
 	@NotNull
 	@NotEmpty
 	@Size(max = 70)
-	private String payerRegistry;
+	private String registry;
 
 	@Size(max = 70)
 	private String address;
@@ -184,7 +183,7 @@ public class DPPayer {
 	private String postalCode;
 
 	@Size(max = 256)
-	@Email(message = ErrorMessages.VALIDATION_EMAIL_ERROR)
+	@Email(message = ErrorMessages.VALIDATION_EMAIL_ERROR)//TODO e la regexp?
 	private String email;
 
 	@Size(max = 19)
@@ -205,7 +204,7 @@ public class DPPayer {
 	private DPPayer(Builder builder) {
 		this.uniqueIdentificationCode = builder.uniqueIdentificationCode;
 		this.uniqueIdentificationType = builder.uniqueIdentificationType;
-		this.payerRegistry = builder.payerRegistry;
+		this.registry = builder.registry;
 		this.address = builder.address;
 		this.numberStreet = builder.numberStreet;
 		this.locality = builder.locality;
@@ -268,8 +267,8 @@ public class DPPayer {
 	/**
 	 * @return the registry
 	 */
-	public String getPayerRegistry() {
-		return payerRegistry;
+	public String getRegistry() {
+		return registry;
 	}
 
 	/**

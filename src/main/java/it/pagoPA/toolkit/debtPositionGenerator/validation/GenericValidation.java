@@ -11,7 +11,7 @@ import it.pagoPA.toolkit.common.ErrorMessages;
  * 
  */
 public class GenericValidation {
-	
+
 	private static TreeMap<Character, Integer> map = new TreeMap<Character, Integer>();
 
 	private static Map<Character, Integer> DIGITCONVERSIONMAP;
@@ -197,7 +197,7 @@ public class GenericValidation {
 			return result;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param pi

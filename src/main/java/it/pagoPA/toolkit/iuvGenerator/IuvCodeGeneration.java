@@ -20,14 +20,10 @@ public class IuvCodeGeneration {
 	 * @return String notification code
 	 * @throws Exception
 	 */
-	public static String generate(int auxDigit, Integer segregationCode, Integer applicationCode)
-			throws Exception {
+	public static String generate(int auxDigit, Integer segregationCode, Integer applicationCode) throws Exception {
 
-		IuvCodeGenerator iuvCodeGenerator = new IuvCodeGenerator.Builder()
-				.setAuxDigit(auxDigit)
-				.setSegregationCode(segregationCode)
-				.setApplicationCode(applicationCode)
-				.build();
+		IuvCodeGenerator iuvCodeGenerator = new IuvCodeGenerator.Builder().setAuxDigit(auxDigit)
+				.setSegregationCode(segregationCode).setApplicationCode(applicationCode).build();
 
 		IuvCodeBusiness.validate(iuvCodeGenerator);
 

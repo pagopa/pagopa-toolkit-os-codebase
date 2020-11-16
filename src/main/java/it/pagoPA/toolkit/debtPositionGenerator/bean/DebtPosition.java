@@ -1,11 +1,14 @@
 package it.pagoPA.toolkit.debtPositionGenerator.bean;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
 
 /**
  * Debt Position Bean class
@@ -19,7 +22,7 @@ public class DebtPosition {
 
 		private DPPayer payer;
 		private DPPaymentDetail paymentDetail;
-		private List<DPSinglePaymentDetail> singlePaymentsDetail;
+		private List<DPSinglePaymentDetail> singlePaymentDetailList;
 
 		/**
 		 * Build the Debt Position Bean
@@ -34,7 +37,7 @@ public class DebtPosition {
 		 * Set the payer
 		 * 
 		 * @param payer
-		 * @return 
+		 * @return
 		 */
 		public Builder setPayer(DPPayer payer) {
 			this.payer = payer;
@@ -46,7 +49,7 @@ public class DebtPosition {
 		 * Set the payment detail
 		 * 
 		 * @param paymentDetail
-		 * @return 
+		 * @return
 		 */
 		public Builder setPaymentDetail(DPPaymentDetail paymentDetail) {
 			this.paymentDetail = paymentDetail;
@@ -54,13 +57,13 @@ public class DebtPosition {
 		}
 
 		/**
-		 * Set the single payments detail
+		 * Set the single payments detail List
 		 * 
-		 * @param singlePaymentsDetail
-		 * @return 
+		 * @param singlePaymentDetailList
+		 * @return
 		 */
-		public Builder setSinglePaymentsDetail(List<DPSinglePaymentDetail> singlePaymentsDetail) {
-			this.singlePaymentsDetail = singlePaymentsDetail;
+		public Builder setSinglePaymentsDetail(List<DPSinglePaymentDetail> singlePaymentDetailList) {
+			this.singlePaymentDetailList = singlePaymentDetailList;
 			return this;
 		}
 	}
@@ -68,15 +71,15 @@ public class DebtPosition {
 	@NotNull
 	@Valid
 	private DPPayer payer;
-	
+
 	@NotNull
 	@Valid
 	private DPPaymentDetail paymentDetail;
-	
+
 	@NotNull
 	@NotEmpty
 	@Valid
-	private List<DPSinglePaymentDetail> singlePaymentsDetailList;
+	private List<DPSinglePaymentDetail> singlePaymentDetailList;
 
 	/**
 	 * Private constructor
@@ -94,7 +97,7 @@ public class DebtPosition {
 	private DebtPosition(Builder builder) {
 		this.payer = builder.payer;
 		this.paymentDetail = builder.paymentDetail;
-		this.singlePaymentsDetailList = builder.singlePaymentsDetail;
+		this.singlePaymentDetailList = builder.singlePaymentDetailList;
 	}
 
 	/**
@@ -120,58 +123,7 @@ public class DebtPosition {
 	 * 
 	 * @return the singlePaymentDetailList
 	 */
-	public List<DPSinglePaymentDetail> getSinglePaymentsDetailList() {
-		return singlePaymentsDetailList;
-	}
-	
-	//FIXME sezione per task Stampa Avviso - WORK IN PROGRESS - da rimuovere
-	/**
-	 * 
-	 * @param noticeNumber
-	 * @return
-	 */
-	public String getFormattedNoticeNumber(String noticeNumber) {
-		if (noticeNumber != null && noticeNumber.length() == 18) {
-			return noticeNumber.substring(0, 4) + " " + noticeNumber.substring(4, 8) + " "
-					+ noticeNumber.substring(8, 12) + " " + noticeNumber.substring(12, 16) + " "
-					+ noticeNumber.substring(16, 18);
-		} else {
-			return noticeNumber;
-		}
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getRataFormattedNoticeNumber() {
-		return paymentDetail.getNoticeNumber().substring(0, 4) + " " + paymentDetail.getNoticeNumber().substring(4, 8)
-				+ " " + paymentDetail.getNoticeNumber().substring(8, 12) + " "
-				+ paymentDetail.getNoticeNumber().substring(12, 16) + " "
-				+ paymentDetail.getNoticeNumber().substring(16, 18);
-	}
-
-	/**
-	 * 
-	 * @param domainIdentifier
-	 * @return
-	 */
-	public String createQrCode(String domainIdentifier) {
-		String centsAmount = String
-				.valueOf((paymentDetail.getTotalAmountPayment().multiply(new BigDecimal(100)).intValue()));
-		String centsAmountPadQr = String.format("%02d", Integer.parseInt(centsAmount));
-		String qrCode = String.format("PAGOPA|002|%1$s|%2$s|%3$s", paymentDetail.getNoticeNumber(),
-				domainIdentifier, centsAmountPadQr);
-		return qrCode;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getDataMatrixPaymentSubject() {
-		if (paymentDetail.getCausal().length() > 60)
-			return paymentDetail.getCausal().substring(0, 60);
-		return paymentDetail.getCausal();
+	public List<DPSinglePaymentDetail> getSinglePaymentDetailList() {
+		return singlePaymentDetailList;
 	}
 }

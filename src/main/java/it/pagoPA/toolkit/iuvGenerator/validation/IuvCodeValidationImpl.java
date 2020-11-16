@@ -46,7 +46,7 @@ public class IuvCodeValidationImpl implements IuvCodeValidation {
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param iuvCodeGenerator
@@ -55,7 +55,6 @@ public class IuvCodeValidationImpl implements IuvCodeValidation {
 		if (iuvCodeGenerator.getAuxDigit() == Constants.AUX_DIGIT_3) {
 			if (Optional.ofNullable(iuvCodeGenerator.getSegregationCode()).orElse(0) == 0) {
 				throw new ValidationException(ErrorMessages.VALIDATION_SEGREGATION_CODE_ERROR);
-				
 			}
 		}
 	}

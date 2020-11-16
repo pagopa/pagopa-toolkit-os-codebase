@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPayer;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPaymentDetail;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.bean.DebtPosition;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.business.DebtPositionBusiness;
 
 /**
@@ -16,6 +16,7 @@ import it.pagoPA.toolkit.debtPositionGenerator.business.DebtPositionBusiness;
 public class DebtPositionGeneration {
 
 	/**
+	 * Generate the DebtPositionPayer
 	 * 
 	 * @param uniqueIdentificationCode
 	 * @param uniqueIdentificationType
@@ -28,19 +29,20 @@ public class DebtPositionGeneration {
 	 * @param postalCode
 	 * @param email
 	 * @param mobile
-	 * @return
+	 * @return DPPayer
 	 */
 	public static DPPayer generatePayer(String uniqueIdentificationCode, String uniqueIdentificationType,
 			String registry, String address, String numberStreet, String locality, String province, String nation,
 			String postalCode, String email, String mobile) {
 
 		return new DPPayer.Builder().setUniqueIdentificationCode(uniqueIdentificationCode)
-				.setUniqueIdentificationType(uniqueIdentificationType).setPayerRegistry(registry).setAddress(address)
+				.setUniqueIdentificationType(uniqueIdentificationType).setRegistry(registry).setAddress(address)
 				.setNumberStreet(numberStreet).setLocality(locality).setProvince(province).setNation(nation)
 				.setPostalCode(postalCode).setEmail(email).setMobile(mobile).build();
 	}
 
 	/**
+	 * Generate the DebtPositionPaymentDetail
 	 * 
 	 * @param domainIdentifier
 	 * @param auxDigit
@@ -54,7 +56,7 @@ public class DebtPositionGeneration {
 	 * @param specificCollectionData
 	 * @param documentNumber
 	 * @param installmentNumber
-	 * @return
+	 * @return DPPaymentDetail
 	 */
 	public static DPPaymentDetail generatePaymentDetail(String domainIdentifier, int auxDigit, Integer segregationCode,
 			Integer applicationCode, String iuv, String idTenant, BigDecimal totalAmountPayment, String causal,
@@ -68,11 +70,12 @@ public class DebtPositionGeneration {
 	}
 
 	/**
+	 * Generate the DebtPositionSinglePaymentDetail
 	 * 
 	 * @param amountSinglePayment
 	 * @param orderSinglePayment
 	 * @param causalDescriptionSinglePayment
-	 * @return
+	 * @return DPSinglePaymentDetail
 	 */
 	public static DPSinglePaymentDetail generateSinglePaymentsDetail(BigDecimal amountSinglePayment,
 			Integer orderSinglePayment, String causalDescriptionSinglePayment) {
@@ -83,11 +86,12 @@ public class DebtPositionGeneration {
 	}
 
 	/**
+	 * Generate the DebtPosition
 	 * 
 	 * @param payer
 	 * @param paymentDetail
 	 * @param singlePaymentsDetailList
-	 * @return
+	 * @return DebtPosition
 	 * @throws Exception
 	 */
 	public static DebtPosition generate(DPPayer payer, DPPaymentDetail paymentDetail,

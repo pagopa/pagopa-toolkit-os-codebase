@@ -28,7 +28,7 @@ public class IuvAlghoritmAuxDigit3Test {
 
 	/**
 	 * Test method for
-	 * {@link it.pagoPA.toolkit.iuvGenerator.business.IuvAlghoritmAuxDigit3#generate( java.lang.Integer, java.lang.Integer)}.
+	 * {@link it.pagoPA.toolkit.iuvGenerator.business.IuvAlghoritmAuxDigit3#generate( java.lang.Integer, java.lang.Integer)}
 	 */
 	@Test
 	public void testGenerate() {
