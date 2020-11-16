@@ -11,9 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.pagoPA.toolkit.debtPositionGenerator.DebtPositionGeneration;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPayer;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPaymentDetail;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPSinglePaymentDetail;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.exception.ValidationException;
 
 public class DebtPositionExceptionTest {

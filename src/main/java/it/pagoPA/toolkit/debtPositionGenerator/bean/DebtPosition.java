@@ -6,6 +6,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
+
 /**
  * Debt Position Bean class
  */
@@ -18,7 +22,7 @@ public class DebtPosition {
 
 		private DPPayer payer;
 		private DPPaymentDetail paymentDetail;
-		private List<DPSinglePaymentDetail> singlePaymentsDetail;
+		private List<DPSinglePaymentDetail> singlePaymentDetailList;
 
 		/**
 		 * Build the Debt Position Bean
@@ -53,13 +57,13 @@ public class DebtPosition {
 		}
 
 		/**
-		 * Set the single payments detail
+		 * Set the single payments detail List
 		 * 
-		 * @param singlePaymentsDetail
+		 * @param singlePaymentDetailList
 		 * @return
 		 */
-		public Builder setSinglePaymentsDetail(List<DPSinglePaymentDetail> singlePaymentsDetail) {
-			this.singlePaymentsDetail = singlePaymentsDetail;
+		public Builder setSinglePaymentsDetail(List<DPSinglePaymentDetail> singlePaymentDetailList) {
+			this.singlePaymentDetailList = singlePaymentDetailList;
 			return this;
 		}
 	}
@@ -75,7 +79,7 @@ public class DebtPosition {
 	@NotNull
 	@NotEmpty
 	@Valid
-	private List<DPSinglePaymentDetail> singlePaymentsDetailList;
+	private List<DPSinglePaymentDetail> singlePaymentDetailList;
 
 	/**
 	 * Private constructor
@@ -93,7 +97,7 @@ public class DebtPosition {
 	private DebtPosition(Builder builder) {
 		this.payer = builder.payer;
 		this.paymentDetail = builder.paymentDetail;
-		this.singlePaymentsDetailList = builder.singlePaymentsDetail;
+		this.singlePaymentDetailList = builder.singlePaymentDetailList;
 	}
 
 	/**
@@ -119,7 +123,7 @@ public class DebtPosition {
 	 * 
 	 * @return the singlePaymentDetailList
 	 */
-	public List<DPSinglePaymentDetail> getSinglePaymentsDetailList() {
-		return singlePaymentsDetailList;
+	public List<DPSinglePaymentDetail> getSinglePaymentDetailList() {
+		return singlePaymentDetailList;
 	}
 }

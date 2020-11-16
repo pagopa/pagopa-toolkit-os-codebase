@@ -19,10 +19,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.pagoPA.toolkit.debtPositionGenerator.DebtPositionGeneration;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPayer;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPaymentDetail;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.bean.DebtPosition;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.paymentNoticeGenerator.bean.PNCreditorInstitution;
 import it.pagoPA.toolkit.paymentNoticeGenerator.bean.PNCreditorInstitution.Builder;
 
@@ -79,11 +79,11 @@ public class PaymentNoticeGenerationTest {
 	public void testGenerate_NoInstallments_AllData() throws Exception {
 		BigDecimal pd_totalAmountPayment = BigDecimal.valueOf(11.11);
 		Date pd_expirationDate = addDays(new Date(), 10);
-		DebtPosition referenceDebtPosition = createDebtPositionAllData(pd_totalAmountPayment, pd_expirationDate, null,
+		DebtPosition debtPosition = createDebtPositionAllData(pd_totalAmountPayment, pd_expirationDate, null,
 				null);
 
 		List<DebtPosition> debtPositionList = new LinkedList<DebtPosition>();
-		debtPositionList.add(referenceDebtPosition);
+		debtPositionList.add(debtPosition);
 
 		String pdfFileName = "np_NoInstallments_AllData.pdf";
 		byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
@@ -363,16 +363,16 @@ public class PaymentNoticeGenerationTest {
 
 	/**
 	 * 
-	 * @param debtPositionsList
+	 * @param debtPositionList
 	 * @param pdfFileName
 	 * @return
 	 * @throws Exception
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	private byte[] generatePdfNoticePaymentFile(List<DebtPosition> debtPositionsList, String pdfFileName)
+	private byte[] generatePdfNoticePaymentFile(List<DebtPosition> debtPositionList, String pdfFileName)
 			throws Exception, FileNotFoundException, IOException {
-		byte[] printNoticeDebtPosition = PaymentNoticeGeneration.generate(debtPositionsList,
+		byte[] printNoticeDebtPosition = PaymentNoticeGeneration.generate(debtPositionList,
 				creditorInstitutionBuilder.build());
 		OutputStream out = new FileOutputStream(path + pdfFileName);
 		out.write(printNoticeDebtPosition);

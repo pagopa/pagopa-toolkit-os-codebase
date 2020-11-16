@@ -10,8 +10,8 @@ import javax.validation.Validator;
 
 import it.pagoPA.toolkit.common.Constants;
 import it.pagoPA.toolkit.common.ErrorMessages;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.bean.DebtPosition;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.exception.ValidationException;
 import it.pagoPA.toolkit.iuvGenerator.bean.IuvCodeGenerator;
 import it.pagoPA.toolkit.iuvGenerator.validation.IuvCodeValidation;
@@ -102,7 +102,7 @@ public class DebtPositionValidationImpl implements DebtPositionValidation {
 	 * @param debtPosition
 	 */
 	private void checkSinglePaymentsDetailList(DebtPosition debtPosition) {
-		if (debtPosition.getSinglePaymentsDetailList().size() > Constants.SINGLE_PAYMENT_LIST_MAX_SIZE) {
+		if (debtPosition.getSinglePaymentDetailList().size() > Constants.SINGLE_PAYMENT_LIST_MAX_SIZE) {
 			throw new ValidationException(ErrorMessages.VALIDATION_SINGLE_PAYMENT_LIST_SIZE_ERROR);
 		}
 	}
@@ -112,7 +112,7 @@ public class DebtPositionValidationImpl implements DebtPositionValidation {
 	 * @param debtPosition
 	 */
 	private void checkAmounts(DebtPosition debtPosition) {
-		BigDecimal amountSinglePaymentSum = debtPosition.getSinglePaymentsDetailList().stream()
+		BigDecimal amountSinglePaymentSum = debtPosition.getSinglePaymentDetailList().stream()
 				.map(DPSinglePaymentDetail::getAmountSinglePayment).reduce(BigDecimal.ZERO, BigDecimal::add);
 		if (debtPosition.getPaymentDetail().getTotalAmountPayment().compareTo(amountSinglePaymentSum) != 0) {
 			throw new ValidationException(ErrorMessages.VALIDATION_AMOUNTS_ERROR);

@@ -1,4 +1,4 @@
-package it.pagoPA.toolkit.debtPositionGenerator.bean;
+package it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition;
 
 import java.math.BigDecimal;
 
@@ -62,7 +62,7 @@ public class DPSinglePaymentDetail {
 	private BigDecimal amountSinglePayment;
 
 	@NotNull
-	@Digits(integer = 10, fraction = 0)
+	@Digits(integer = 1, fraction = 0)
 	private Integer orderSinglePayment;
 
 	@NotNull

@@ -1,4 +1,4 @@
-package it.pagoPA.toolkit.debtPositionGenerator.bean;
+package it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition;
 
 import java.math.BigDecimal;
 import java.util.Date;

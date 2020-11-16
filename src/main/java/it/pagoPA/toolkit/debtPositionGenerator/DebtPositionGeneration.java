@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPayer;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPPaymentDetail;
-import it.pagoPA.toolkit.debtPositionGenerator.bean.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.bean.DebtPosition;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
+import it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
 import it.pagoPA.toolkit.debtPositionGenerator.business.DebtPositionBusiness;
 
 /**

@@ -1,4 +1,4 @@
-package it.pagoPA.toolkit.debtPositionGenerator.bean;
+package it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -147,7 +147,6 @@ public class DPPayer {
 			this.uniqueIdentificationCode = uniqueIdentificationCode;
 			return this;
 		}
-
 	}
 
 	@NotNull
@@ -184,7 +183,7 @@ public class DPPayer {
 	private String postalCode;
 
 	@Size(max = 256)
-	@Email(message = ErrorMessages.VALIDATION_EMAIL_ERROR)
+	@Email(message = ErrorMessages.VALIDATION_EMAIL_ERROR)//TODO e la regexp?
 	private String email;
 
 	@Size(max = 19)
