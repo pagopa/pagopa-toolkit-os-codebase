@@ -1,4 +1,4 @@
-# shadow-pagopa-toolkit-os
+# pagopa-toolkit-os
 
 maven 3.x
 jdk 1.8.0_231
