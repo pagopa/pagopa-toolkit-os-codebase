@@ -37,7 +37,6 @@ public class IuvSequenceReaderImplTest {
 	public void testNext() {
 		String value = iuvSequenceReader.next();
 		String next = iuvSequenceReader.next();
-
 		assertEquals(new BigInteger(value).add(BigInteger.ONE), new BigInteger(next));
 	}
 }

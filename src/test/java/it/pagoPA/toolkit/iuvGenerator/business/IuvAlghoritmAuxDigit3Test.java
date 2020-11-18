@@ -32,7 +32,7 @@ public class IuvAlghoritmAuxDigit3Test {
 	 */
 	@Test
 	public void testGenerate() {
-		String iuvGenerated = iuvAlghoritmGenerator.generate(00, 01);
+        String iuvGenerated = iuvAlghoritmGenerator.generate(00, 01);
 		assertNotNull(iuvGenerated);
 		assertEquals(17, iuvGenerated.length());
 	}

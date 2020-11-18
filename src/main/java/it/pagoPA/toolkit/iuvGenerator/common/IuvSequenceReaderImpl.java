@@ -23,6 +23,7 @@ public class IuvSequenceReaderImpl implements IuvSequenceReader {
 		sequence = StringUtils.leftPad(sequence, 9, '0');
 		sequence = Calendar.getInstance().get(Calendar.YEAR) + sequence;
 
+        System.out.println("seguence >>>>>>> " + sequence);
 		if (!pattern.matcher(sequence).matches()) {
 			throw new UnexpectedValueException(ErrorMessages.UNEXPECTED_GENERATED_VALUE_ERROR + sequence);
 		}
