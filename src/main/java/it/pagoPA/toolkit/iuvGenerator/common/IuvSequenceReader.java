@@ -5,10 +5,10 @@ package it.pagoPA.toolkit.iuvGenerator.common;
  */
 public interface IuvSequenceReader {
 
-	/**
-	 * Get the sequence next value
-	 * 
-	 * @return the sequence next value
-	 */
-	String next();
+    /**
+     * Get the sequence next value
+     * 
+     * @return the sequence next value
+     */
+    String next();
 }

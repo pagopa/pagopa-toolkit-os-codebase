@@ -12,23 +12,23 @@ import it.pagoPA.toolkit.paymentNoticeGenerator.business.PaymentNoticeBusiness;
  */
 public class PaymentNoticeGeneration {
 
-	/**
-	 * Generate the pdf payment notice N.B.: debtPositionList is recommended it
-	 * has same Payer informations and same PaymentDetail causal
-	 * 
-	 * @param debtPositionList
-	 * @param creditorInstitution
-	 * @return paymentNotice (ByteArray)
-	 * @throws Exception
-	 */
-	public static byte[] generate(List<DebtPosition> debtPositionList, PNCreditorInstitution creditorInstitution)
-			throws Exception {
+    /**
+     * Generate the pdf payment notice. N.B.: debtPositionList is recommended it
+     * has same Payer informations and same PaymentDetail causal
+     * 
+     * @param debtPositionList
+     * @param creditorInstitution
+     * @return paymentNotice (ByteArray)
+     * @throws Exception
+     */
+    public static byte[] generate(List<DebtPosition> debtPositionList, PNCreditorInstitution creditorInstitution)
+            throws Exception {
 
-		PaymentNotice paymentNotice = new PaymentNotice.Builder().setDebtPositionList(debtPositionList)
-				.setCreditorInstitution(creditorInstitution).build();
+        PaymentNotice paymentNotice = new PaymentNotice.Builder().setDebtPositionList(debtPositionList)
+                .setCreditorInstitution(creditorInstitution).build();
 
-		PaymentNoticeBusiness.validate(paymentNotice);
+        PaymentNoticeBusiness.validate(paymentNotice);
 
-		return PaymentNoticeBusiness.generatePaymentNotice(paymentNotice);
-	}
+        return PaymentNoticeBusiness.generatePaymentNotice(paymentNotice);
+    }
 }

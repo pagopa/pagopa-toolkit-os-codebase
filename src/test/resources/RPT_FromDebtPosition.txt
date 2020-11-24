@@ -1,0 +1,83 @@
+<RPT xmlns="http://www.digitpa.gov.it/schemas/2011/Pagamenti/">
+    <versioneOggetto>1.0</versioneOggetto>
+    <dominio>
+        <identificativoDominio>01234567890</identificativoDominio>
+    </dominio>
+    <identificativoMessaggioRichiesta>202011240956388aa5d86f-5458-4192-b7</identificativoMessaggioRichiesta>
+    <dataOraMessaggioRichiesta>2020-11-24T09:56:38.724+01:00</dataOraMessaggioRichiesta>
+    <autenticazioneSoggetto>N/A</autenticazioneSoggetto>
+    <soggettoVersante>
+        <identificativoUnivocoVersante>
+            <tipoIdentificativoUnivoco>F</tipoIdentificativoUnivoco>
+            <codiceIdentificativoUnivoco>RSSMRA80A01F205X</codiceIdentificativoUnivoco>
+        </identificativoUnivocoVersante>
+        <anagraficaVersante>ROSSI MARIO</anagraficaVersante>
+        <indirizzoVersante>Via Roma</indirizzoVersante>
+        <civicoVersante>123</civicoVersante>
+        <capVersante>50127</capVersante>
+        <localitaVersante>Firenze</localitaVersante>
+        <provinciaVersante>FI</provinciaVersante>
+        <nazioneVersante>IT</nazioneVersante>
+        <e-mailVersante>mario.rossi@gmail.it</e-mailVersante>
+    </soggettoVersante>
+    <soggettoPagatore>
+        <identificativoUnivocoPagatore>
+            <tipoIdentificativoUnivoco>F</tipoIdentificativoUnivoco>
+            <codiceIdentificativoUnivoco>RSSMRA80A01F205X</codiceIdentificativoUnivoco>
+        </identificativoUnivocoPagatore>
+        <anagraficaPagatore>ROSSI MARIO</anagraficaPagatore>
+        <indirizzoPagatore>Via Roma</indirizzoPagatore>
+        <civicoPagatore>123</civicoPagatore>
+        <capPagatore>50127</capPagatore>
+        <localitaPagatore>Firenze</localitaPagatore>
+        <provinciaPagatore>FI</provinciaPagatore>
+        <nazionePagatore>IT</nazionePagatore>
+        <e-mailPagatore>mario.rossi@gmail.it</e-mailPagatore>
+    </soggettoPagatore>
+    <enteBeneficiario>
+        <identificativoUnivocoBeneficiario>
+            <tipoIdentificativoUnivoco>G</tipoIdentificativoUnivoco>
+            <codiceIdentificativoUnivoco>09876543210</codiceIdentificativoUnivoco>
+        </identificativoUnivocoBeneficiario>
+        <denominazioneBeneficiario>Ente Beneficiario</denominazioneBeneficiario>
+        <codiceUnitOperBeneficiario>codiceUnitOper</codiceUnitOperBeneficiario>
+        <denomUnitOperBeneficiario>DenomUnitOper</denomUnitOperBeneficiario>
+        <indirizzoBeneficiario>Via Torino</indirizzoBeneficiario>
+        <civicoBeneficiario>789</civicoBeneficiario>
+        <capBeneficiario>20100</capBeneficiario>
+        <localitaBeneficiario>Milano</localitaBeneficiario>
+        <provinciaBeneficiario>MI</provinciaBeneficiario>
+        <nazioneBeneficiario>IT</nazioneBeneficiario>
+    </enteBeneficiario>
+    <datiVersamento>
+        <dataEsecuzionePagamento>2020-11-24+01:00</dataEsecuzionePagamento>
+        <importoTotaleDaVersare>33.33</importoTotaleDaVersare>
+        <tipoVersamento>CP</tipoVersamento>
+        <identificativoUnivocoVersamento>01202000000010915</identificativoUnivocoVersamento>
+        <codiceContestoPagamento>93052453-255a-4b82-835b-b15ae780b9a</codiceContestoPagamento>
+        <ibanAddebito>IT58C0306914512000000046601</ibanAddebito>
+        <bicAddebito>BCITITMMXXX</bicAddebito>
+        <firmaRicevuta>0</firmaRicevuta>
+        <datiSingoloVersamento>
+            <importoSingoloVersamento>22.22</importoSingoloVersamento>
+            <commissioneCaricoPA>1.50</commissioneCaricoPA>
+            <causaleVersamento>/RFB/01202000000010915/22.22/TXT/pagamento Test 2</causaleVersamento>
+            <datiSpecificiRiscossione>9/test</datiSpecificiRiscossione>
+            <datiMarcaBolloDigitale>
+                <tipoBollo>01</tipoBollo>
+                <hashDocumento>YUdGemFFTnZaR1VnUkc5amRXMWxiblJ2SUUxaGNtUmhJR1JoSUVKdmJHeHY=</hashDocumento>
+                <provinciaResidenza>FI</provinciaResidenza>
+            </datiMarcaBolloDigitale>
+        </datiSingoloVersamento>
+        <datiSingoloVersamento>
+            <importoSingoloVersamento>11.11</importoSingoloVersamento>
+            <commissioneCaricoPA>1.50</commissioneCaricoPA>
+            <ibanAccredito>IT73W0306953740100000300003</ibanAccredito>
+            <bicAccredito>BCITITMMXXX</bicAccredito>
+            <ibanAppoggio>IT33I0760114500000041940305</ibanAppoggio>
+            <bicAppoggio>BPPIITRRXXX</bicAppoggio>
+            <causaleVersamento>/RFB/01202000000010915/11.11/TXT/pagamento Test 1</causaleVersamento>
+            <datiSpecificiRiscossione>9/test</datiSpecificiRiscossione>
+        </datiSingoloVersamento>
+    </datiVersamento>
+</RPT>

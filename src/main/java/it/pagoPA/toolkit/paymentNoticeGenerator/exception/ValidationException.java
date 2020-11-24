@@ -11,56 +11,56 @@ import it.pagoPA.toolkit.common.ErrorMessages;
  */
 public class ValidationException extends IllegalArgumentException {
 
-	private static final long serialVersionUID = 7340114022568985737L;
+    private static final long serialVersionUID = 7340114022568985737L;
 
-	/**
-	 * 
-	 */
-	public <T> ValidationException(Set<ConstraintViolation<T>> validationInputResults) {
-		super(generateErrorMessage(validationInputResults));
-	}
+    /**
+     * 
+     */
+    public <T> ValidationException(Set<ConstraintViolation<T>> validationInputResults) {
+        super(generateErrorMessage(validationInputResults));
+    }
 
-	/**
-	 * 
-	 */
-	public ValidationException() {
-	}
+    /**
+     * 
+     */
+    public ValidationException() {
+    }
 
-	/**
-	 * @param s
-	 */
-	public ValidationException(String s) {
-		super(s);
-	}
+    /**
+     * @param s
+     */
+    public ValidationException(String s) {
+        super(s);
+    }
 
-	/**
-	 * @param cause
-	 */
-	public ValidationException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * @param cause
+     */
+    public ValidationException(Throwable cause) {
+        super(cause);
+    }
 
-	/**
-	 * @param message
-	 * @param cause
-	 */
-	public ValidationException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    /**
+     * @param message
+     * @param cause
+     */
+    public ValidationException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	/**
-	 * 
-	 * @param validationInputResults
-	 * @return
-	 */
-	private static <T> String generateErrorMessage(Set<ConstraintViolation<T>> validationInputResults) {
-		String errorMsg = ErrorMessages.VALIDATION_ERROR;
+    /**
+     * 
+     * @param validationInputResults
+     * @return
+     */
+    private static <T> String generateErrorMessage(Set<ConstraintViolation<T>> validationInputResults) {
+        String errorMsg = ErrorMessages.VALIDATION_ERROR;
 
-		for (ConstraintViolation<T> validationError : validationInputResults) {
-			String validationErrorMsg = validationError.getPropertyPath() + "[" + validationError.getMessage() + "]; ";
-			errorMsg = errorMsg + validationErrorMsg;
-		}
+        for (ConstraintViolation<T> validationError : validationInputResults) {
+            String validationErrorMsg = validationError.getPropertyPath() + "[" + validationError.getMessage() + "]; ";
+            errorMsg = errorMsg + validationErrorMsg;
+        }
 
-		return errorMsg;
-	}
+        return errorMsg;
+    }
 }

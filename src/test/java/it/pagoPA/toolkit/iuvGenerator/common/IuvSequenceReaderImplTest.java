@@ -18,26 +18,26 @@ import it.pagoPA.toolkit.iuvGenerator.common.IuvSequenceReaderImpl;
  */
 public class IuvSequenceReaderImplTest {
 
-	private IuvSequenceReader iuvSequenceReader;
+    private IuvSequenceReader iuvSequenceReader;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		iuvSequenceReader = new IuvSequenceReaderImpl();
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        iuvSequenceReader = new IuvSequenceReaderImpl();
+    }
 
-	/**
-	 * Test method for
-	 * {@link it.pagoPA.toolkit.iuvGenerator.common.IuvSequenceReaderImpl#next()}
-	 * .
-	 */
-	@Test
-	public void testNext() {
-		String value = iuvSequenceReader.next();
-		String next = iuvSequenceReader.next();
+    /**
+     * Test method for
+     * {@link it.pagoPA.toolkit.iuvGenerator.common.IuvSequenceReaderImpl#next()}
+     * .
+     */
+    @Test
+    public void testNext() {
+        String value = iuvSequenceReader.next();
+        String next = iuvSequenceReader.next();
 
-		assertEquals(new BigInteger(value).add(BigInteger.ONE), new BigInteger(next));
-	}
+        assertEquals(new BigInteger(value).add(BigInteger.ONE), new BigInteger(next));
+    }
 }

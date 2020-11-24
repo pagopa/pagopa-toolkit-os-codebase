@@ -8,12 +8,12 @@ import it.pagoPA.toolkit.iuvGenerator.exception.ValidationException;
  */
 public interface IuvCodeValidation {
 
-	/**
-	 * Validate the iuvCodeGenerator
-	 * 
-	 * @param iuvCodeGenerator
-	 *            the IUV code generator
-	 * @throws ValidationException
-	 */
-	void validate(IuvCodeGenerator iuvCodeGenerator) throws ValidationException;
+    /**
+     * Validate the iuvCodeGenerator
+     * 
+     * @param iuvCodeGenerator
+     *            the IUV code generator
+     * @throws ValidationException
+     */
+    void validate(IuvCodeGenerator iuvCodeGenerator) throws ValidationException;
 }
