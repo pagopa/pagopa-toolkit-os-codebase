@@ -3,359 +3,410 @@ package it.pagoPA.toolkit.debtPositionGenerator.bean.debtPosition;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import it.pagoPA.toolkit.common.Constants;
+import it.pagoPA.toolkit.common.ErrorMessages;
 import it.pagoPA.toolkit.debtPositionGenerator.enumeration.PaymentStatusEnum;
 
 /**
  * Debt Position Payment Detail class
  * 
- * installmentNumber = 0 Rata unica
- * installmentNumber da 1 a n = numero di rate
+ * installmentNumber = 0 Rata unica installmentNumber
+ * da 1 a n = numero di rate
  */
 public class DPPaymentDetail {
 
-	/**
-	 * Debt Position Payment Detail builder class
-	 */
-	public static class Builder {
+    /**
+     * Debt Position Payment Detail builder class
+     */
+    public static class Builder {
 
-		private String domainIdentifier;
-		private int auxDigit;
-		private Integer applicationCode;
-		private Integer segregationCode;
-		private String iuv;
-		private String idTenant;
-		private BigDecimal totalAmountPayment;
-		private String causal;
-		private Date expirationDate;
-		private String specificCollectionData;
-		private String documentNumber;
-		private Integer installmentNumber;
+        private String domainIdentifier;
+        private int auxDigit;
+        private Integer applicationCode;
+        private Integer segregationCode;
+        private String iuv;
+        private String idTenant;
+        private BigDecimal totalAmountPayment;
+        private String causal;
+        private Date expirationDate;
+        private String specificCollectionData;
+        private String documentNumber;
+        private Integer installmentNumber;
+        private String debitIban;
+        private String debitBic;
 
-		/**
-		 * Build the Debt Position Payment Detail
-		 * 
-		 * @return the Debt Position Payment Detail
-		 */
-		public DPPaymentDetail build() {
-			return new DPPaymentDetail(this);
-		}
+        /**
+         * Build the Debt Position Payment Detail
+         * 
+         * @return the Debt Position Payment Detail
+         */
+        public DPPaymentDetail build() {
+            return new DPPaymentDetail(this);
+        }
 
-		/**
-		 * @param totalAmountPayment
-		 *            the totalAmountPayment to set
-		 */
-		public Builder setTotalAmountPayment(BigDecimal totalAmountPayment) {
-			this.totalAmountPayment = totalAmountPayment;
-			return this;
-		}
+        /**
+         * @param totalAmountPayment
+         *            the totalAmountPayment to set
+         */
+        public Builder setTotalAmountPayment(BigDecimal totalAmountPayment) {
+            this.totalAmountPayment = totalAmountPayment;
+            return this;
+        }
 
-		/**
-		 * @param causal
-		 *            the causal to set
-		 */
-		public Builder setCausal(String causal) {
-			this.causal = causal;
-			return this;
-		}
+        /**
+         * @param causal
+         *            the causal to set
+         */
+        public Builder setCausal(String causal) {
+            this.causal = causal;
+            return this;
+        }
 
-		/**
-		 * @param documentNumber
-		 *            the documentNumber to set
-		 */
-		public Builder setDocumentNumber(String documentNumber) {
-			this.documentNumber = documentNumber;
-			return this;
-		}
+        /**
+         * @param documentNumber
+         *            the documentNumber to set
+         */
+        public Builder setDocumentNumber(String documentNumber) {
+            this.documentNumber = documentNumber;
+            return this;
+        }
 
-		/**
-		 * @param domainIdentifier
-		 *            the domainIdentifier to set
-		 */
-		public Builder setDomainIdentifier(String domainIdentifier) {
-			this.domainIdentifier = domainIdentifier;
-			return this;
-		}
+        /**
+         * @param domainIdentifier
+         *            the domainIdentifier to set
+         */
+        public Builder setDomainIdentifier(String domainIdentifier) {
+            this.domainIdentifier = domainIdentifier;
+            return this;
+        }
 
-		/**
-		 * @param expirationDate
-		 *            the expirationDate to set
-		 */
-		public Builder setExpirationDate(Date expirationDate) {
-			this.expirationDate = expirationDate;
-			return this;
-		}
+        /**
+         * @param expirationDate
+         *            the expirationDate to set
+         */
+        public Builder setExpirationDate(Date expirationDate) {
+            this.expirationDate = expirationDate;
+            return this;
+        }
 
-		/**
-		 * @param idTenant
-		 *            the idTenant to set
-		 */
-		public Builder setIdTenant(String idTenant) {
-			this.idTenant = idTenant;
-			return this;
-		}
+        /**
+         * @param idTenant
+         *            the idTenant to set
+         */
+        public Builder setIdTenant(String idTenant) {
+            this.idTenant = idTenant;
+            return this;
+        }
 
-		/**
-		 * @param installmentNumber
-		 *            the installmentNumber to set
-		 */
-		public Builder setInstallmentNumber(Integer installmentNumber) {
-			this.installmentNumber = installmentNumber;
-			return this;
-		}
+        /**
+         * @param installmentNumber
+         *            the installmentNumber to set
+         */
+        public Builder setInstallmentNumber(Integer installmentNumber) {
+            this.installmentNumber = installmentNumber;
+            return this;
+        }
 
-		/**
-		 * @param iuv
-		 *            the iuv to set
-		 */
-		public Builder setIuv(String iuv) {
-			this.iuv = iuv;
-			return this;
-		}
+        /**
+         * @param iuv
+         *            the iuv to set
+         */
+        public Builder setIuv(String iuv) {
+            this.iuv = iuv;
+            return this;
+        }
 
-		/**
-		 * @param specificCollectionData
-		 *            the specificCollectionData to set
-		 */
-		public Builder setSpecificCollectionData(String specificCollectionData) {
-			this.specificCollectionData = specificCollectionData;
-			return this;
-		}
+        /**
+         * @param specificCollectionData
+         *            the specificCollectionData to set
+         */
+        public Builder setSpecificCollectionData(String specificCollectionData) {
+            this.specificCollectionData = specificCollectionData;
+            return this;
+        }
 
-		/**
-		 * @param auxDigit
-		 *            the auxDigit to set
-		 */
-		public Builder setAuxDigit(int auxDigit) {
-			this.auxDigit = auxDigit;
-			return this;
-		}
+        /**
+         * @param auxDigit
+         *            the auxDigit to set
+         */
+        public Builder setAuxDigit(int auxDigit) {
+            this.auxDigit = auxDigit;
+            return this;
+        }
 
-		/**
-		 * 
-		 * @param applicationCode
-		 *            the applicationCode to set
-		 */
-		public Builder setApplicationCode(Integer applicationCode) {
-			this.applicationCode = applicationCode;
-			return this;
-		}
+        /**
+         * 
+         * @param applicationCode
+         *            the applicationCode to set
+         */
+        public Builder setApplicationCode(Integer applicationCode) {
+            this.applicationCode = applicationCode;
+            return this;
+        }
 
-		/**
-		 * @param segregationCode
-		 *            the segregationCode to set
-		 */
-		public Builder setSegregationCode(Integer segregationCode) {
-			this.segregationCode = segregationCode;
-			return this;
-		}
-	}
+        /**
+         * @param segregationCode
+         *            the segregationCode to set
+         */
+        public Builder setSegregationCode(Integer segregationCode) {
+            this.segregationCode = segregationCode;
+            return this;
+        }
 
-	@NotNull
-	@NotEmpty
-	@Size(max = 16)
-	private String domainIdentifier;
+        /**
+         * @param debitIban
+         *            the debitIban to set
+         */
+        public Builder setDebitIban(String debitIban) {
+            this.debitIban = debitIban;
+            return this;
+        }
 
-	@Digits(integer = 1, fraction = 0)
-	private int auxDigit;
+        /**
+         * @param debitBic
+         *            the debitBic to set
+         */
+        public Builder setDebitBic(String debitBic) {
+            this.debitBic = debitBic;
+            return this;
+        }
+    }
 
-	@Digits(integer = 2, fraction = 0)
-	private Integer segregationCode;
+    @NotEmpty
+    @Size(max = 16)
+    private String domainIdentifier;
 
-	@Digits(integer = 2, fraction = 0)
-	private Integer applicationCode;
+    @Digits(integer = 1, fraction = 0)
+    private int auxDigit;
 
-	@Size(max = 35)
-	private String iuv;
+    @Digits(integer = 2, fraction = 0)
+    private Integer segregationCode;
 
-	@Size(max = 50)
-	private String idTenant;
+    @Digits(integer = 2, fraction = 0)
+    private Integer applicationCode;
 
-	@NotNull
-	@Digits(integer = 9, fraction = 2)
-	private BigDecimal totalAmountPayment;
+    @Size(max = 35)
+    private String iuv;
 
-	@NotNull
-	@NotEmpty
-	@Size(max = 60)
-	private String causal;
+    @Size(max = 50)
+    private String idTenant;
 
-	@Future
-	private Date expirationDate;
+    @NotNull
+    @Digits(integer = 9, fraction = 2)
+    @DecimalMin(value = "0.01", message = ErrorMessages.VALIDATION_AMOUNT_MIN)
+    private BigDecimal totalAmountPayment;
 
-	@Size(max = 256)
-	private String specificCollectionData;
+    @NotEmpty
+    @Size(max = 60)
+    private String causal;
 
-	@Size(max = 35)
-	private String documentNumber;
+    @Future
+    private Date expirationDate;
 
-	@Digits(integer = 2, fraction = 0)
-	private Integer installmentNumber;
+    @Size(max = 140)
+    @Pattern(regexp = Constants.REGEX_DATI_SPECIFICI_RISCOSSIONE, message = ErrorMessages.VALIDATION_INVALID_DATI_SPECIFICI_RISCOSSIONE)
+    private String specificCollectionData;
 
-	private Date creationDate;
-	private String noticeNumber;
-	private PaymentStatusEnum paymentStatus;
+    @Size(max = 35)
+    private String documentNumber;
 
-	/**
-	 * Private constructor
-	 */
-	private DPPaymentDetail() {
-		// NOPE
-	}
+    @Digits(integer = 2, fraction = 0)
+    private Integer installmentNumber;
 
-	/**
-	 * Private constructor
-	 * 
-	 * @param builder
-	 */
-	private DPPaymentDetail(Builder builder) {
-		this.creationDate = new Date();
-		this.auxDigit = builder.auxDigit;
-		this.segregationCode = builder.segregationCode;
-		this.applicationCode = builder.applicationCode;
-		this.domainIdentifier = builder.domainIdentifier;
-		this.iuv = builder.iuv;
-		this.idTenant = builder.idTenant;
-		this.paymentStatus = PaymentStatusEnum.PAYABLE;
-		this.totalAmountPayment = builder.totalAmountPayment;
-		this.causal = builder.causal;
-		this.expirationDate = builder.expirationDate;
-		this.specificCollectionData = builder.specificCollectionData;
-		this.documentNumber = builder.documentNumber;
-		this.installmentNumber = builder.installmentNumber;
-	}
+    private Date creationDate;
+    private String noticeNumber;
+    private PaymentStatusEnum paymentStatus;
 
-	/**
-	 * @return the totalAmountPayment
-	 */
-	public BigDecimal getTotalAmountPayment() {
-		return totalAmountPayment;
-	}
+    @NotEmpty
+    @Size(max = 35)
+    @Pattern(regexp = Constants.REGEX_IBAN, message = ErrorMessages.VALIDATION_INVALID_IBAN)
+    private String debitIban;
 
-	/**
-	 * @return the causal
-	 */
-	public String getCausal() {
-		return causal;
-	}
+    @Size(max = 11)
+    @Pattern(regexp = Constants.REGEX_BIC, message = ErrorMessages.VALIDATION_INVALID_BIC)
+    private String debitBic;
 
-	/**
-	 * @return the creationDate
-	 */
-	public Date getCreationDate() {
-		return creationDate;
-	}
+    /**
+     * Private constructor
+     */
+    private DPPaymentDetail() {
+        // NOPE
+    }
 
-	/**
-	 * @return the documentNumber
-	 */
-	public String getDocumentNumber() {
-		return documentNumber;
-	}
+    /**
+     * Private constructor
+     * 
+     * @param builder
+     */
+    private DPPaymentDetail(Builder builder) {
+        this.creationDate = new Date();
+        this.auxDigit = builder.auxDigit;
+        this.segregationCode = builder.segregationCode;
+        this.applicationCode = builder.applicationCode;
+        this.domainIdentifier = builder.domainIdentifier;
+        this.iuv = builder.iuv;
+        this.idTenant = builder.idTenant;
+        this.paymentStatus = PaymentStatusEnum.PAYABLE;
+        this.totalAmountPayment = builder.totalAmountPayment;
+        this.causal = builder.causal;
+        this.expirationDate = builder.expirationDate;
+        this.specificCollectionData = builder.specificCollectionData;
+        this.documentNumber = builder.documentNumber;
+        this.installmentNumber = builder.installmentNumber;
+        this.debitIban = builder.debitIban;
+        this.debitBic = builder.debitBic;
+    }
 
-	/**
-	 * @return the domainIdentifier
-	 */
-	public String getDomainIdentifier() {
-		return domainIdentifier;
-	}
+    /**
+     * @return the totalAmountPayment
+     */
+    public BigDecimal getTotalAmountPayment() {
+        return totalAmountPayment;
+    }
 
-	/**
-	 * @return the expirationDate
-	 */
-	public Date getExpirationDate() {
-		return expirationDate;
-	}
+    /**
+     * @return the causal
+     */
+    public String getCausal() {
+        return causal;
+    }
 
-	/**
-	 * @return the idTenant
-	 */
-	public String getIdTenant() {
-		return idTenant;
-	}
+    /**
+     * @return the creationDate
+     */
+    public Date getCreationDate() {
+        return creationDate;
+    }
 
-	/**
-	 * @return the installmentNumber
-	 */
-	public Integer getInstallmentNumber() {
-		return installmentNumber;
-	}
+    /**
+     * @return the documentNumber
+     */
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
 
-	/**
-	 * @return the specificCollectionData
-	 */
-	public String getSpecificCollectionData() {
-		return specificCollectionData;
-	}
+    /**
+     * @return the domainIdentifier
+     */
+    public String getDomainIdentifier() {
+        return domainIdentifier;
+    }
 
-	/**
-	 * @return the auxDigit
-	 */
-	public int getAuxDigit() {
-		return auxDigit;
-	}
+    /**
+     * @return the expirationDate
+     */
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
 
-	/**
-	 * @return the segregationCode
-	 */
-	public Integer getSegregationCode() {
-		return segregationCode;
-	}
+    /**
+     * @return the idTenant
+     */
+    public String getIdTenant() {
+        return idTenant;
+    }
 
-	/**
-	 * @return the applicationCode
-	 */
-	public Integer getApplicationCode() {
-		return applicationCode;
-	}
+    /**
+     * @return the installmentNumber
+     */
+    public Integer getInstallmentNumber() {
+        return installmentNumber;
+    }
 
-	/**
-	 * @return the paymentStatus
-	 */
-	public PaymentStatusEnum getPaymentStatus() {
-		return paymentStatus;
-	}
+    /**
+     * @return the specificCollectionData
+     */
+    public String getSpecificCollectionData() {
+        return specificCollectionData;
+    }
 
-	/**
-	 * 
-	 * @param paymentStatus
-	 */
-	public void setPaymentStatus(PaymentStatusEnum paymentStatus) {
-		this.paymentStatus = paymentStatus;
-	}
+    /**
+     * @return the auxDigit
+     */
+    public int getAuxDigit() {
+        return auxDigit;
+    }
 
-	/**
-	 * @return the noticeNumber
-	 */
-	public String getNoticeNumber() {
-		return noticeNumber;
-	}
+    /**
+     * @return the segregationCode
+     */
+    public Integer getSegregationCode() {
+        return segregationCode;
+    }
 
-	/**
-	 * 
-	 * @param noticeNumber
-	 */
-	public void setNoticeNumber(String noticeNumber) {
-		this.noticeNumber = noticeNumber;
-	}
+    /**
+     * @return the applicationCode
+     */
+    public Integer getApplicationCode() {
+        return applicationCode;
+    }
 
-	/**
-	 * @return the iuv
-	 */
-	public String getIuv() {
-		return iuv;
-	}
+    /**
+     * @return the paymentStatus
+     */
+    public PaymentStatusEnum getPaymentStatus() {
+        return paymentStatus;
+    }
 
-	/**
-	 * 
-	 * @param iuv
-	 */
-	public void setIuv(String iuv) {
-		this.iuv = iuv;
-	}
+    /**
+     * 
+     * @param paymentStatus
+     */
+    public void setPaymentStatus(PaymentStatusEnum paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    /**
+     * @return the noticeNumber
+     */
+    public String getNoticeNumber() {
+        return noticeNumber;
+    }
+
+    /**
+     * 
+     * @param noticeNumber
+     */
+    public void setNoticeNumber(String noticeNumber) {
+        this.noticeNumber = noticeNumber;
+    }
+
+    /**
+     * @return the iuv
+     */
+    public String getIuv() {
+        return iuv;
+    }
+
+    /**
+     * 
+     * @param iuv
+     */
+    public void setIuv(String iuv) {
+        this.iuv = iuv;
+    }
+
+    /**
+     * 
+     * @return the debitIban
+     */
+    public String getDebitIban() {
+        return debitIban;
+    }
+
+    /**
+     * 
+     * @return the debitBic
+     */
+    public String getDebitBic() {
+        return debitBic;
+    }
 }

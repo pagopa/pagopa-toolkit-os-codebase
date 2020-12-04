@@ -13,38 +13,131 @@
   - [Context](#context)
   - [Prerequisites](#prerequisites)
   - [Feature Areas](#feature-areas)
-  - [Future features _(under development)_](#future-features-under-development)
+  - [Future-features-under-development](#future-features-under-development)
   - [Getstarted](#getstarted)
+  
+  
 ## Context
 
 This repo is a _open source reference implementation_ for _Electronic payments system for Public Administration_ for [pagoPa](https://www.pagopa.gov.it/it/pagopa/) related to [SANP](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/index.html) specifications.
+
+```
+git clone https://github.com/pagopa/pagopa-toolkit-os-codebase
+```
 
 
 ## Prerequisites
 
 - [maven](https://maven.apache.org/) 3.x
 - [jdk](https://www.oracle.com/it/java/technologies/javase/javase-jdk8-downloads.html) _tested on 1.8.0_231_
+- [git](https://git-scm.com/)
+
 
 ## Feature Areas
+
 The following is a list of our current product areas:
 
-1) **IUV Generator**: generation of the [IUV](https://docs.italia.it/italia/pagopa/pagopa-codici-docs/it/stabile/_docs/Capitolo2.html#punti-di-generazione-del-codice-iuv) code 
-2) **DebtPositionGenerator**: generation of a [Debt Position](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez2_Cap02_GestionePosizioneDebitoria.html#) containing all the data indicating :
-   - Payer
-   - Payment Data (amount, due date, etc.)
-   - Single Payment Data List
+1) **IUV Generator**: generation of the [IUV](https://docs.italia.it/italia/pagopa/pagopa-codici-docs/it/stabile/_docs/Capitolo2.html#punti-di-generazione-del-codice-iuv) code.
+	Main operation:
+	- Iuv generation based on auxDigit, segregationCode and applicationCode values:
+	```
+	IuvCodeGeneration.generate(auxDigit, segregationCode, applicationCode)
+	```
+
+2) **DebtPositionGenerator**: generation of a [Debt Position](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez2_Cap02_GestionePosizioneDebitoria.html#) containing all the data indicating:
+	- Payer:
+	```
+	DebtPositionGeneration.generatePayer(uniqueIdentificationCode, uniqueIdentificationType, registry, address, numberStreet, locality, province, nation, postalCode, email, mobile)
+	```
+	- Payment Data:
+	```
+	(DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,segregationCode, applicationCode, iuv, idTenant, totalAmountPayment, causal, expirationDate, specificCollectionData, documentNumber, installmentNumber, debitIban, debitBic)
+	```
+	- Single Payment Data List:
+	```
+	DebtPositionGeneration.generateSinglePaymentsDetail(amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, creditIban, creditBic, supportIban, supportBic, datiMarcaBolloDigitale)
+	```
+	Main operation:
+	- Debt Position generation based on payer, paymentDetail and singlePaymentsDetailList values:
+	```
+	DebtPositionGeneration.generate(payer, paymentDetail, singlePaymentsDetailList)
+	```
+	Other operations:
+	- Validation of a self-constructed Debt Position:
+	```
+	DebtPositionManagement.validate(debtPosition)
+	```
+	- Changing the status of a Debt Position:
+	```
+	DebtPositionManagement.makeXXX(debtPosition)
+	```
 
 3) **Notice Payment Generator**: pdf generation of the [Payment Notice](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#avviso-digitale) starting from a List of _Debt Positions_
+	Main operation:
+	- Payment Notice pdf generation based on debtPositionList and creditorInstitution values:
+	```
+	PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution)
+	```
+	> NOTE : the list of DebtPosition is recommended it has same Payer informations and same PaymentDetail causal.
 
-## Future features _(under development)_
-1) **RPT Generator**: generation of an [RPT](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#richiesta-di-pagamento-telematica-rpt) (both object and xml)
+4) **RPT Generator**: generation of an [RPT](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#richiesta-di-pagamento-telematica-rpt) (both object and xml) containing all the data indicating:
+	- Dominio:
+	```
+	RptGeneration.generateDominio(identificativoDominio, identificativoStazioneRichiedente)
+	```
+	- Soggetto Versante:
+	```
+	RptGeneration.generateSoggetto(identificativoUnivoco, anagrafica, indirizzo, email)
+	```
+	- Soggetto Pagatore:
+	```
+	RptGeneration.generateSoggetto(identificativoUnivoco, anagrafica, indirizzo, email)
+	```
+	- Ente Beneficiario:
+	```
+	RptGeneration.generateEnteBeneficiario(identificativoUnivoco, denominazione, codiceUnitOper, denomUnitOper, indirizzo)
+	```
+	- Dati Versamento:
+	```
+	RptGeneration.generateDatiVersamento(importoTotaleDaVersare, tipoVersamento, identificativoUnivocoVersamento, ibanAddebito, bicAddebito, firmaRicevuta)
+	```
+	- Dati Singolo Versamento List:
+	```
+	RptGeneration.generateDatiSingoloVersamento(importoSingoloVersamento, commissioneCaricoPA, ibanAccredito, bicAccredito, ibanAppoggio, bicAppoggio, credenzialiPagatore, descrizioneCausaleVersamento, iuv, datiSpecificiRiscossione, datiMarcaBolloDigitale, ordineVersamento)
+	```
+	Main operations:
+	- Generation of an RPT object:
+	```
+	RptGeneration.generateRptElement(versioneOggetto, dominio, autenticazioneSoggetto, soggettoVersante, soggettoPagatore, enteBeneficiario, datiVersamento, datiSingoloVersamentoList)
+	```
+	- Generation based on a RPT object:
+	```
+	RptGeneration.generate(idTenant, rpt)
+	```
+	- Generation based on a Debt Position:
+	```
+	RptGeneration.generate(idTenant, debtPosition, enteBeneficiario, commissioneCaricoPA)
+	```
+	Other operations:
+	- Validation of a self-constructed RPT:
+	```
+	RptGeneration.validate(rptContainer)
+	```
+	- Changing the status of a RPT
+	```
+	RptGeneration.makeXXX(rptContainer)
+	```
 
 
-##  Getstarted
+## Future-features-under-development
+Input/output layer for generating the PDF of the payment notice and more.
+
+
+## Getstarted
 
 Developer's guidelines who wants build and run tests present in the repo 🚀 :
 
-1. to build e run all test tying 
+to build e run all test typing 
 
 ```
 mvn install -X -U
@@ -75,3 +168,4 @@ mvn -Dtest=Iuv* test
 > in this case, `mvn` will run all test case related to *IUV* that match with _Iuv*_
 > 
 > to more details see [documentation](https://maven.apache.org/plugins-archives/maven-surefire-plugin-2.12.4/examples/single-test.html)
+

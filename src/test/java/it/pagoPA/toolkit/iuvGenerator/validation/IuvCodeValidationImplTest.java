@@ -15,28 +15,28 @@ import it.pagoPA.toolkit.iuvGenerator.validation.IuvCodeValidationImpl;
  */
 public class IuvCodeValidationImplTest {
 
-	private IuvCodeValidation iuvCodeValidation;
+    private IuvCodeValidation iuvCodeValidation;
 
-	private IuvCodeGenerator iuvCodeGenerator;
+    private IuvCodeGenerator iuvCodeGenerator;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		iuvCodeValidation = new IuvCodeValidationImpl();
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        iuvCodeValidation = new IuvCodeValidationImpl();
 
-		iuvCodeGenerator = new IuvCodeGenerator.Builder().setAuxDigit(3).setApplicationCode(new Integer(5))
-				.setSegregationCode(new Integer(25)).build();
-	}
+        iuvCodeGenerator = new IuvCodeGenerator.Builder().setAuxDigit(3).setApplicationCode(new Integer(5))
+                .setSegregationCode(new Integer(25)).build();
+    }
 
-	/**
-	 * Test method for
-	 * {@link it.pagoPA.toolkit.iuvGenerator.validation.IuvCodeValidationImpl#validate(it.pagoPA.toolkit.iuvGenerator.bean.IuvCodeGenerator)}
-	 * .
-	 */
-	@Test
-	public void testValidate() {
-		iuvCodeValidation.validate(iuvCodeGenerator);
-	}
+    /**
+     * Test method for
+     * {@link it.pagoPA.toolkit.iuvGenerator.validation.IuvCodeValidationImpl#validate(it.pagoPA.toolkit.iuvGenerator.bean.IuvCodeGenerator)}
+     * .
+     */
+    @Test
+    public void testValidate() {
+        iuvCodeValidation.validate(iuvCodeGenerator);
+    }
 }
