@@ -17,45 +17,44 @@ import it.pagoPA.toolkit.iuvGenerator.exception.ValidationException;
  */
 public class IuvCodeValidationImpl implements IuvCodeValidation {
 
-	/**
-	 * @param iuvCodeGenerator
-	 * @throws ValidationException
-	 */
-	@Override
-	public void validate(IuvCodeGenerator iuvCodeGenerator) throws ValidationException {
-		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-		Set<ConstraintViolation<IuvCodeGenerator>> validationInputResults = validator.validate(iuvCodeGenerator);
-		if (!validationInputResults.isEmpty()) {
-			throw new ValidationException(validationInputResults);
-		}
+    /**
+     * @param iuvCodeGenerator
+     * @throws ValidationException
+     */
+    @Override
+    public void validate(IuvCodeGenerator iuvCodeGenerator) throws ValidationException {
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<IuvCodeGenerator>> validationInputResults = validator.validate(iuvCodeGenerator);
+        if (!validationInputResults.isEmpty()) {
+            throw new ValidationException(validationInputResults);
+        }
 
-		checkAuxDigit0(iuvCodeGenerator);
+        checkAuxDigit0(iuvCodeGenerator);
 
-		checkAuxDigit3(iuvCodeGenerator);
-	}
+        checkAuxDigit3(iuvCodeGenerator);
+    }
 
-	/**
-	 * 
-	 * @param iuvCodeGenerator
-	 */
-	private void checkAuxDigit0(IuvCodeGenerator iuvCodeGenerator) {
-		if (iuvCodeGenerator.getAuxDigit() == Constants.AUX_DIGIT_0) {
-			if (Optional.ofNullable(iuvCodeGenerator.getApplicationCode()).orElse(0) == 0) {
-				throw new ValidationException(ErrorMessages.VALIDATION_APPLICATION_CODE_ERROR);
+    /**
+     * 
+     * @param iuvCodeGenerator
+     */
+    private void checkAuxDigit0(IuvCodeGenerator iuvCodeGenerator) {
+        if (iuvCodeGenerator.getAuxDigit() == Constants.AUX_DIGIT_0) {
+            if (Optional.ofNullable(iuvCodeGenerator.getApplicationCode()).orElse(0) == 0) {
+                throw new ValidationException(ErrorMessages.VALIDATION_APPLICATION_CODE_ERROR);
+            }
+        }
+    }
 
-			}
-		}
-	}
-
-	/**
-	 * 
-	 * @param iuvCodeGenerator
-	 */
-	private void checkAuxDigit3(IuvCodeGenerator iuvCodeGenerator) {
-		if (iuvCodeGenerator.getAuxDigit() == Constants.AUX_DIGIT_3) {
-			if (Optional.ofNullable(iuvCodeGenerator.getSegregationCode()).orElse(0) == 0) {
-				throw new ValidationException(ErrorMessages.VALIDATION_SEGREGATION_CODE_ERROR);
-			}
-		}
-	}
+    /**
+     * 
+     * @param iuvCodeGenerator
+     */
+    private void checkAuxDigit3(IuvCodeGenerator iuvCodeGenerator) {
+        if (iuvCodeGenerator.getAuxDigit() == Constants.AUX_DIGIT_3) {
+            if (Optional.ofNullable(iuvCodeGenerator.getSegregationCode()).orElse(0) == 0) {
+                throw new ValidationException(ErrorMessages.VALIDATION_SEGREGATION_CODE_ERROR);
+            }
+        }
+    }
 }

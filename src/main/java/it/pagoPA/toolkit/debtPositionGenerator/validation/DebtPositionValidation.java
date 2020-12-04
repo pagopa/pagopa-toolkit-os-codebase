@@ -8,12 +8,12 @@ import it.pagoPA.toolkit.debtPositionGenerator.exception.ValidationException;
  */
 public interface DebtPositionValidation {
 
-	/**
-	 * Validate the debtPosition
-	 * 
-	 * @param debtPosition
-	 *            the Debt Position Bean
-	 * @throws ValidationException
-	 */
-	void validate(DebtPosition debtPosition) throws ValidationException;
+    /**
+     * Validate the debtPosition
+     * 
+     * @param debtPosition
+     *            the Debt Position Bean
+     * @throws ValidationException
+     */
+    void validate(DebtPosition debtPosition) throws ValidationException;
 }

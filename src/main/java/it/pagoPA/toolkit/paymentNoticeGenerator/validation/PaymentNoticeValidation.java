@@ -8,12 +8,12 @@ import it.pagoPA.toolkit.paymentNoticeGenerator.exception.ValidationException;
  */
 public interface PaymentNoticeValidation {
 
-	/**
-	 * Validate the payment notice
-	 * 
-	 * @param paymentNotice
-	 *            the Payment Notice Bean
-	 * @throws ValidationException
-	 */
-	void validate(PaymentNotice paymentNotice) throws ValidationException;
+    /**
+     * Validate the payment notice
+     * 
+     * @param paymentNotice
+     *            the Payment Notice Bean
+     * @throws ValidationException
+     */
+    void validate(PaymentNotice paymentNotice) throws ValidationException;
 }
