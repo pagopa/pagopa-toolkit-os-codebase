@@ -13,7 +13,7 @@
   - [Context](#context)
   - [Prerequisites](#prerequisites)
   - [Feature Areas](#feature-areas)
-  - [Future features _(under development)_](#future-features-under-development)
+  - [Future-features-under-development](#future-features-under-development)
   - [Getstarted](#getstarted)
   
   
