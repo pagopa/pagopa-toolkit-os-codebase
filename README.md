@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # pagopa-toolkit-os-codebase
-=======
-# PagoPa-toolkit-os
 
 <!-- PROJECT LOGO -->
 <br />
@@ -12,7 +9,7 @@
 </p>
 
 
-- [PagoPa-toolkit-os](#pagopa-toolkit-os)
+- [pagopa-toolkit-os-codebase](#pagopa-toolkit-os-codebase)
   - [Context](#context)
   - [Prerequisites](#prerequisites)
   - [Feature Areas](#feature-areas)
@@ -78,5 +75,3 @@ mvn -Dtest=Iuv* test
 > in this case, `mvn` will run all test case related to *IUV* that match with _Iuv*_
 > 
 > to more details see [documentation](https://maven.apache.org/plugins-archives/maven-surefire-plugin-2.12.4/examples/single-test.html)
-
->>>>>>> 06c486ba16ac3833b7baca9694336f8cb0f820d2
