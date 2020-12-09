@@ -169,3 +169,4 @@ mvn -Dtest=Iuv* test
 > 
 > to more details see [documentation](https://maven.apache.org/plugins-archives/maven-surefire-plugin-2.12.4/examples/single-test.html)
 
+> NOTE : after every change run command `mvn checkstyle:checkstyle` see [here](https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html)
