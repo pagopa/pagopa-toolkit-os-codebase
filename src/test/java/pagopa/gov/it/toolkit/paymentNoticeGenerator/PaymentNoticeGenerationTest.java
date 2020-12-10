@@ -35,6 +35,8 @@ public class PaymentNoticeGenerationTest {
     String path = "src/test/resources/";
     Path logoPath = Paths.get(path + "logoTest.png");
 
+    Boolean isModello1or2 = true;
+
     String ci_name = "nome Ente Creditore";
     String ci_sector = "settore Ente Creditore";
     String ci_info = "info Ente Creditore";
@@ -469,7 +471,8 @@ public class PaymentNoticeGenerationTest {
      */
     private byte[] generatePdfNoticePaymentFile(List<DebtPosition> debtPositionList, String pdfFileName)
             throws Exception, FileNotFoundException, IOException {
-        byte[] printNoticeDebtPosition = PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution);
+        byte[] printNoticeDebtPosition = PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution,
+                isModello1or2);
         // Activate the follow to save a local pdf file
         // OutputStream out = new FileOutputStream(path + pdfFileName);
         // out.write(printNoticeDebtPosition);

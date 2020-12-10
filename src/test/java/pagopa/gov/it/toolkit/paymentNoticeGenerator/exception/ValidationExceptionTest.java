@@ -29,6 +29,7 @@ public class ValidationExceptionTest {
     Builder creditorInstitutionBuilder = new PNCreditorInstitution.Builder();
     String path = "src/test/resources/";
     Path logoPath = Paths.get(path + "logoTest.png");
+    Boolean isModello1or2 = true;
 
     String ci_name = "nome Ente Creditore";
     String ci_sector = "settore Ente Creditore";
@@ -75,7 +76,7 @@ public class ValidationExceptionTest {
         DebtPosition debtPosition = createDebtPosition(pd_totalAmountPayment, null, null);
         List<DebtPosition> debtPositionList = new LinkedList<DebtPosition>();
         debtPositionList.add(debtPosition);
-        PaymentNoticeGeneration.generate(debtPositionList, null);
+        PaymentNoticeGeneration.generate(debtPositionList, null, isModello1or2);
     }
 
     /**
@@ -93,7 +94,7 @@ public class ValidationExceptionTest {
         DebtPosition debtPosition = createDebtPosition(pd_totalAmountPayment, documentNumber, null);
         List<DebtPosition> debtPositionList = new LinkedList<DebtPosition>();
         debtPositionList.add(debtPosition);
-        PaymentNoticeGeneration.generate(debtPositionList, creditorInstitutionBuilder.build());
+        PaymentNoticeGeneration.generate(debtPositionList, creditorInstitutionBuilder.build(), isModello1or2);
     }
 
     /**
@@ -111,7 +112,7 @@ public class ValidationExceptionTest {
         DebtPosition debtPosition = createDebtPosition(pd_totalAmountPayment, null, installmentNumber);
         List<DebtPosition> debtPositionList = new LinkedList<DebtPosition>();
         debtPositionList.add(debtPosition);
-        PaymentNoticeGeneration.generate(debtPositionList, creditorInstitutionBuilder.build());
+        PaymentNoticeGeneration.generate(debtPositionList, creditorInstitutionBuilder.build(), isModello1or2);
     }
 
     /**
@@ -128,7 +129,7 @@ public class ValidationExceptionTest {
         Boolean hasSingleInstallment = false;
         List<DebtPosition> debtPositionList = createDebtPositionListWithoutInstallmentNumberOne(hasSingleInstallment,
                 outputListSize);
-        PaymentNoticeGeneration.generate(debtPositionList, creditorInstitutionBuilder.build());
+        PaymentNoticeGeneration.generate(debtPositionList, creditorInstitutionBuilder.build(), isModello1or2);
     }
 
     /**

@@ -20,6 +20,7 @@ public class PaymentNotice {
 
         private List<DebtPosition> debtPositionList;
         private PNCreditorInstitution creditorInstitution;
+        private Boolean isModello1or2;
 
         /**
          * Build a new <code>PaymentNotice</code> Bean
@@ -61,6 +62,20 @@ public class PaymentNotice {
             this.creditorInstitution = creditorInstitution;
             return this;
         }
+
+        /**
+         * Set the isModello1or2
+         * 
+         * @param isModello1or2
+         *            specifies whether the notice payment to be produced refers
+         *            to model 1/2 or not
+         * @return the <code>isModello1or2</code> field is set in
+         *         <code>PaymentNotice</code> builder
+         */
+        public Builder setIsModello1or2(Boolean isModello1or2) {
+            this.isModello1or2 = isModello1or2;
+            return this;
+        }
     }
 
     @NotEmpty
@@ -70,6 +85,9 @@ public class PaymentNotice {
     @NotNull
     @Valid
     private PNCreditorInstitution creditorInstitution;
+
+    @NotNull
+    private Boolean isModello1or2;
 
     /**
      * Private constructor
@@ -87,6 +105,7 @@ public class PaymentNotice {
     private PaymentNotice(Builder builder) {
         this.debtPositionList = builder.debtPositionList;
         this.creditorInstitution = builder.creditorInstitution;
+        this.isModello1or2 = builder.isModello1or2;
     }
 
     /**
@@ -107,5 +126,15 @@ public class PaymentNotice {
      */
     public PNCreditorInstitution getCreditorInstitution() {
         return creditorInstitution;
+    }
+
+    /**
+     * Get the isModello1or2
+     * 
+     * @return the isModello1or2
+     * @see pagopa.gov.it.toolkit.paymentNoticeGenerator.bean.PaymentNotice.Builder#isModello1or2
+     */
+    public Boolean getIsModello1or2() {
+        return isModello1or2;
     }
 }
