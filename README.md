@@ -169,7 +169,7 @@ after that if all rights, you will see something like that below 👍
 > **NOTE** : after this command you'll see some strange change to `resources/application.properties`
 > this is necessary to be sure of the uniqueness of generated IUV, you can discard it typing `git checkout -- resources/application.properties`
 
-Code coverage test related to unit test is available [here](file://target/site/jacoco/index.html) 
+Code coverage test related to unit test is available [here](http://target/site/jacoco/index.html) 
 
 To build [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
 
@@ -177,7 +177,7 @@ To build [javadoc](https://www.oracle.com/technical-resources/articles/java/java
 mvn javadoc:javadoc
 ```
 
-and then click [here](file://target/site/apidocs/index.html) to show it :
+and then click [here](http://target/site/apidocs/index.html) to show it :
 
 > NOTE : if you want to run a specific test ( or a subset ), typing example 
 ```
