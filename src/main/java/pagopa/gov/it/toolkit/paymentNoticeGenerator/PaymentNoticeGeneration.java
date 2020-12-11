@@ -54,11 +54,11 @@ public class PaymentNoticeGeneration {
      * @see DebtPosition
      * @see PNCreditorInstitution
      */
-    public static byte[] generate(List<DebtPosition> debtPositionList, PNCreditorInstitution creditorInstitution)
-            throws Exception {
+    public static byte[] generate(List<DebtPosition> debtPositionList, PNCreditorInstitution creditorInstitution,
+            Boolean isModello1or2) throws Exception {
 
         PaymentNotice paymentNotice = new PaymentNotice.Builder().setDebtPositionList(debtPositionList)
-                .setCreditorInstitution(creditorInstitution).build();
+                .setCreditorInstitution(creditorInstitution).setIsModello1or2(isModello1or2).build();
 
         PaymentNoticeBusiness.validate(paymentNotice);
 

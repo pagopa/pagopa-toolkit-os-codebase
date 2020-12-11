@@ -137,7 +137,8 @@ public class PaymentDetailSection {
     }
 
     /**
-     * Generates the second information part of <code>PaymentDetailSection</code>
+     * Generates the second information part of
+     * <code>PaymentDetailSection</code>
      * 
      * @return
      * @throws Exception
@@ -247,12 +248,14 @@ public class PaymentDetailSection {
         text1.setFont(PdfPaymentNoticeManagement.getTitiilliumWebBold()).setFontSize(10f);
         paragraph.add(text1);
         StringBuilder sb = new StringBuilder("\r");
-        sb.append(PaymentNoticeConstants.PDF_TEXT_YOUR_CREDITOR_INSTITUTION);
-        if (paymentNotice.getCreditorInstitution().getWebsite() != null)
-            sb.append(PaymentNoticeConstants.PDF_TEXT_CI_WEBSITE.replace(
-                    PaymentNoticeConstants.PDF_TEXT_CI_WEBSITE_PLACEHOLDER,
-                    paymentNotice.getCreditorInstitution().getWebsite()));
-        sb.append(PaymentNoticeConstants.PDF_TEXT_COMMA);
+        if (paymentNotice.getIsModello1or2()) {
+            sb.append(PaymentNoticeConstants.PDF_TEXT_YOUR_CREDITOR_INSTITUTION);
+            if (paymentNotice.getCreditorInstitution().getWebsite() != null)
+                sb.append(PaymentNoticeConstants.PDF_TEXT_CI_WEBSITE.replace(
+                        PaymentNoticeConstants.PDF_TEXT_CI_WEBSITE_PLACEHOLDER,
+                        paymentNotice.getCreditorInstitution().getWebsite()));
+            sb.append(PaymentNoticeConstants.PDF_TEXT_COMMA);
+        }
         if (paymentNotice.getCreditorInstitution().getPostalAuthorizationCode() != null)
             sb.append(PaymentNoticeConstants.PDF_TEXT_POSTE_ITALIANE);
         sb.append(PaymentNoticeConstants.PDF_TEXT_PAYMENT_INFO_PART1);

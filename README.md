@@ -76,7 +76,7 @@ The following is a list of our current product areas:
 	Main operation:
 	- Payment Notice pdf generation based on debtPositionList and creditorInstitution values:
 	```
-	PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution)
+	PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution, isModello1or2)
 	```
 	> NOTE : the list of DebtPosition is recommended it has same Payer informations and same PaymentDetail causal.
 

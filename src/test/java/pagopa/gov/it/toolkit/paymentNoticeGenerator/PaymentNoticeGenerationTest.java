@@ -35,6 +35,8 @@ public class PaymentNoticeGenerationTest {
     String path = "src/test/resources/";
     Path logoPath = Paths.get(path + "logoTest.png");
 
+    Boolean isModello1or2 = true;
+
     String ci_name = "nome Ente Creditore";
     String ci_sector = "settore Ente Creditore";
     String ci_info = "info Ente Creditore";
@@ -94,7 +96,7 @@ public class PaymentNoticeGenerationTest {
         debtPositionList.add(debtPosition);
 
         String pdfFileName = "np_NoInstallments_AllData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -118,7 +120,7 @@ public class PaymentNoticeGenerationTest {
         debtPositionList.add(referenceDebtPosition);
 
         String pdfFileName = "np_NoInstallments_MinimumData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -141,7 +143,7 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListAllData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_3Installments_WithSingleInstallment_AllData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -164,7 +166,7 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListAllData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_3Installments_NoSingleInstallment_AllData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -187,7 +189,7 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListMinimumData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_3Installments_WithSingleInstallment_MinimumData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -210,7 +212,7 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListMinimumData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_3Installments_NoSingleInstallment_MinimumData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -233,7 +235,7 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListAllData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_2Installments_WithSingleInstallment_AllData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -256,7 +258,7 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListAllData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_2Installments_NoSingleInstallment_AllData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -279,7 +281,7 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListMinimumData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_2Installments_WithSingleInstallment_MinimumData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -302,7 +304,60 @@ public class PaymentNoticeGenerationTest {
         List<DebtPosition> debtPositionList = createDebtPositionListMinimumData(hasSingleInstallment, outputListSize);
 
         String pdfFileName = "np_2Installments_NoSingleInstallments_MinimumData.pdf";
-        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName);
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
+
+        assertNotNull(pdfNoticePayment);
+    }
+
+    /**
+     * Test method on generation of pdf of <code>paymentNotice</code>.<br/>
+     * No installments.<br/>
+     * All <code>paymentNotice</code> data.<br/>
+     * <code>isModello1or2</code> false
+     * 
+     * @throws Exception
+     * @see DebtPosition
+     * @see PaymentNotice
+     * @see PaymentNoticeGeneration#generate(List, PNCreditorInstitution)
+     */
+    @Test
+    public void testGenerate_NoInstallments_AllData_NoModello1or2() throws Exception {
+        Boolean isModello1or2 = false;
+        BigDecimal pd_totalAmountPayment = BigDecimal.valueOf(11.11);
+        Date pd_expirationDate = addDays(new Date(), 10);
+        DebtPosition debtPosition = createDebtPositionAllData(pd_totalAmountPayment, pd_expirationDate, null, null);
+
+        List<DebtPosition> debtPositionList = new LinkedList<DebtPosition>();
+        debtPositionList.add(debtPosition);
+
+        String pdfFileName = "np_NoInstallments_AllData.pdf_NoModello1or2.pdf";
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
+
+        assertNotNull(pdfNoticePayment);
+    }
+
+    /**
+     * Test method on generation of pdf of <code>paymentNotice</code>.<br/>
+     * No installments.<br/>
+     * Only mandatory fields of <code>paymentNotice</code>.<br/>
+     * <code>isModello1or2</code> false
+     * 
+     * @throws Exception
+     * @see DebtPosition
+     * @see PaymentNotice
+     * @see PaymentNoticeGeneration#generate(List, PNCreditorInstitution)
+     */
+    @Test
+    public void testGenerate_NoInstallments_MinimumData_NoModello1or2() throws Exception {
+        Boolean isModello1or2 = false;
+        BigDecimal pd_totalAmountPayment = BigDecimal.valueOf(11.11);
+        DebtPosition referenceDebtPosition = createDebtPositionMinimumData(pd_totalAmountPayment, null, null);
+
+        List<DebtPosition> debtPositionList = new LinkedList<DebtPosition>();
+        debtPositionList.add(referenceDebtPosition);
+
+        String pdfFileName = "np_NoInstallments_MinimumData_NoModello1or2.pdf";
+        byte[] pdfNoticePayment = generatePdfNoticePaymentFile(debtPositionList, pdfFileName, isModello1or2);
 
         assertNotNull(pdfNoticePayment);
     }
@@ -467,13 +522,14 @@ public class PaymentNoticeGenerationTest {
      * @see DebtPosition
      * @see PaymentNoticeGeneration#generate(List, PNCreditorInstitution)
      */
-    private byte[] generatePdfNoticePaymentFile(List<DebtPosition> debtPositionList, String pdfFileName)
-            throws Exception, FileNotFoundException, IOException {
-        byte[] printNoticeDebtPosition = PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution);
+    private byte[] generatePdfNoticePaymentFile(List<DebtPosition> debtPositionList, String pdfFileName,
+            Boolean isModello1or2) throws Exception, FileNotFoundException, IOException {
+        byte[] printNoticeDebtPosition = PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution,
+                isModello1or2);
         // Activate the follow to save a local pdf file
-        // OutputStream out = new FileOutputStream(path + pdfFileName);
-        // out.write(printNoticeDebtPosition);
-        // out.close();
+        java.io.OutputStream out = new java.io.FileOutputStream(path + pdfFileName);
+        out.write(printNoticeDebtPosition);
+        out.close();
         return printNoticeDebtPosition;
     }
 }
