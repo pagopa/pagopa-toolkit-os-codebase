@@ -13,6 +13,10 @@
   - [Context](#context)
   - [Prerequisites](#prerequisites)
   - [Feature Areas](#feature-areas)
+    - [**IUV Generator**](#iuv-generator)
+    - [**DebtPositionGenerator**](#debtpositiongenerator)
+    - [**Notice Payment Generator**](#notice-payment-generator)
+    - [**RPT Generator**](#rpt-generator)
   - [Future-features-under-development](#future-features-under-development)
   - [Getstarted](#getstarted)
   
@@ -37,97 +41,106 @@ git clone https://github.com/pagopa/pagopa-toolkit-os-codebase
 
 The following is a list of our current product areas:
 
-1) **IUV Generator**: generation of the [IUV](https://docs.italia.it/italia/pagopa/pagopa-codici-docs/it/stabile/_docs/Capitolo2.html#punti-di-generazione-del-codice-iuv) code.
-	Main operation:
-	- Iuv generation based on auxDigit, segregationCode and applicationCode values:
+### **IUV Generator**
+
+generation of the [IUV](https://docs.italia.it/italia/pagopa/pagopa-codici-docs/it/stabile/_docs/Capitolo2.html#punti-di-generazione-del-codice-iuv) code.
+
+Main operation:
+
+- Iuv generation based on auxDigit, segregationCode and applicationCode values:
+
 	```
 	IuvCodeGeneration.generate(auxDigit, segregationCode, applicationCode)
 	```
 
-2) **DebtPositionGenerator**: generation of a [Debt Position](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez2_Cap02_GestionePosizioneDebitoria.html#) containing all the data indicating:
-	- Payer:
-	```
-	DebtPositionGeneration.generatePayer(uniqueIdentificationCode, uniqueIdentificationType, registry, address, numberStreet, locality, province, nation, postalCode, email, mobile)
-	```
-	- Payment Data:
-	```
-	(DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,segregationCode, applicationCode, iuv, idTenant, totalAmountPayment, causal, expirationDate, specificCollectionData, documentNumber, installmentNumber, debitIban, debitBic)
-	```
-	- Single Payment Data List:
-	```
-	DebtPositionGeneration.generateSinglePaymentsDetail(amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, creditIban, creditBic, supportIban, supportBic, datiMarcaBolloDigitale)
-	```
-	Main operation:
-	- Debt Position generation based on payer, paymentDetail and singlePaymentsDetailList values:
-	```
-	DebtPositionGeneration.generate(payer, paymentDetail, singlePaymentsDetailList)
-	```
-	Other operations:
-	- Validation of a self-constructed Debt Position:
-	```
-	DebtPositionManagement.validate(debtPosition)
-	```
-	- Changing the status of a Debt Position:
-	```
-	DebtPositionManagement.makeXXX(debtPosition)
-	```
+### **DebtPositionGenerator**
+generation of a [Debt Position](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez2_Cap02_GestionePosizioneDebitoria.html#) containing all the data indicating:
 
-3) **Notice Payment Generator**: pdf generation of the [Payment Notice](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#avviso-digitale) starting from a List of _Debt Positions_
-	Main operation:
-	- Payment Notice pdf generation based on debtPositionList and creditorInstitution values:
-	```
-	PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution, isModello1or2)
-	```
-	> NOTE : the list of DebtPosition is recommended it has same Payer informations and same PaymentDetail causal.
+- Payer:
+```
+DebtPositionGeneration.generatePayer(uniqueIdentificationCode, uniqueIdentificationType, registry, address, numberStreet, locality, province, nation, postalCode, email, mobile)
+```
+- Payment Data:
+```
+(DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,segregationCode, applicationCode, iuv, idTenant, totalAmountPayment, causal, expirationDate, specificCollectionData, documentNumber, installmentNumber, debitIban, debitBic)
+```
+- Single Payment Data List:
+```
+DebtPositionGeneration.generateSinglePaymentsDetail(amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, creditIban, creditBic, supportIban, supportBic, datiMarcaBolloDigitale)
+```
+Main operation:
+- Debt Position generation based on payer, paymentDetail and singlePaymentsDetailList values:
+```
+DebtPositionGeneration.generate(payer, paymentDetail, singlePaymentsDetailList)
+```
+Other operations:
+- Validation of a self-constructed Debt Position:
+```
+DebtPositionManagement.validate(debtPosition)
+```
+- Changing the status of a Debt Position:
+```
+DebtPositionManagement.makeXXX(debtPosition)
+```
 
-4) **RPT Generator**: generation of an [RPT](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#richiesta-di-pagamento-telematica-rpt) (both object and xml) containing all the data indicating:
-	- Dominio:
-	```
-	RptGeneration.generateDominio(identificativoDominio, identificativoStazioneRichiedente)
-	```
-	- Soggetto Versante:
-	```
-	RptGeneration.generateSoggetto(identificativoUnivoco, anagrafica, indirizzo, email)
-	```
-	- Soggetto Pagatore:
-	```
-	RptGeneration.generateSoggetto(identificativoUnivoco, anagrafica, indirizzo, email)
-	```
-	- Ente Beneficiario:
-	```
-	RptGeneration.generateEnteBeneficiario(identificativoUnivoco, denominazione, codiceUnitOper, denomUnitOper, indirizzo)
-	```
-	- Dati Versamento:
-	```
-	RptGeneration.generateDatiVersamento(importoTotaleDaVersare, tipoVersamento, identificativoUnivocoVersamento, ibanAddebito, bicAddebito, firmaRicevuta)
-	```
-	- Dati Singolo Versamento List:
-	```
-	RptGeneration.generateDatiSingoloVersamento(importoSingoloVersamento, commissioneCaricoPA, ibanAccredito, bicAccredito, ibanAppoggio, bicAppoggio, credenzialiPagatore, descrizioneCausaleVersamento, iuv, datiSpecificiRiscossione, datiMarcaBolloDigitale, ordineVersamento)
-	```
-	Main operations:
-	- Generation of an RPT object:
-	```
-	RptGeneration.generateRptElement(versioneOggetto, dominio, autenticazioneSoggetto, soggettoVersante, soggettoPagatore, enteBeneficiario, datiVersamento, datiSingoloVersamentoList)
-	```
-	- Generation based on a RPT object:
-	```
-	RptGeneration.generate(idTenant, rpt)
-	```
-	- Generation based on a Debt Position:
-	```
-	RptGeneration.generate(idTenant, debtPosition, enteBeneficiario, commissioneCaricoPA)
-	```
-	Other operations:
-	- Validation of a self-constructed RPT:
-	```
-	RptGeneration.validate(rptContainer)
-	```
-	- Changing the status of a RPT
-	```
-	RptGeneration.makeXXX(rptContainer)
-	```
+### **Notice Payment Generator**
+pdf generation of the [Payment Notice](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#avviso-digitale) starting from a List of _Debt Positions_
 
+Main operation:
+- Payment Notice pdf generation based on debtPositionList and creditorInstitution values:
+```
+PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution, isModello1or2)
+```
+> NOTE : the list of DebtPosition is recommended it has same Payer informations and same PaymentDetail causal.
+
+### **RPT Generator**
+generation of an [RPT](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#richiesta-di-pagamento-telematica-rpt) (both object and xml) containing all the data indicating:
+- Dominio:
+```
+RptGeneration.generateDominio(identificativoDominio, identificativoStazioneRichiedente)
+```
+- Soggetto Versante:
+```
+RptGeneration.generateSoggetto(identificativoUnivoco, anagrafica, indirizzo, email)
+```
+- Soggetto Pagatore:
+```
+RptGeneration.generateSoggetto(identificativoUnivoco, anagrafica, indirizzo, email)
+```
+- Ente Beneficiario:
+```
+RptGeneration.generateEnteBeneficiario(identificativoUnivoco, denominazione, codiceUnitOper, denomUnitOper, indirizzo)
+```
+- Dati Versamento:
+```
+RptGeneration.generateDatiVersamento(importoTotaleDaVersare, tipoVersamento, identificativoUnivocoVersamento, ibanAddebito, bicAddebito, firmaRicevuta)
+```
+- Dati Singolo Versamento List:
+```
+RptGeneration.generateDatiSingoloVersamento(importoSingoloVersamento, commissioneCaricoPA, ibanAccredito, bicAccredito, ibanAppoggio, bicAppoggio, credenzialiPagatore, descrizioneCausaleVersamento, iuv, datiSpecificiRiscossione, datiMarcaBolloDigitale, ordineVersamento)
+```
+Main operations:
+- Generation of an RPT object:
+```
+RptGeneration.generateRptElement(versioneOggetto, dominio, autenticazioneSoggetto, soggettoVersante, soggettoPagatore, enteBeneficiario, datiVersamento, datiSingoloVersamentoList)
+```
+- Generation based on a RPT object:
+```
+RptGeneration.generate(idTenant, rpt)
+```
+- Generation based on a Debt Position:
+```
+RptGeneration.generate(idTenant, debtPosition, enteBeneficiario, commissioneCaricoPA)
+```
+Other operations:
+- Validation of a self-constructed RPT:
+```
+RptGeneration.validate(rptContainer)
+```
+- Changing the status of a RPT
+```
+RptGeneration.makeXXX(rptContainer)
+```
 
 ## Future-features-under-development
 Input/output layer for generating the PDF of the payment notice and more.
@@ -153,20 +166,23 @@ after that if all rights, you will see something like that below 👍
 [INFO] Finished at: 2020-11-18T11:39:24+01:00
 [INFO] ------------------------------------------------------------------------
 ```
-to build [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
+> **NOTE** : after this command you'll see some strange change to `resources/application.properties`
+> this is necessary to be sure of the uniqueness of generated IUV, you can discard it typing `git checkout -- resources/application.properties`
+
+Code coverage test related to unit test is available [here](http://target/site/jacoco/index.html) 
+
+To build [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
 
 ```
 mvn javadoc:javadoc
 ```
 
-and then click [here](file://target/site/apidocs/index.html) to show it.
+and then click [here](http://target/site/apidocs/index.html) to show it :
 
 > NOTE : if you want to run a specific test ( or a subset ), typing example 
 ```
 mvn -Dtest=Iuv* test
 ```
-> in this case, `mvn` will run all test case related to *IUV* that match with _Iuv*_
-> 
-> to more details see [documentation](https://maven.apache.org/plugins-archives/maven-surefire-plugin-2.12.4/examples/single-test.html)
+> in this case, `mvn` will run all test case related to *IUV* that match with _Iuv*_, to more details see [documentation](https://maven.apache.org/plugins-archives/maven-surefire-plugin-2.12.4/examples/single-test.html)
 
-> NOTE : after every change run command `mvn checkstyle:checkstyle` see [here](https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html)
+> **NOTE** : after every change run command `mvn checkstyle:checkstyle` see [here](https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html)
