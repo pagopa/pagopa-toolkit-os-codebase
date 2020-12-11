@@ -86,7 +86,7 @@ public class DebtPositionGenerationTest {
                 specificCollectionData, documentNumber, installmentNumber, debitIban, debitBic);
         DatiMarcaBolloDigitale datiMarcaBolloDigitale = DebtPositionGeneration.generateDatiMarcaBolloDigitale(tipoBollo,
                 hashDocumento, provinciaResidenza);
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentsDetail(
+        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(
                 amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, creditIban, creditBic,
                 supportIban, supportBic, datiMarcaBolloDigitale);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();
@@ -125,7 +125,7 @@ public class DebtPositionGenerationTest {
                 null, null, null, null, null, null, null, null);
         DPPaymentDetail paymentDetail = DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,
                 segregationCode, null, iuv, null, totalAmountPayment, causal, null, null, null, null, debitIban, null);
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentsDetail(
+        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(
                 amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, null, null, null, null, null);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();
         singlePaymentDetailList.add(singlePaymentDetail);

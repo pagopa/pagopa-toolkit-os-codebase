@@ -150,7 +150,7 @@ public class ValidationExceptionTest {
         DPPaymentDetail paymentDetail = DebtPositionGeneration.generatePaymentDetail(pd_domainIdentifier, auxDigit,
                 segregationCode, null, null, null, pd_totalAmountPayment, pd_causal, null, null, documentNumber,
                 installmentNumber, pd_debitIban, null);
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentsDetail(
+        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(
                 pd_totalAmountPayment, spd_orderSinglePayment, spd_causalDescriptionSinglePayment, null, null, null,
                 null, null);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();

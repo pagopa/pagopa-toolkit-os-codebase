@@ -226,9 +226,9 @@ public class RptGenerationTest {
                 hashDocumento, provinciaResidenza);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();
         singlePaymentDetailList
-                .add(DebtPositionGeneration.generateSinglePaymentsDetail(importoSingoloVersamento1, ordineVersamento1,
+                .add(DebtPositionGeneration.generateSinglePaymentDetail(importoSingoloVersamento1, ordineVersamento1,
                         descrizioneCausaleVersamento1, ibanAccredito, bicAccredito, ibanAppoggio, bicAppoggio, null));
-        singlePaymentDetailList.add(DebtPositionGeneration.generateSinglePaymentsDetail(importoSingoloVersamento2,
+        singlePaymentDetailList.add(DebtPositionGeneration.generateSinglePaymentDetail(importoSingoloVersamento2,
                 ordineVersamento2, descrizioneCausaleVersamento2, null, null, null, null, datiMarcaBolloDigitale));
         DebtPosition debtPosition = DebtPositionGeneration.generate(payer, paymentDetail, singlePaymentDetailList);
         RptEnteBeneficiario enteBeneficiario = RptGeneration.generateEnteBeneficiario(

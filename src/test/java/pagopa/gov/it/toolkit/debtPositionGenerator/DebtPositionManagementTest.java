@@ -46,7 +46,7 @@ public class DebtPositionManagementTest {
                 null, null, null, null, null, null, null, null);
         DPPaymentDetail paymentDetail = DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,
                 segregationCode, null, iuv, null, totalAmountPayment, causal, null, null, null, null, debitIban, null);
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentsDetail(
+        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(
                 amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, null, null, null, null, null);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();
         singlePaymentDetailList.add(singlePaymentDetail);

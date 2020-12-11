@@ -40,7 +40,7 @@ public class DebtPositionExceptionTest {
                 null);
         DPPaymentDetail paymentDetail = DebtPositionGeneration.generatePaymentDetail(null, 0, null, null, null, null,
                 null, null, null, null, null, null, null, null);
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentsDetail(null, null,
+        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(null, null,
                 null, null, null, null, null, null);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();
         singlePaymentDetailList.add(singlePaymentDetail);
@@ -76,7 +76,7 @@ public class DebtPositionExceptionTest {
                 null, null, null, null, null, null, null, null);
         DPPaymentDetail paymentDetail = DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,
                 segregationCode, null, iuv, null, totalAmountPayment, causal, null, null, null, null, debitIban, null);
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentsDetail(
+        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(
                 amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, null, null, null, null, null);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();
         singlePaymentDetailList.add(singlePaymentDetail);
