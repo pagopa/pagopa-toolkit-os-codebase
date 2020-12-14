@@ -66,7 +66,7 @@ DebtPositionGeneration.generatePayer(uniqueIdentificationCode, uniqueIdentificat
 ```
 - Single Payment Data List:
 ```
-DebtPositionGeneration.generateSinglePaymentsDetail(amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, creditIban, creditBic, supportIban, supportBic, datiMarcaBolloDigitale)
+DebtPositionGeneration.generateSinglePaymentDetail(amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, creditIban, creditBic, supportIban, supportBic, datiMarcaBolloDigitale)
 ```
 Main operation:
 - Debt Position generation based on payer, paymentDetail and singlePaymentsDetailList values:

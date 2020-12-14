@@ -124,7 +124,7 @@ public class DebtPositionGeneration {
      * @return DPSinglePaymentDetail
      * @see DPSinglePaymentDetail
      */
-    public static DPSinglePaymentDetail generateSinglePaymentsDetail(BigDecimal amountSinglePayment,
+    public static DPSinglePaymentDetail generateSinglePaymentDetail(BigDecimal amountSinglePayment,
             Integer orderSinglePayment, String causalDescriptionSinglePayment, String creditIban, String creditBic,
             String supportIban, String supportBic, DatiMarcaBolloDigitale datiMarcaBolloDigitale) {
 
