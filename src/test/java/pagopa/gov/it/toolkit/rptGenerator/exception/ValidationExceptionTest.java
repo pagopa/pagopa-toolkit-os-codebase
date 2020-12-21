@@ -16,7 +16,6 @@ import pagopa.gov.it.toolkit.rptGenerator.bean.rpt.RptEnteBeneficiario;
 import pagopa.gov.it.toolkit.rptGenerator.bean.rpt.RptSoggetto;
 import pagopa.gov.it.toolkit.rptGenerator.enumeration.FirmaRicevutaEnum;
 import pagopa.gov.it.toolkit.rptGenerator.enumeration.TipoBolloEnum;
-import pagopa.gov.it.toolkit.rptGenerator.exception.ValidationException;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StAutenticazioneSoggetto;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersFG;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersG;

@@ -9,8 +9,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import pagopa.gov.it.toolkit.rptGenerator.RptGeneration;
-import pagopa.gov.it.toolkit.rptGenerator.RptManagement;
 import pagopa.gov.it.toolkit.rptGenerator.bean.RptContainer;
 import pagopa.gov.it.toolkit.rptGenerator.bean.rpt.Rpt;
 import pagopa.gov.it.toolkit.rptGenerator.bean.rpt.RptDatiSingoloVersamento;
@@ -104,7 +102,7 @@ public class RptManagementTest {
      */
     @Test
     public void testMakePayable() throws Exception {
-        assertEquals(RptManagement.makeSent(rptContainer).getRptStatus(), RptStatusEnum.SENT);
+        assertEquals(RptStatusEnum.SENT, RptManagement.makeSent(rptContainer).getRptStatus());
     }
 
     /**
@@ -117,6 +115,6 @@ public class RptManagementTest {
      */
     @Test
     public void testMakeNotPayable() throws Exception {
-        assertEquals(RptManagement.makeReceivedRT(rptContainer).getRptStatus(), RptStatusEnum.RECEIVED_RT);
+        assertEquals(RptStatusEnum.RECEIVED_RT, RptManagement.makeReceivedRT(rptContainer).getRptStatus());
     }
 }

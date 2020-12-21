@@ -18,7 +18,6 @@ import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePay
 import pagopa.gov.it.toolkit.paymentNoticeGenerator.PaymentNoticeGeneration;
 import pagopa.gov.it.toolkit.paymentNoticeGenerator.bean.PNCreditorInstitution;
 import pagopa.gov.it.toolkit.paymentNoticeGenerator.bean.PNCreditorInstitution.Builder;
-import pagopa.gov.it.toolkit.paymentNoticeGenerator.exception.ValidationException;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersFG;
 
 /**
@@ -62,8 +61,8 @@ public class ValidationExceptionTest {
     }
 
     /**
-     * Test method on invalid <code>totalAmountPayment</code> when the
-     * installments are absent
+     * Test method on invalid <code>totalAmountPayment</code> when the installments
+     * are absent
      * 
      * @throws Exception
      * @see ValidationException
@@ -162,8 +161,8 @@ public class ValidationExceptionTest {
     }
 
     /**
-     * Generates an invalid list of <code>DebtPosition</code> without
-     * installment number one
+     * Generates an invalid list of <code>DebtPosition</code> without installment
+     * number one
      * 
      * @param hasSingleInstallment
      * @param outputListSize

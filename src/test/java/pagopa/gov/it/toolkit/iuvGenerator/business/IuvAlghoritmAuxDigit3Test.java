@@ -6,8 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import pagopa.gov.it.toolkit.iuvGenerator.business.IuvAlghoritmAuxDigit3;
-
 /**
  * Tests on the IUV code generation algorithm based on <code>auxDigit</code> = 3
  */
