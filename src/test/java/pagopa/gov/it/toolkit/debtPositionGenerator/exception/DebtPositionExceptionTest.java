@@ -11,7 +11,6 @@ import pagopa.gov.it.toolkit.debtPositionGenerator.DebtPositionGeneration;
 import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
 import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
 import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
-import pagopa.gov.it.toolkit.debtPositionGenerator.exception.ValidationException;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersFG;
 
 /**
@@ -40,16 +39,15 @@ public class DebtPositionExceptionTest {
                 null);
         DPPaymentDetail paymentDetail = DebtPositionGeneration.generatePaymentDetail(null, 0, null, null, null, null,
                 null, null, null, null, null, null, null, null);
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(null, null,
-                null, null, null, null, null, null);
+        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(null, null, null,
+                null, null, null, null, null);
         List<DPSinglePaymentDetail> singlePaymentDetailList = new LinkedList<DPSinglePaymentDetail>();
         singlePaymentDetailList.add(singlePaymentDetail);
         DebtPositionGeneration.generate(payer, paymentDetail, singlePaymentDetailList);
     }
 
     /**
-     * Test method on <code>ValidationException</code> related to received IUV
-     * code
+     * Test method on <code>ValidationException</code> related to received IUV code
      * 
      * @throws Exception
      * @see pagopa.gov.it.toolkit.iuvGenerator.exception.ValidationException

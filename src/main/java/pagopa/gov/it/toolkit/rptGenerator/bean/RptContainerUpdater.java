@@ -1,6 +1,5 @@
 package pagopa.gov.it.toolkit.rptGenerator.bean;
 
-import pagopa.gov.it.toolkit.rptGenerator.bean.RptContainer;
 import pagopa.gov.it.toolkit.rptGenerator.enumeration.RptStatusEnum;
 
 /**
@@ -28,5 +27,8 @@ public class RptContainerUpdater {
      */
     public static void setRptStatus(RptContainer rptContainer, RptStatusEnum rptStatusEnum) {
         rptContainer.setRptStatus(rptStatusEnum);
+    }
+
+    private RptContainerUpdater() {
     }
 }

@@ -62,7 +62,7 @@ DebtPositionGeneration.generatePayer(uniqueIdentificationCode, uniqueIdentificat
 ```
 - Payment Data:
 ```
-(DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,segregationCode, applicationCode, iuv, idTenant, totalAmountPayment, causal, expirationDate, specificCollectionData, documentNumber, installmentNumber, debitIban, debitBic)
+(DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit, segregationCode, applicationCode, iuv, idTenant, totalAmountPayment, causal, expirationDate, specificCollectionData, documentNumber, installmentNumber, debitIban, debitBic)
 ```
 - Single Payment Data List:
 ```

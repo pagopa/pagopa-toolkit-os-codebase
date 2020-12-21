@@ -4,8 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pagopa.gov.it.toolkit.iuvGenerator.bean.IuvCodeGenerator;
-import pagopa.gov.it.toolkit.iuvGenerator.validation.IuvCodeValidation;
-import pagopa.gov.it.toolkit.iuvGenerator.validation.IuvCodeValidationImpl;
 
 /**
  * Tests on iuv code validation

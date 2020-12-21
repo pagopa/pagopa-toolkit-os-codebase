@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import pagopa.gov.it.toolkit.iuvGenerator.IuvCodeGeneration;
 import pagopa.gov.it.toolkit.iuvGenerator.bean.IuvCodeGenerator;
-import pagopa.gov.it.toolkit.iuvGenerator.exception.ValidationException;
 import pagopa.gov.it.toolkit.iuvGenerator.validation.IuvCodeValidation;
 import pagopa.gov.it.toolkit.iuvGenerator.validation.IuvCodeValidationImpl;
 

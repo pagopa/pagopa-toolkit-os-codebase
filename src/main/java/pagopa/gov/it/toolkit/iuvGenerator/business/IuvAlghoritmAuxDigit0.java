@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 /**
  * IUV code generation algorithm based on <code>auxDigit</code> = 0
  */
-public class IuvAlghoritmAuxDigit0 extends IuvAlghoritm implements IuvAlghoritmGenerator {
+public class IuvAlghoritmAuxDigit0 extends IuvAlghoritm {
 
     private int auxDigit = 0;
 

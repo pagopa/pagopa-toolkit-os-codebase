@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 /**
  * IUV code generation algorithm based on <code>auxDigit</code> = 3
  */
-public class IuvAlghoritmAuxDigit3 extends IuvAlghoritm implements IuvAlghoritmGenerator {
+public class IuvAlghoritmAuxDigit3 extends IuvAlghoritm {
 
     private int auxDigit = 3;
 
@@ -18,7 +18,8 @@ public class IuvAlghoritmAuxDigit3 extends IuvAlghoritm implements IuvAlghoritmG
 
     /**
      * Generate the IUV Code.<br/>
-     * IUV (17 digits) = &lt;codice segregazione (2n)&gt;&lt;IUV base (max 13n)&gt;&lt;IUV check digit (2n)&gt;
+     * IUV (17 digits) = &lt;codice segregazione (2n)&gt;&lt;IUV base (max
+     * 13n)&gt;&lt;IUV check digit (2n)&gt;
      */
     @Override
     public String generate(Integer segregationCode, Integer applicationCode) {
