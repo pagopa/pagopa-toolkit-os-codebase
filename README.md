@@ -172,8 +172,6 @@ after that if all rights, you will see something like that below 👍
 > **NOTE** : after this command you'll see some strange change to `resources/application.properties`
 > this is necessary to be sure of the uniqueness of generated IUV, you can discard it typing `git checkout -- resources/application.properties`
 
-Code coverage test related to unit test is available [here](http://target/site/jacoco/index.html) 
-
 To build locally [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
 
 ```
