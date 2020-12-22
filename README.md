@@ -174,13 +174,13 @@ after that if all rights, you will see something like that below 👍
 
 Code coverage test related to unit test is available [here](http://target/site/jacoco/index.html) 
 
-To build [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
+To build locally [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
 
 ```
 mvn javadoc:javadoc
 ```
 
-and then click [here](http://target/site/apidocs/index.html) to show it :
+or available online [here]([http://target/site/apidocs/index.html](https://pagopa.github.io/pagopa-toolkit-os-codebase/)) to show it :
 
 > NOTE : if you want to run a specific test ( or a subset ), typing example 
 ```
