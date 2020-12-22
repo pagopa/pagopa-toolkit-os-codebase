@@ -14,11 +14,11 @@
   - [Prerequisites](#prerequisites)
   - [Feature Areas](#feature-areas)
     - [**IUV Generator**](#iuv-generator)
-    - [**DebtPositionGenerator**](#debtpositiongenerator)
-    - [**Notice Payment Generator**](#notice-payment-generator)
+    - [**DebtPosition Generator**](#debtpositiongenerator)
+    - [**NoticePayment Generator**](#notice-payment-generator)
     - [**RPT Generator**](#rpt-generator)
-  - [Future-features-under-development](#future-features-under-development)
-  - [Getstarted](#getstarted)
+  - [Future features under development](#future-features-under-development)
+  - [Get started](#getstarted)
   
   
 ## Context
@@ -53,7 +53,7 @@ Main operation:
 	IuvCodeGeneration.generate(auxDigit, segregationCode, applicationCode)
 	```
 
-### **DebtPositionGenerator**
+### **DebtPosition Generator**
 generation of a [Debt Position](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez2_Cap02_GestionePosizioneDebitoria.html#) containing all the data indicating:
 
 - Payer:
@@ -83,7 +83,7 @@ DebtPositionManagement.validate(debtPosition)
 DebtPositionManagement.makeXXX(debtPosition)
 ```
 
-### **Notice Payment Generator**
+### **NoticePayment Generator**
 pdf generation of the [Payment Notice](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/stabile/_docs/SANP_2.2_Sez3_Cap08_ModelloDati.html#avviso-digitale) starting from a List of _Debt Positions_
 
 Main operation:
@@ -142,11 +142,12 @@ RptGeneration.validate(rptContainer)
 RptGeneration.makeXXX(rptContainer)
 ```
 
-## Future-features-under-development
-Input/output layer for generating the PDF of the payment notice and more.
+## Future features under development
+
+Input/output layer for generating the PDF of the payment notice (and more).
 
 
-## Getstarted
+## Get started
 
 Developer's guidelines who wants build and run tests present in the repo 🚀 :
 
