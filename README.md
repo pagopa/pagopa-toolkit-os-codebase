@@ -178,7 +178,7 @@ To build locally [javadoc](https://www.oracle.com/technical-resources/articles/j
 mvn javadoc:javadoc
 ```
 
-or available online [here]([http://target/site/apidocs/index.html](https://pagopa.github.io/pagopa-toolkit-os-codebase/)) to show it :
+or available online [here](https://pagopa.github.io/pagopa-toolkit-os-codebase/) to show it :
 
 > NOTE : if you want to run a specific test ( or a subset ), typing example 
 ```
