@@ -1,5 +1,7 @@
 package pagopa.gov.it.toolkit.debtPositionGenerator.business;
 
+import java.text.DecimalFormat;
+
 import pagopa.gov.it.toolkit.common.Constants;
 import pagopa.gov.it.toolkit.debtPositionGenerator.bean.DebtPosition;
 import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPUpdater;
@@ -69,11 +71,13 @@ public class DebtPositionBusiness {
     public static void generateNoticeNumber(DebtPosition debtPosition) {
         int auxDigit = debtPosition.getPaymentDetail().getAuxDigit();
         if (auxDigit == Constants.AUX_DIGIT_0) {
-            DPUpdater.setNoticeNumber(debtPosition.getPaymentDetail(), Constants.AUX_DIGIT_0
-                    + debtPosition.getPaymentDetail().getApplicationCode() + debtPosition.getPaymentDetail().getIuv());
+            DPUpdater.setNoticeNumber(debtPosition.getPaymentDetail(),
+                    String.valueOf(Constants.AUX_DIGIT_0)
+                            + new DecimalFormat("00").format(debtPosition.getPaymentDetail().getApplicationCode())
+                            + debtPosition.getPaymentDetail().getIuv());
         } else if (auxDigit == Constants.AUX_DIGIT_3) {
             DPUpdater.setNoticeNumber(debtPosition.getPaymentDetail(),
-                    "" + Constants.AUX_DIGIT_3 + debtPosition.getPaymentDetail().getIuv());
+                    Constants.AUX_DIGIT_3 + debtPosition.getPaymentDetail().getIuv());
         }
     }
 
