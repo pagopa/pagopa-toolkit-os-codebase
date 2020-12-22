@@ -8,7 +8,8 @@
   </a>
 </p>
 
-[![codecov](https://codecov.io/gh/pasqualespica/java-codecov/branch/main/graph/badge.svg)](https://codecov.io/gh/pasqualespica/java-codecov)
+[![codecov](https://codecov.io/gh/pagopa/pagopa-toolkit-os-codebase/branch/main/graph/badge.svg)](https://codecov.io/gh/pagopa/pagopa-toolkit-os-codebase)
+
 
 - [`pagoPa` toolkit](#pagopa-toolkit)
   - [Context](#context)
