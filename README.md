@@ -1,4 +1,4 @@
-# pagopa-toolkit-os-codebase
+# `pagoPa` toolkit
 
 <!-- PROJECT LOGO -->
 <br />
@@ -8,17 +8,18 @@
   </a>
 </p>
 
+[![codecov](https://codecov.io/gh/pasqualespica/java-codecov/branch/main/graph/badge.svg)](https://codecov.io/gh/pasqualespica/java-codecov)
 
-- [pagopa-toolkit-os-codebase](#pagopa-toolkit-os-codebase)
+- [`pagoPa` toolkit](#pagopa-toolkit)
   - [Context](#context)
   - [Prerequisites](#prerequisites)
   - [Feature Areas](#feature-areas)
     - [**IUV Generator**](#iuv-generator)
-    - [**DebtPosition Generator**](#debtpositiongenerator)
-    - [**NoticePayment Generator**](#notice-payment-generator)
+    - [**DebtPosition Generator**](#debtposition-generator)
+    - [**NoticePayment Generator**](#noticepayment-generator)
     - [**RPT Generator**](#rpt-generator)
   - [Future features under development](#future-features-under-development)
-  - [Get started](#getstarted)
+  - [Get started](#get-started)
   
   
 ## Context
