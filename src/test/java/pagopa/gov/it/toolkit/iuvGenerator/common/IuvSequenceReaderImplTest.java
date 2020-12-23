@@ -7,9 +7,6 @@ import java.math.BigInteger;
 import org.junit.Before;
 import org.junit.Test;
 
-import pagopa.gov.it.toolkit.iuvGenerator.common.IuvSequenceReader;
-import pagopa.gov.it.toolkit.iuvGenerator.common.IuvSequenceReaderImpl;
-
 /**
  * Tests on generation of base iuv
  */
