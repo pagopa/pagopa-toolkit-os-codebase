@@ -9,7 +9,7 @@
 </p>
 
 [![codecov](https://codecov.io/gh/pagopa/pagopa-toolkit-os-codebase/branch/main/graph/badge.svg)](https://codecov.io/gh/pagopa/pagopa-toolkit-os-codebase)
-![example workflow name](https://github.com/actions/pagopa-toolkit-os-codebase/workflows/Greet%20Everyone/badge.svg)
+![example workflow name](https://github.com/pagopa/pagopa-toolkit-os-codebase/workflows/Java%20CI%20with%20Maven/badge.svg)
 
 
 - [`pagoPa` toolkit](#pagopa-toolkit)
