@@ -3,7 +3,7 @@
 
     <groupId>it.pagoPA.toolkit</groupId>
     <artifactId>ToolkitPagoPA</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>ToolkitPagoPA</name>
@@ -35,7 +35,6 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>8.0.1</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -123,7 +122,7 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-
+        
     </dependencies>
 
     <build>
@@ -158,6 +157,22 @@
                     </execution>
                 </executions>
             </plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>
+								pagopa.gov.it.toolkit.reader.ReaderUserInterface
+							</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 
             <!-- <plugin>
         <groupId>org.jacoco</groupId>
