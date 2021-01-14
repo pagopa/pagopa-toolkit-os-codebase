@@ -20,8 +20,11 @@
     - [**DebtPosition Generator**](#debtposition-generator)
     - [**NoticePayment Generator**](#noticepayment-generator)
     - [**RPT Generator**](#rpt-generator)
-  - [Future features under development](#future-features-under-development)
   - [Get started](#get-started)
+    - [Build & Test](#build--test)
+    - [Run GUI](#run-gui)
+    - [Documentation](#documentation)
+    - [Useful things for developers](#useful-things-for-developers)
   
   
 ## Context
@@ -145,15 +148,11 @@ RptGeneration.validate(rptContainer)
 RptGeneration.makeXXX(rptContainer)
 ```
 
-## Future features under development
-
-Input/output layer for generating the PDF of the payment notice (and more).
-
-
 ## Get started
 
 Developer's guidelines who wants build and run tests present in the repo 🚀 :
 
+### Build & Test
 to build e run all test typing 
 
 ```
@@ -173,14 +172,32 @@ after that if all rights, you will see something like that below 👍
 > **NOTE** : after this command you'll see some strange change to `resources/application.properties`
 > this is necessary to be sure of the uniqueness of generated IUV, you can discard it typing `git checkout -- resources/application.properties`
 
+
+### Run GUI
+This project in addition to defining a series of features described [here](#feature-areas), also provides a graphical interface that uses them.
+
+In order to run GUI  you should follow the guidelines shown [here](https://github.com/pagopa/pagopa-toolkit-os-best-practice) .
+
+In any case, for a quick test if everything starts, just run the following command from a console under porject folder typing : 
+
+```
+java -jar target/ToolkitPagoPA-1.0.jar
+```
+
+if all right you'll see something like that 🚀
+![](docs/media/img/gui.png)
+
+
+### Documentation
 To build locally [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
 
 ```
 mvn javadoc:javadoc
 ```
 
-or available online [here](https://pagopa.github.io/pagopa-toolkit-os-codebase/) to show it :
+or available online [here](https://pagopa.github.io/pagopa-toolkit-os-codebase/) to show it.
 
+### Useful things for developers
 > NOTE : if you want to run a specific test ( or a subset ), typing example 
 ```
 mvn -Dtest=Iuv* test
