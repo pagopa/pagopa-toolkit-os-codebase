@@ -1,4 +1,4 @@
-package pagopa.gov.it.toolkit.reader;
+package pagopa.gov.it.toolkit.reader.exception;
 /**
  * Reader exception thrown in case of an error during the processing of
  * the debt positions file
@@ -11,7 +11,6 @@ public class ReaderException extends IllegalArgumentException {
      * 
      */
 	public ReaderException() {
-		
 	}
 	
 	/**
@@ -35,5 +34,4 @@ public class ReaderException extends IllegalArgumentException {
 	public ReaderException(String message, Throwable cause) {
 		super(message, cause);
 	}
-	
 }
