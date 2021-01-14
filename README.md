@@ -174,15 +174,23 @@ after that if all rights, you will see something like that below 👍
 
 
 ### Run GUI
-This project in addition to defining a series of features described [here](#feature-areas), also provides a graphical interface that uses them.
+This project in addition to define a series of features, described [here](#feature-areas), also provides a graphical interface that uses them.
 
-In order to run GUI  you should follow the guidelines shown [here](https://github.com/pagopa/pagopa-toolkit-os-best-practice) .
+In order to run GUI you should follow the guidelines shown [here](https://github.com/pagopa/pagopa-toolkit-os-best-practice).
 
-In any case, for a quick test if everything starts, just run the following command from a console under porject folder typing : 
+After build, go under `script` folder and typing the following commad : 
 
+On _MacOS/Linux_ systems
 ```
-java -jar target/ToolkitPagoPA-1.0.jar
+chmod +x start_pagoPA_wizard_gui.sh && ./start_pagoPA_wizard_gui.sh
 ```
+
+On _Window_ systems double click on
+```
+ToBeDefine.bat
+```
+
+> **NOTE** : `scirpt` folder contains an example input file `csv` (`input.csv`) too, useful to play with GUI 👍
 
 if all right you'll see something like that 🚀
 ![](docs/media/img/gui.png)
