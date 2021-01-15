@@ -93,8 +93,9 @@ public class InputFileBusiness {
         csvInputLine.setPayerMobile(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_MOBILE_INDEX]));
 
         csvInputLine.setTenantId(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_TENANT_ID_INDEX]));
-        csvInputLine.setTotalAmountPayment(new BigDecimal(
-                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_TOTAL_AMOUNT_PAYMENT_INDEX])));
+        csvInputLine.setTotalAmountPayment(
+                new BigDecimal(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_TOTAL_AMOUNT_PAYMENT_INDEX]))
+                        .divide((BigDecimal.valueOf(100)).setScale(2, BigDecimal.ROUND_HALF_UP)));
         csvInputLine.setCausal(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_CAUSAL_INDEX]));
         Date expirationDate = dateFormat
                 .parse(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_EXPIRATION_DATE_INDEX]));
