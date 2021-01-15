@@ -6,6 +6,9 @@ import java.util.Date;
 import pagopa.gov.it.toolkit.rptGenerator.enumeration.TipoBolloEnum;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersFG;
 
+/**
+ * CSV input line Bean
+ */
 public class CsvInputLine {
     private String textInputLine;
 

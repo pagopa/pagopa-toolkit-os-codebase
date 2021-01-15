@@ -30,7 +30,6 @@ public enum ReaderStatus {
     }
 
     /**
-     * 
      * @param v
      */
     private ReaderStatus(Integer v) {

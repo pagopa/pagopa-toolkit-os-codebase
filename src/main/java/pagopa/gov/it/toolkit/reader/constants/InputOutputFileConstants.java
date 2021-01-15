@@ -1,5 +1,8 @@
 package pagopa.gov.it.toolkit.reader.constants;
 
+/**
+ * All the constants related to csv input and csv output files
+ */
 public class InputOutputFileConstants {
 
     public static final String CSV_SEPARATOR = ";";

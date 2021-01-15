@@ -20,14 +20,29 @@ import pagopa.gov.it.toolkit.reader.constants.ReaderInterfaceConstants;
 import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatus;
 import pagopa.gov.it.toolkit.reader.exception.ReaderException;
 
+/**
+ * Creation of GUI components
+ */
 public class ReaderInterfaceBusiness {
 
+    /**
+     * Creates the GUI frame
+     * 
+     * @return JFrame
+     */
     public static JFrame createFrame() {
         JFrame jFrame = createFrame(ReaderInterfaceConstants.RI_FRAME_TITLE, ReaderInterfaceConstants.RI_FRAME_WIDTH,
                 ReaderInterfaceConstants.RI_FRAME_HEIGHT);
         return jFrame;
     }
 
+    /**
+     * Creates the GUI csv file picker
+     * 
+     * @param jFrame
+     *            GUI frame
+     * @return JTextField
+     */
     public static JTextField createCsvFilePicker(JFrame jFrame) {
         JLabel csvFilePickerLabel = createLabel(ReaderInterfaceConstants.RI_CSV_FILE_PICKER_LABEL,
                 ReaderInterfaceConstants.RI_CSV_FILE_PICKER_LABEL_X_COORDINATE,
@@ -52,6 +67,13 @@ public class ReaderInterfaceBusiness {
         return csvFilePickerText;
     }
 
+    /**
+     * Creates the GUI output folder where to create RPT and PaymentNotice files
+     * 
+     * @param jFrame
+     *            GUI frame
+     * @return JTextField
+     */
     public static JTextField createOutputFolderPicker(JFrame jFrame) {
         JLabel outputFolderPickerLabel = createLabel(ReaderInterfaceConstants.RI_OUTPUT_FOLDER_LABEL,
                 ReaderInterfaceConstants.RI_OUTPUT_FOLDER_LABEL_X_COORDINATE,
@@ -75,6 +97,13 @@ public class ReaderInterfaceBusiness {
         return outputFolderPickerText;
     }
 
+    /**
+     * Creates the GUI logo picker
+     * 
+     * @param jFrame
+     *            GUI frame
+     * @return JTextField
+     */
     public static JTextField createLogoPicker(JFrame jFrame) {
         JLabel logoPickerLabel = createLabel(ReaderInterfaceConstants.RI_LOGO_PICKER_LABEL,
                 ReaderInterfaceConstants.RI_LOGO_PICKER_LABEL_X_COORDINATE,
@@ -99,6 +128,12 @@ public class ReaderInterfaceBusiness {
         return logoPickerText;
     }
 
+    /**
+     * Creates the GUI templates downloader button
+     * 
+     * @param jFrame
+     *            GUI frame
+     */
     public static void createTemplateDownloaderButton(JFrame jFrame) {
         JButton templateDownloaderButton = createButton(ReaderInterfaceConstants.RI_TEMPLATE_DOWNLOADER_BUTTON,
                 ReaderInterfaceConstants.RI_TEMPLATE_DOWNLOADER_BUTTON_X_COORDINATE,
@@ -109,6 +144,18 @@ public class ReaderInterfaceBusiness {
         templateDownloaderButton.addActionListener(createActionListenerForTemplatesDownloaderButton(jFrame));
     }
 
+    /**
+     * Creates the GUI confirm button
+     * 
+     * @param jFrame
+     *            GUI frame
+     * @param csvFilePickerText
+     *            csv input picker component
+     * @param outputFolderPickerText
+     *            output folder picker component
+     * @param logoPickerText
+     *            logo picker component
+     */
     public static void createConfirmButton(JFrame jFrame, JTextField csvFilePickerText,
             JTextField outputFolderPickerText, JTextField logoPickerText) {
         JButton confirmButton = createButton(ReaderInterfaceConstants.RI_CONFIRM_BUTTON,

@@ -12,8 +12,21 @@ import java.util.List;
 import pagopa.gov.it.toolkit.reader.bean.CsvOutputLine;
 import pagopa.gov.it.toolkit.reader.constants.InputOutputFileConstants;
 
+/**
+ * Business logic class for input data
+ */
 public class OutputFileBusiness {
 
+    /**
+     * Initialize csv output file
+     * 
+     * @param outputFolder
+     *            destination folder of the files to be saved
+     * @param currentDate
+     *            date of the operation
+     * @return outputFilePath
+     * @throws IOException
+     */
     static String initializeOutputFile(String outputFolder, Date currentDate) throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat(InputOutputFileConstants.OUTPUT_FILE_NAME_DATE_FORMAT);
         String outputFilePath = outputFolder + File.separator + InputOutputFileConstants.OUTPUT_FILE_NAME
@@ -28,6 +41,17 @@ public class OutputFileBusiness {
         return outputFilePath;
     }
 
+    /**
+     * Updates the csv output file by inserting, for each line, the
+     * corresponding values of: IUV, notice number, outcome and error
+     * description
+     * 
+     * @param outputFilePath
+     *            path of csv output file
+     * @param csvOutputLineList
+     *            list of all csv output line
+     * @throws IOException
+     */
     static void updateOutputFile(String outputFilePath, List<CsvOutputLine> csvOutputLineList) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputFilePath, true));
         for (CsvOutputLine csvOutputLine : csvOutputLineList) {

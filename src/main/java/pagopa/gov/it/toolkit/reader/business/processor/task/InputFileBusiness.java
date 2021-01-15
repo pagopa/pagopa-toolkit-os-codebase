@@ -11,8 +11,22 @@ import pagopa.gov.it.toolkit.reader.constants.InputOutputFileConstants;
 import pagopa.gov.it.toolkit.rptGenerator.enumeration.TipoBolloEnum;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersFG;
 
+/**
+ * Business logic class for input data
+ */
 public class InputFileBusiness {
 
+    /**
+     * Generates bean instance form csv input line
+     * 
+     * @param textInputLine
+     *            input line in text format
+     * @param domainLogo
+     *            logo image in byte
+     * @return CsvInputLine
+     * @throws Exception
+     * @see CsvInputLine
+     */
     static CsvInputLine generateCsvInputLine(String textInputLine, byte[] domainLogo) throws Exception {
         if (!isValid(textInputLine)) {
             return null;

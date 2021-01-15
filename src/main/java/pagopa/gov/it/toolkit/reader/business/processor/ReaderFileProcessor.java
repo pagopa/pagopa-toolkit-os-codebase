@@ -16,8 +16,25 @@ import pagopa.gov.it.toolkit.reader.business.processor.task.ReaderFileProcessorB
 import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatus;
 import pagopa.gov.it.toolkit.reader.exception.ReaderException;
 
+/**
+ * Main class for input file processing operations
+ */
 public class ReaderFileProcessor {
 
+    /**
+     * Processing of the input data from GUI
+     * 
+     * @param filePath
+     *            path of input file picker selected by user via GUI
+     * @param outputFolder
+     *            path of output folder selected by user via GUI
+     * @param logoPath
+     *            path of ilogo selected by user via GUI
+     * @return ReaderStatus
+     * @throws ReaderException
+     * @throws IOException
+     * @see ReaderStatus
+     */
     public ReaderStatus processCsvFile(String filePath, String outputFolder, String logoPath)
             throws ReaderException, IOException {
         List<CsvInputLine> debtPositionNoInstallmentList = new ArrayList<CsvInputLine>();

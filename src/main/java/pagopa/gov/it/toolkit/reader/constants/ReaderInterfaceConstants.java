@@ -1,5 +1,8 @@
 package pagopa.gov.it.toolkit.reader.constants;
 
+/**
+ * All the constants related to Reader Interface
+ */
 public class ReaderInterfaceConstants {
 
     public static final String RI_FRAME_TITLE = "Caricamento posizioni debitorie da file CSV";

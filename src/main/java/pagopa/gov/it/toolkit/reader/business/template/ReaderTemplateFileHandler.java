@@ -9,8 +9,20 @@ import java.io.OutputStream;
 
 import pagopa.gov.it.toolkit.reader.constants.ReaderInterfaceConstants;
 
+/**
+ * Managing the download of the csv template file and the glossary
+ */
 public class ReaderTemplateFileHandler {
 
+    /**
+     * Download the csv template file and the glossary in user local folder
+     * selected via GUI
+     * 
+     * @param outputFolder
+     *            path of output folder selected by user via GUI where to
+     *            download the files
+     * @throws Exception
+     */
     public void moveFilesToFolder(String outputFolder) throws Exception {
         saveFile(outputFolder, ReaderInterfaceConstants.TEMPLATE_APA_CSV_FILE_PATH,
                 ReaderInterfaceConstants.TEMPLATE_APA_CSV_FILE_NAME);

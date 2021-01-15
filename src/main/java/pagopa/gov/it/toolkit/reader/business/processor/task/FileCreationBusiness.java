@@ -11,8 +11,22 @@ import java.util.Date;
 import pagopa.gov.it.toolkit.reader.constants.ReaderInterfaceConstants;
 import pagopa.gov.it.toolkit.rptGenerator.bean.RptContainer;
 
+/**
+ * Business logic class for files creation
+ */
 public class FileCreationBusiness {
 
+    /**
+     * Generates RPT files in XML format
+     * 
+     * @param rptContainer
+     * @param outputFolder
+     *            destination folder of the files to be saved
+     * @param currentDate
+     *            date of the operation
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     static void createRptXmlFile(RptContainer rptContainer, String outputFolder, Date currentDate)
             throws FileNotFoundException, IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat(ReaderInterfaceConstants.FILE_NAME_DATE_FORMAT);
@@ -23,6 +37,20 @@ public class FileCreationBusiness {
         createFile(rptContainer.getRptXml(), filePath);
     }
 
+    /**
+     * Generates PaymentNotice files in PDF format
+     * 
+     * @param pdfPaymentNotice
+     *            file content in bytes
+     * @param paymentData
+     *            noticeNumber or documentNumber
+     * @param outputFolder
+     *            destination folder of the files to be saved
+     * @param currentDate
+     *            date of the operation
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     static void createNoticePaymentPdfFile(byte[] pdfPaymentNotice, String paymentData, String outputFolder,
             Date currentDate) throws FileNotFoundException, IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat(ReaderInterfaceConstants.FILE_NAME_DATE_FORMAT);

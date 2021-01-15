@@ -1,5 +1,8 @@
 package pagopa.gov.it.toolkit.reader.bean;
 
+/**
+ * CSV output line Bean
+ */
 public class CsvOutputLine {
 
     private String textInputLine;
@@ -9,11 +12,26 @@ public class CsvOutputLine {
     private String result;
     private String resultDescription;
 
-    public CsvOutputLine(String textInputLine, CsvInputLine debtPositionCsv, String iuv, String noticeNumber,
+    /**
+     * Public constructor
+     * 
+     * @param textInputLine
+     *            input line in text format
+     * @param csvInputLine
+     *            bean instance of input line
+     * @param iuv
+     * @param noticeNumber
+     * @param result
+     *            outcome of the operation ("OK" or "KO")
+     * @param resultDescription
+     *            description of any error
+     * @see pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail
+     */
+    public CsvOutputLine(String textInputLine, CsvInputLine csvInputLine, String iuv, String noticeNumber,
             String result, String resultDescription) {
         super();
         this.textInputLine = textInputLine;
-        this.csvInputLine = debtPositionCsv;
+        this.csvInputLine = csvInputLine;
         this.iuv = iuv;
         this.noticeNumber = noticeNumber;
         this.result = result;

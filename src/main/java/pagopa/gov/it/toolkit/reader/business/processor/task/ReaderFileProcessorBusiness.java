@@ -21,8 +21,22 @@ import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatus;
 import pagopa.gov.it.toolkit.reader.exception.ReaderException;
 import pagopa.gov.it.toolkit.rptGenerator.bean.RptContainer;
 
+/**
+ * Business logic class for input file processing operations
+ */
 public class ReaderFileProcessorBusiness {
 
+    /**
+     * Checks the validity of the input data
+     * 
+     * @param filePath
+     *            path of input file picker selected by user via GUI
+     * @param outputFolder
+     *            path of output folder selected by user via GUI
+     * @param logoPath
+     *            path of ilogo selected by user via GUI
+     * @throws ReaderException
+     */
     public static void checkInputData(String filePath, String outputFolder, String logoPath) throws ReaderException {
         if (filePath.isEmpty()) {
             throw new ReaderException(ReaderInterfaceConstants.CSV_FILE_PICKER_EMPTY_MSG);
@@ -55,6 +69,31 @@ public class ReaderFileProcessorBusiness {
         }
     }
 
+    /**
+     * Reads each line of the csv input file and divides the data into:
+     * positions without installments and positions with installments
+     * 
+     * @param outputFolder
+     *            destination folder of the files to be saved
+     * @param debtPositionNoInstallmentList
+     *            list of debt position without installments
+     * @param debtPositionWithInstallmentMap
+     *            map (documentNumber, list of debt position) of debt position
+     *            without installments
+     * @param csvOutputLineList
+     *            list of csv output line
+     * @param readerStatus
+     *            operation status
+     * @param logoFile
+     *            logo file
+     * @param bufferedReader
+     *            input data reader
+     * @param currentDate
+     *            date of the operation
+     * @return ReaderStatus
+     * @throws IOException
+     * @see ReaderStatus
+     */
     public static ReaderStatus readFile(String outputFolder, List<CsvInputLine> debtPositionNoInstallmentList,
             Map<String, List<CsvInputLine>> debtPositionWithInstallmentMap, List<CsvOutputLine> csvOutputLineList,
             ReaderStatus readerStatus, File logoFile, BufferedReader bufferedReader, Date currentDate)
@@ -87,6 +126,22 @@ public class ReaderFileProcessorBusiness {
         return readerStatus;
     }
 
+    /**
+     * Management of input data for positions without installments
+     * 
+     * @param outputFolder
+     *            destination folder of the files to be saved
+     * @param debtPositionNoInstallmentList
+     *            list of debt position without installments
+     * @param csvOutputLineList
+     *            list of csv output line
+     * @param readerStatus
+     *            operation status
+     * @param currentDate
+     *            date of the operation
+     * @return ReaderStatus
+     * @see ReaderStatus
+     */
     public static ReaderStatus noInstallmentManagement(String outputFolder,
             List<CsvInputLine> debtPositionNoInstallmentList, List<CsvOutputLine> csvOutputLineList,
             ReaderStatus readerStatus, Date currentDate) {
@@ -118,6 +173,22 @@ public class ReaderFileProcessorBusiness {
         return readerStatus;
     }
 
+    /**
+     * Management of input data for positions with installments
+     * 
+     * @param outputFolder
+     *            destination folder of the files to be saved
+     * @param debtPositionWithInstallmentMap
+     *            map (documentNumber, list of debt position) of debt position
+     *            without installments
+     * @param csvOutputLineList
+     *            list of csv output line
+     * @param readerStatus
+     *            operation status
+     * @param currentDate
+     * @return ReaderStatus
+     * @see ReaderStatus
+     */
     public static ReaderStatus installmentManagement(String outputFolder,
             Map<String, List<CsvInputLine>> debtPositionWithInstallmentMap, List<CsvOutputLine> csvOutputLineList,
             ReaderStatus readerStatus, Date currentDate) {
@@ -167,6 +238,17 @@ public class ReaderFileProcessorBusiness {
         return readerStatus;
     }
 
+    /**
+     * Procedure for creating the output file
+     * 
+     * @param outputFolder
+     *            destination folder of the files to be saved
+     * @param csvOutputLineList
+     *            list of csv output line
+     * @param currentDate
+     *            date of the operation
+     * @throws IOException
+     */
     public static void createOutputFile(String outputFolder, List<CsvOutputLine> csvOutputLineList, Date currentDate)
             throws IOException {
         String outputFilePath = OutputFileBusiness.initializeOutputFile(outputFolder, currentDate);

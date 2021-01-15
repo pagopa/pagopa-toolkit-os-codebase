@@ -19,8 +19,26 @@ import pagopa.gov.it.toolkit.rptGenerator.bean.rpt.RptIdentificativoUnivocoG;
 import pagopa.gov.it.toolkit.rptGenerator.bean.rpt.RptIndirizzo;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersG;
 
+/**
+ * Business logic class for data element generation
+ * 
+ * @see RptGeneration
+ * @see PaymentNoticeGeneration
+ * @see DebtPositionGeneration
+ */
 public class DataGenerationBusiness {
 
+    /**
+     * Generates RptContainer from csvInputLine data
+     * 
+     * @param csvInputLine
+     * @param debtPosition
+     * @return RptContainer
+     * @throws Exception
+     * @see CsvInputLine
+     * @see RptGeneration
+     * @see RptContainer
+     */
     static RptContainer generateRptContainer(CsvInputLine csvInputLine, DebtPosition debtPosition) throws Exception {
         RptIdentificativoUnivocoG rptIdentificativoUnivocoG = RptGeneration
                 .generateIdentificativoUnivocoG(StTipoIdentificativoUnivocoPersG.G, csvInputLine.getDomainFiscalCode());
@@ -34,6 +52,15 @@ public class DataGenerationBusiness {
         return RptGeneration.generate(csvInputLine.getTenantId(), debtPosition, enteBeneficiario, null);
     }
 
+    /**
+     * Generates PNCreditorInstitution from csvInputLine data
+     * 
+     * @param csvInputLine
+     * @return PNCreditorInstitution
+     * @see CsvInputLine
+     * @see PaymentNoticeGeneration
+     * @see PNCreditorInstitution
+     */
     static PNCreditorInstitution generateCreditorInstitution(CsvInputLine csvInputLine) {
         return PaymentNoticeGeneration.generateCreditorInstitution(csvInputLine.getDomainLogo(),
                 csvInputLine.getDomainName(), csvInputLine.getDomainSector(), csvInputLine.getDomainInfo(),
@@ -42,6 +69,16 @@ public class DataGenerationBusiness {
                 csvInputLine.getDomainPostalAuthorizationCode(), csvInputLine.getDomainWebsite());
     }
 
+    /**
+     * Generates DebtPosition from csvInputLine data
+     * 
+     * @param csvInputLine
+     * @return DebtPosition
+     * @throws Exception
+     * @see CsvInputLine
+     * @see DebtPositionGeneration
+     * @see DebtPosition
+     */
     static DebtPosition generateDebtPosition(CsvInputLine csvInputLine) throws Exception {
         DPPayer payer = DebtPositionGeneration.generatePayer(csvInputLine.getPayerUniqueIdentificationCode(),
                 csvInputLine.getPayerUniqueIdentificationType(), csvInputLine.getPayerRegistry(),
