@@ -7,7 +7,7 @@ import pagopa.gov.it.toolkit.rptGenerator.enumeration.TipoBolloEnum;
 import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersFG;
 
 public class CsvInputLine {
-    private String line;
+    private String textInputLine;
 
     // Iuv Generation
     private Integer domainAuxDigit;
@@ -15,23 +15,21 @@ public class CsvInputLine {
     private Integer domainApplicationCode;
 
     // Domain (Creditor Institution)
-    private String domainIdentifier;
     private String domainFiscalCode;
     private String domainName;
     private String domainOperationalUnitCode;
     private String domainOperationalUnitName;
     private String domainAddress;
     private String domainNumberStreet;
-    private String domainPostalCode;
     private String domainLocality;
     private String domainProvince;
+    private String domainPostalCode;
     private String domainNation;
     private String domainSector;
     private String domainCbillCode;
     private String domainPostalAccountHolder;
     private String domainPostalAccountNumber;
     private String domainPostalAuthorizationCode;
-    private BigDecimal domainChargeCommission;
     private String domainInfo;
     private String domainWebsite;
     private byte[] domainLogo;
@@ -44,14 +42,12 @@ public class CsvInputLine {
     private String payerNumberStreet;
     private String payerLocality;
     private String payerProvince;
-    private String payerNation;
     private String payerPostalCode;
+    private String payerNation;
     private String payerEmail;
     private String payerMobile;
 
     // Payment Detail
-    private String iuv;
-    private String noticeNumber;
     private String tenantId;
     private BigDecimal totalAmountPayment;
     private String causal;
@@ -61,10 +57,6 @@ public class CsvInputLine {
     private Integer installmentNumber;
     private String debitIban;
     private String debitBic;
-    private Boolean isModello1Or2;
-    // Single Payment Detail
-    private BigDecimal amountSinglePayment;
-    private Integer orderSinglePayment;
     private String causalDescriptionSinglePayment;
     private String creditIban;
     private String creditBic;
@@ -73,6 +65,10 @@ public class CsvInputLine {
     private TipoBolloEnum tipoBollo;
     private String documentHash;
     private String residenceProvince;
+    private Boolean isModello1Or2;
+
+    private String iuv;
+    private String noticeNumber;
 
     public CsvInputLine() {
         super();
@@ -164,14 +160,6 @@ public class CsvInputLine {
 
     public void setPayerMobile(String payerMobile) {
         this.payerMobile = payerMobile;
-    }
-
-    public String getDomainIdentifier() {
-        return domainIdentifier;
-    }
-
-    public void setDomainIdentifier(String domainIdentifier) {
-        this.domainIdentifier = domainIdentifier;
     }
 
     public String getDomainFiscalCode() {
@@ -292,14 +280,6 @@ public class CsvInputLine {
 
     public void setDomainPostalAuthorizationCode(String domainPostalAuthorizationCode) {
         this.domainPostalAuthorizationCode = domainPostalAuthorizationCode;
-    }
-
-    public BigDecimal getDomainChargeCommission() {
-        return domainChargeCommission;
-    }
-
-    public void setDomainChargeCommission(BigDecimal domainChargeCommission) {
-        this.domainChargeCommission = domainChargeCommission;
     }
 
     public Integer getDomainAuxDigit() {
@@ -438,22 +418,6 @@ public class CsvInputLine {
         this.debitBic = debitBic;
     }
 
-    public BigDecimal getAmountSinglePayment() {
-        return amountSinglePayment;
-    }
-
-    public void setAmountSinglePayment(BigDecimal amountSinglePayment) {
-        this.amountSinglePayment = amountSinglePayment;
-    }
-
-    public Integer getOrderSinglePayment() {
-        return orderSinglePayment;
-    }
-
-    public void setOrderSinglePayment(Integer orderSinglePayment) {
-        this.orderSinglePayment = orderSinglePayment;
-    }
-
     public String getCausalDescriptionSinglePayment() {
         return causalDescriptionSinglePayment;
     }
@@ -526,11 +490,11 @@ public class CsvInputLine {
         this.isModello1Or2 = isModello1Or2;
     }
 
-    public String getLine() {
-        return line;
+    public String getTextInputLine() {
+        return textInputLine;
     }
 
-    public void setLine(String line) {
-        this.line = line;
+    public void setTextInputLine(String textInputLine) {
+        this.textInputLine = textInputLine;
     }
 }

@@ -93,27 +93,26 @@ public class ReaderFileProcessorBusiness {
         DebtPosition debtPosition = null;
         for (CsvInputLine csvInputLine : debtPositionNoInstallmentList) {
             try {
-                debtPosition = InputFileBusiness.generateDebtPosition(csvInputLine);
+                debtPosition = DataGenerationBusiness.generateDebtPosition(csvInputLine);
                 RptContainer rptContainer = DataGenerationBusiness.generateRptContainer(csvInputLine, debtPosition);
                 FileCreationBusiness.createRptXmlFile(rptContainer, outputFolder, currentDate);
                 PNCreditorInstitution creditorInstitution = DataGenerationBusiness
                         .generateCreditorInstitution(csvInputLine);
-                Boolean isModello1or2 = csvInputLine.getIsModello1Or2();
                 List<DebtPosition> debtPositionList = new ArrayList<DebtPosition>();
                 debtPositionList.add(debtPosition);
                 byte[] pdfPaymentNotice = PaymentNoticeGeneration.generate(debtPositionList, creditorInstitution,
-                        isModello1or2);
+                        csvInputLine.getIsModello1Or2());
                 FileCreationBusiness.createNoticePaymentPdfFile(pdfPaymentNotice,
                         debtPosition.getPaymentDetail().getNoticeNumber(), outputFolder, currentDate);
-                csvOutputLineList.add(new CsvOutputLine(csvInputLine.getLine(), csvInputLine,
+                csvOutputLineList.add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine,
                         debtPosition.getPaymentDetail().getIuv(), debtPosition.getPaymentDetail().getNoticeNumber(),
                         ReaderInterfaceConstants.UPLOAD_RESULT_OK, ""));
             } catch (Exception exception) {
                 readerStatus = ReaderStatus.WARNING;
                 String iuv = debtPosition != null ? debtPosition.getPaymentDetail().getIuv() : "";
                 String noticeNumber = debtPosition != null ? debtPosition.getPaymentDetail().getNoticeNumber() : "";
-                csvOutputLineList.add(new CsvOutputLine(csvInputLine.getLine(), csvInputLine, iuv, noticeNumber,
-                        ReaderInterfaceConstants.UPLOAD_RESULT_KO, exception.getMessage()));
+                csvOutputLineList.add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine, iuv,
+                        noticeNumber, ReaderInterfaceConstants.UPLOAD_RESULT_KO, exception.getMessage()));
             }
         }
         return readerStatus;
@@ -128,7 +127,7 @@ public class ReaderFileProcessorBusiness {
             for (CsvInputLine csvInputLine : csvInputLineList) {
                 DebtPosition debtPosition = null;
                 try {
-                    debtPosition = InputFileBusiness.generateDebtPosition(csvInputLine);
+                    debtPosition = DataGenerationBusiness.generateDebtPosition(csvInputLine);
                     csvInputLine.setIuv(debtPosition.getPaymentDetail().getIuv());
                     csvInputLine.setNoticeNumber(debtPosition.getPaymentDetail().getNoticeNumber());
                     RptContainer rptContainer = DataGenerationBusiness.generateRptContainer(csvInputLine, debtPosition);
@@ -138,8 +137,8 @@ public class ReaderFileProcessorBusiness {
                     readerStatus = ReaderStatus.WARNING;
                     String iuv = debtPosition != null ? debtPosition.getPaymentDetail().getIuv() : "";
                     String noticeNumber = debtPosition != null ? debtPosition.getPaymentDetail().getNoticeNumber() : "";
-                    csvOutputLineList.add(new CsvOutputLine(csvInputLine.getLine(), csvInputLine, iuv, noticeNumber,
-                            ReaderInterfaceConstants.UPLOAD_RESULT_KO, exception.getMessage()));
+                    csvOutputLineList.add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine, iuv,
+                            noticeNumber, ReaderInterfaceConstants.UPLOAD_RESULT_KO, exception.getMessage()));
                 }
             }
             try {
@@ -152,15 +151,16 @@ public class ReaderFileProcessorBusiness {
                 FileCreationBusiness.createNoticePaymentPdfFile(pdfPaymentNotice, documentNumber, outputFolder,
                         currentDate);
                 for (CsvInputLine csvInputLine : csvInputLineList) {
-                    csvOutputLineList.add(new CsvOutputLine(csvInputLine.getLine(), csvInputLine, csvInputLine.getIuv(),
-                            csvInputLine.getNoticeNumber(), ReaderInterfaceConstants.UPLOAD_RESULT_OK, ""));
+                    csvOutputLineList
+                            .add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine, csvInputLine.getIuv(),
+                                    csvInputLine.getNoticeNumber(), ReaderInterfaceConstants.UPLOAD_RESULT_OK, ""));
                 }
             } catch (Exception exception) {
                 readerStatus = ReaderStatus.WARNING;
                 for (CsvInputLine csvInputLine : csvInputLineList) {
-                    csvOutputLineList.add(new CsvOutputLine(csvInputLine.getLine(), csvInputLine, csvInputLine.getIuv(),
-                            csvInputLine.getNoticeNumber(), ReaderInterfaceConstants.UPLOAD_RESULT_KO,
-                            exception.getMessage()));
+                    csvOutputLineList.add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine,
+                            csvInputLine.getIuv(), csvInputLine.getNoticeNumber(),
+                            ReaderInterfaceConstants.UPLOAD_RESULT_KO, exception.getMessage()));
                 }
             }
         }

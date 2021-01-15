@@ -20,9 +20,8 @@ public class OutputFileBusiness {
                 .replace(InputOutputFileConstants.OUTPUT_FILE_NAME_DATE_PLACEHOLDER, dateFormat.format(currentDate));
         FileOutputStream outputStream = new FileOutputStream(outputFilePath);
         outputStream.close();
-        String header = InputOutputFileConstants.OUTPUT_FILE_HEADER;
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputFilePath, true));
-        bufferedWriter.append(header);
+        bufferedWriter.append(InputOutputFileConstants.OUTPUT_FILE_HEADER);
         bufferedWriter.append("\n");
         bufferedWriter.close();
 
@@ -31,24 +30,18 @@ public class OutputFileBusiness {
 
     static void updateOutputFile(String outputFilePath, List<CsvOutputLine> csvOutputLineList) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputFilePath, true));
-
         for (CsvOutputLine csvOutputLine : csvOutputLineList) {
-            String iuv = csvOutputLine.getIuv();
-            String noticeNumber = csvOutputLine.getNoticeNumber();
-            String result = csvOutputLine.getResult();
-            String resultDescription = csvOutputLine.getResultDescription();
-            String outputLine = "";
-
-            outputLine = csvOutputLine.getTextInputLine() + InputOutputFileConstants.CSV_SEPARATOR
-                    + InputOutputFileConstants.CSV_VALUE_DELIMITER + iuv + InputOutputFileConstants.CSV_VALUE_DELIMITER
-                    + InputOutputFileConstants.CSV_SEPARATOR + InputOutputFileConstants.CSV_VALUE_DELIMITER
-                    + noticeNumber + InputOutputFileConstants.CSV_VALUE_DELIMITER;
+            String outputLine = csvOutputLine.getTextInputLine() + InputOutputFileConstants.CSV_SEPARATOR
+                    + InputOutputFileConstants.CSV_VALUE_DELIMITER + csvOutputLine.getIuv()
+                    + InputOutputFileConstants.CSV_VALUE_DELIMITER + InputOutputFileConstants.CSV_SEPARATOR
+                    + InputOutputFileConstants.CSV_VALUE_DELIMITER + csvOutputLine.getNoticeNumber()
+                    + InputOutputFileConstants.CSV_VALUE_DELIMITER;
             outputLine = outputLine.replace("null", "");
             bufferedWriter.append(
                     outputLine + InputOutputFileConstants.CSV_SEPARATOR + InputOutputFileConstants.CSV_VALUE_DELIMITER
-                            + result + InputOutputFileConstants.CSV_VALUE_DELIMITER
+                            + csvOutputLine.getResult() + InputOutputFileConstants.CSV_VALUE_DELIMITER
                             + InputOutputFileConstants.CSV_SEPARATOR + InputOutputFileConstants.CSV_VALUE_DELIMITER
-                            + resultDescription + InputOutputFileConstants.CSV_VALUE_DELIMITER);
+                            + csvOutputLine.getResultDescription() + InputOutputFileConstants.CSV_VALUE_DELIMITER);
             outputLine = "";
             bufferedWriter.append("\n");
         }

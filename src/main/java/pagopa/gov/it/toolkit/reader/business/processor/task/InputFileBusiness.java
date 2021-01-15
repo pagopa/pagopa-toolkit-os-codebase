@@ -2,18 +2,10 @@ package pagopa.gov.it.toolkit.reader.business.processor.task;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import pagopa.gov.it.toolkit.common.bean.DatiMarcaBolloDigitale;
-import pagopa.gov.it.toolkit.debtPositionGenerator.DebtPositionGeneration;
-import pagopa.gov.it.toolkit.debtPositionGenerator.bean.DebtPosition;
-import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPPayer;
-import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPPaymentDetail;
-import pagopa.gov.it.toolkit.debtPositionGenerator.bean.debtPosition.DPSinglePaymentDetail;
 import pagopa.gov.it.toolkit.reader.bean.CsvInputLine;
 import pagopa.gov.it.toolkit.reader.constants.InputOutputFileConstants;
 import pagopa.gov.it.toolkit.rptGenerator.enumeration.TipoBolloEnum;
@@ -21,150 +13,135 @@ import pagopa.gov.it.toolkit.rptGenerator.xsd.StTipoIdentificativoUnivocoPersFG;
 
 public class InputFileBusiness {
 
-    static CsvInputLine generateCsvInputLine(String line, byte[] domainLogo) throws Exception {
-        if (!isValid(line)) {
+    static CsvInputLine generateCsvInputLine(String textInputLine, byte[] domainLogo) throws Exception {
+        if (!isValid(textInputLine)) {
             return null;
         }
 
         CsvInputLine csvInputLine = new CsvInputLine();
-        String[] arrayDebtPosition = line.split(InputOutputFileConstants.CSV_SEPARATOR);
+        String[] arrayInputLine = textInputLine.split(InputOutputFileConstants.CSV_SEPARATOR);
         SimpleDateFormat dateFormat = new SimpleDateFormat(InputOutputFileConstants.CSV_INPUT_DATE_FORMAT);
 
-        csvInputLine.setLine(line);
+        csvInputLine.setTextInputLine(textInputLine);
 
-        csvInputLine.setPayerUniqueIdentificationCode(getValue(arrayDebtPosition[0]));
-        csvInputLine.setPayerUniqueIdentificationType(
-                transformStTipoIdentificativoUnivocoPersFG(getValue(arrayDebtPosition[1])));
-        csvInputLine.setPayerRegistry(getValue(arrayDebtPosition[2]));
-        csvInputLine.setPayerAddress(getValue(arrayDebtPosition[3]));
-        csvInputLine.setPayerNumberStreet(getValue(arrayDebtPosition[4]));
-        csvInputLine.setPayerLocality(getValue(arrayDebtPosition[5]));
-        csvInputLine.setPayerProvince(StringUtils.upperCase(getValue(arrayDebtPosition[6])));
-        csvInputLine.setPayerNation(StringUtils.upperCase(getValue(arrayDebtPosition[7])));
-        csvInputLine.setPayerPostalCode(getValue(arrayDebtPosition[8]));
-        csvInputLine.setPayerEmail(getValue(arrayDebtPosition[9]));
-        csvInputLine.setPayerMobile(getValue(arrayDebtPosition[10]));
-
-        csvInputLine.setDomainIdentifier(getValue(arrayDebtPosition[11]));
-        csvInputLine.setDomainFiscalCode(getValue(arrayDebtPosition[12]));
-        csvInputLine.setDomainName(getValue(arrayDebtPosition[13]));
-        csvInputLine.setDomainOperationalUnitCode(getValue(arrayDebtPosition[14]));
-        csvInputLine.setDomainOperationalUnitName(getValue(arrayDebtPosition[15]));
-        csvInputLine.setDomainAddress(getValue(arrayDebtPosition[16]));
-        csvInputLine.setDomainNumberStreet(getValue(arrayDebtPosition[17]));
-        csvInputLine.setDomainPostalCode(getValue(arrayDebtPosition[18]));
-        csvInputLine.setDomainLocality(getValue(arrayDebtPosition[19]));
-        csvInputLine.setDomainProvince(getValue(arrayDebtPosition[20]));
-        csvInputLine.setDomainNation(getValue(arrayDebtPosition[21]));
-        csvInputLine.setDomainSector(getValue(arrayDebtPosition[22]));
-        csvInputLine.setDomainCbillCode(getValue(arrayDebtPosition[23]));
-        csvInputLine.setDomainPostalAccountHolder(getValue(arrayDebtPosition[24]));
-        csvInputLine.setDomainPostalAccountNumber(getValue(arrayDebtPosition[25]));
-        csvInputLine.setDomainPostalAuthorizationCode(getValue(arrayDebtPosition[26]));
-        csvInputLine.setDomainChargeCommission(new BigDecimal(getValue(arrayDebtPosition[27])));
         csvInputLine.setDomainAuxDigit(
-                getValue(arrayDebtPosition[28]) != null ? Integer.parseInt(getValue(arrayDebtPosition[28])) : null);
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_AUX_DIGIT_INDEX]) != null
+                        ? Integer.parseInt(
+                                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_AUX_DIGIT_INDEX]))
+                        : null);
         csvInputLine.setDomainSegregationCode(
-                getValue(arrayDebtPosition[29]) != null ? Integer.parseInt(getValue(arrayDebtPosition[29])) : null);
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_SEGREGATION_CODE_INDEX]) != null
+                        ? Integer.parseInt(getValue(
+                                arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_SEGREGATION_CODE_INDEX]))
+                        : null);
         csvInputLine.setDomainApplicationCode(
-                getValue(arrayDebtPosition[30]) != null ? Integer.parseInt(getValue(arrayDebtPosition[30])) : null);
-        csvInputLine.setDomainInfo(getValue(arrayDebtPosition[31]));
-        csvInputLine.setDomainWebsite(getValue(arrayDebtPosition[32]));
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_APPLICATION_CODE_INDEX]) != null
+                        ? Integer.parseInt(getValue(
+                                arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_APPLICATION_CODE_INDEX]))
+                        : null);
+
+        csvInputLine.setDomainFiscalCode(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_FISCAL_CODE_INDEX]));
+        csvInputLine.setDomainName(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_NAME_INDEX]));
+        csvInputLine.setDomainOperationalUnitCode(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_OPER_UNIT_CODE_INDEX]));
+        csvInputLine.setDomainOperationalUnitName(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_OPER_UNIT_NAME_INDEX]));
+        csvInputLine
+                .setDomainAddress(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_ADDRESS_INDEX]));
+        csvInputLine.setDomainNumberStreet(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_NUMBER_STREET_INDEX]));
+        csvInputLine
+                .setDomainLocality(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_LOCALITY_INDEX]));
+        csvInputLine
+                .setDomainProvince(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_PROVINCE_INDEX]));
+        csvInputLine.setDomainPostalCode(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_POSTAL_CODE_INDEX]));
+        csvInputLine.setDomainNation(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_NATION_INDEX]));
+        csvInputLine.setDomainSector(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_SECTOR_INDEX]));
+        csvInputLine.setDomainCbillCode(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_CBILL_CODE_INDEX]));
+        csvInputLine.setDomainPostalAccountHolder(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_POSTAL_ACCOUNT_HOLDER_INDEX]));
+        csvInputLine.setDomainPostalAccountNumber(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_POSTAL_ACCOUNT_NUMBER_INDEX]));
+        csvInputLine.setDomainPostalAuthorizationCode(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_POSTAL_AUTH_CODE_INDEX]));
+        csvInputLine.setDomainInfo(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_INFO_INDEX]));
+        csvInputLine
+                .setDomainWebsite(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOMAIN_WEBSITE_INDEX]));
         csvInputLine.setDomainLogo(domainLogo);
 
-        csvInputLine.setTenantId(getValue(arrayDebtPosition[33]));
-        csvInputLine.setTotalAmountPayment(new BigDecimal(getValue(arrayDebtPosition[34])));
-        csvInputLine.setCausal(getValue(arrayDebtPosition[35]));
-        Date expirationDate = dateFormat.parse(getValue(arrayDebtPosition[36]));
-        csvInputLine.setExpirationDate(expirationDate);
-        csvInputLine.setSpecificCollectionData(getValue(arrayDebtPosition[37]));
-        csvInputLine.setDocumentNumber(getValue(arrayDebtPosition[38]));
-        csvInputLine.setInstallmentNumber(
-                getValue(arrayDebtPosition[39]) != null ? Integer.parseInt(getValue(arrayDebtPosition[39])) : null);
-        csvInputLine.setDebitIban(StringUtils.upperCase(getValue(arrayDebtPosition[40])));
-        csvInputLine.setDebitBic(StringUtils.upperCase(getValue(arrayDebtPosition[41])));
+        csvInputLine.setPayerUniqueIdentificationCode(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_UNIQUE_IDENT_CODE_INDEX]));
+        csvInputLine.setPayerUniqueIdentificationType(transformStTipoIdentificativoUnivocoPersFG(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_UNIQUE_IDENT_TYPE_INDEX])));
+        csvInputLine
+                .setPayerRegistry(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_REGISTRY_INDEX]));
+        csvInputLine.setPayerAddress(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_ADDRESS_INDEX]));
+        csvInputLine.setPayerNumberStreet(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_NUMBER_STREET_INDEX]));
+        csvInputLine
+                .setPayerLocality(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_LOCALITY_INDEX]));
+        csvInputLine.setPayerProvince(StringUtils
+                .upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_PROVINCE_INDEX])));
+        csvInputLine.setPayerPostalCode(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_POSTAL_CODE_INDEX]));
+        csvInputLine.setPayerNation(
+                StringUtils.upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_NATION_INDEX])));
+        csvInputLine.setPayerEmail(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_EMAIL_INDEX]));
+        csvInputLine.setPayerMobile(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_PAYER_MOBILE_INDEX]));
 
-        csvInputLine.setAmountSinglePayment(new BigDecimal(getValue(arrayDebtPosition[34])));
-        csvInputLine.setOrderSinglePayment(
-                getValue(arrayDebtPosition[42]) != null ? Integer.parseInt(getValue(arrayDebtPosition[42])) : null);
-        csvInputLine.setCausalDescriptionSinglePayment(getValue(arrayDebtPosition[43]));
-        csvInputLine.setCreditIban(StringUtils.upperCase(getValue(arrayDebtPosition[44])));
-        csvInputLine.setCreditBic(StringUtils.upperCase(getValue(arrayDebtPosition[45])));
-        csvInputLine.setSupportIban(StringUtils.upperCase(getValue(arrayDebtPosition[46])));
-        csvInputLine.setSupportBic(StringUtils.upperCase(getValue(arrayDebtPosition[47])));
-        TipoBolloEnum tipoBollo = transformTipoBolloEnum(getValue(arrayDebtPosition[48]));
+        csvInputLine.setTenantId(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_TENANT_ID_INDEX]));
+        csvInputLine.setTotalAmountPayment(new BigDecimal(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_TOTAL_AMOUNT_PAYMENT_INDEX])));
+        csvInputLine.setCausal(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_CAUSAL_INDEX]));
+        Date expirationDate = dateFormat
+                .parse(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_EXPIRATION_DATE_INDEX]));
+        csvInputLine.setExpirationDate(expirationDate);
+        csvInputLine.setSpecificCollectionData(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_SPECIFIC_COLLECTION_DATA_INDEX]));
+        csvInputLine
+                .setDocumentNumber(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOCUMENT_NUMBER_INDEX]));
+        csvInputLine.setInstallmentNumber(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_INSTALLMENT_NUMBER_INDEX]) != null
+                        ? Integer.parseInt(
+                                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_INSTALLMENT_NUMBER_INDEX]))
+                        : null);
+        csvInputLine.setDebitIban(
+                StringUtils.upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DEBIT_IBAN_INDEX])));
+        csvInputLine.setDebitBic(
+                StringUtils.upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DEBIT_BIC_INDEX])));
+        csvInputLine.setCausalDescriptionSinglePayment(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_CAUSAL_DESCRIPTION_INDEX]));
+        csvInputLine.setCreditIban(
+                StringUtils.upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_CREDIT_IBAN_INDEX])));
+        csvInputLine.setCreditBic(
+                StringUtils.upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_CREDIT_BIC_INDEX])));
+        csvInputLine.setSupportIban(
+                StringUtils.upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_SUPPORT_IBAN_INDEX])));
+        csvInputLine.setSupportBic(
+                StringUtils.upperCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_SUPPORT_BIC_INDEX])));
+        TipoBolloEnum tipoBollo = transformTipoBolloEnum(
+                getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_TIPO_BOLLO_INDEX]));
         if (tipoBollo != null) {
             csvInputLine.setTipoBollo(tipoBollo);
-            csvInputLine.setDocumentHash(getValue(arrayDebtPosition[49]));
-            csvInputLine.setResidenceProvince(getValue(arrayDebtPosition[50]));
+            csvInputLine
+                    .setDocumentHash(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_DOCUMENT_HASH_INDEX]));
+            csvInputLine.setResidenceProvince(
+                    getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_RESIDENCE_PROVINCE_INDEX]));
         }
-
         Boolean isModello1 = InputOutputFileConstants.CSV_INPUT_MODELLO_1_ACCEPTED_VALUE
-                .equalsIgnoreCase(getValue(arrayDebtPosition[51])) ? Boolean.TRUE : Boolean.FALSE;
+                .equalsIgnoreCase(getValue(arrayInputLine[InputOutputFileConstants.CSV_INPUT_MODELLO_1_INDEX]))
+                        ? Boolean.TRUE : Boolean.FALSE;
         csvInputLine.setIsModello1Or2(isModello1);
 
         return csvInputLine;
     }
 
-    static DebtPosition generateDebtPosition(CsvInputLine csvInputLine) throws Exception {
-        String uniqueIdentificationCode = csvInputLine.getPayerUniqueIdentificationCode();
-        StTipoIdentificativoUnivocoPersFG uniqueIdentificationType = csvInputLine.getPayerUniqueIdentificationType();
-        String registry = csvInputLine.getPayerRegistry();
-        String address = csvInputLine.getPayerAddress();
-        String numberStreet = csvInputLine.getPayerNumberStreet();
-        String locality = csvInputLine.getPayerLocality();
-        String province = csvInputLine.getPayerProvince();
-        String nation = csvInputLine.getPayerNation();
-        String postalCode = csvInputLine.getPayerPostalCode();
-        String email = csvInputLine.getPayerEmail();
-        String mobile = csvInputLine.getPayerMobile();
-        DPPayer payer = DebtPositionGeneration.generatePayer(uniqueIdentificationCode, uniqueIdentificationType,
-                registry, address, numberStreet, locality, province, nation, postalCode, email, mobile);
-
-        String domainIdentifier = csvInputLine.getDomainIdentifier();
-        int auxDigit = csvInputLine.getDomainAuxDigit();
-        Integer segregationCode = csvInputLine.getDomainSegregationCode();
-        Integer applicationCode = csvInputLine.getDomainApplicationCode();
-        String idTenant = csvInputLine.getTenantId();
-        BigDecimal totalAmountPayment = csvInputLine.getTotalAmountPayment();
-        String causal = csvInputLine.getCausal();
-        Date expirationDate = csvInputLine.getExpirationDate();
-        String specificCollectionData = csvInputLine.getSpecificCollectionData();
-        String documentNumber = csvInputLine.getDocumentNumber();
-        Integer installmentNumber = csvInputLine.getInstallmentNumber();
-        String debitIban = csvInputLine.getDebitIban();
-        String debitBic = csvInputLine.getDebitBic();
-        DPPaymentDetail paymentDetail = DebtPositionGeneration.generatePaymentDetail(domainIdentifier, auxDigit,
-                segregationCode, applicationCode, null, idTenant, totalAmountPayment, causal, expirationDate,
-                specificCollectionData, documentNumber, installmentNumber, debitIban, debitBic);
-
-        BigDecimal amountSinglePayment = csvInputLine.getAmountSinglePayment();
-        Integer orderSinglePayment = csvInputLine.getOrderSinglePayment();
-        String causalDescriptionSinglePayment = csvInputLine.getCausalDescriptionSinglePayment();
-        String creditIban = csvInputLine.getCreditIban();
-        String creditBic = csvInputLine.getCreditBic();
-        String supportIban = csvInputLine.getSupportIban();
-        String supportBic = csvInputLine.getSupportBic();
-        TipoBolloEnum tipoBollo = csvInputLine.getTipoBollo();
-        String hashDocumento = csvInputLine.getDocumentHash();
-        String provinciaResidenza = csvInputLine.getResidenceProvince();
-        DatiMarcaBolloDigitale datiMarcaBolloDigitale = null;
-        if (tipoBollo != null && hashDocumento != null && provinciaResidenza != null) {
-            datiMarcaBolloDigitale = DebtPositionGeneration.generateDatiMarcaBolloDigitale(tipoBollo, hashDocumento,
-                    provinciaResidenza);
-        }
-        DPSinglePaymentDetail singlePaymentDetail = DebtPositionGeneration.generateSinglePaymentDetail(
-                amountSinglePayment, orderSinglePayment, causalDescriptionSinglePayment, creditIban, creditBic,
-                supportIban, supportBic, datiMarcaBolloDigitale);
-        List<DPSinglePaymentDetail> singlePaymentsDetailList = new ArrayList<DPSinglePaymentDetail>();
-        singlePaymentsDetailList.add(singlePaymentDetail);
-
-        return DebtPositionGeneration.generate(payer, paymentDetail, singlePaymentsDetailList);
-    }
-
     private static boolean isValid(String line) {
         String[] arrayDebtPosition = line.split(InputOutputFileConstants.CSV_SEPARATOR);
-        if (arrayDebtPosition.length != InputOutputFileConstants.CSV_INPUT_FIELDS_NUMBER) {
+        if (arrayDebtPosition.length != InputOutputFileConstants.CSV_INPUT_FIELDS_TOTAL_NUMBER) {
             return false;
         }
         for (String string : arrayDebtPosition) {
