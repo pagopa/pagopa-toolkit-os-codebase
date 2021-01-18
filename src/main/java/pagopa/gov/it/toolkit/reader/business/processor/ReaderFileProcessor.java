@@ -13,7 +13,7 @@ import java.util.Map;
 import pagopa.gov.it.toolkit.reader.bean.CsvInputLine;
 import pagopa.gov.it.toolkit.reader.bean.CsvOutputLine;
 import pagopa.gov.it.toolkit.reader.business.processor.task.ReaderFileProcessorBusiness;
-import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatus;
+import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatusEnum;
 import pagopa.gov.it.toolkit.reader.exception.ReaderException;
 
 /**
@@ -29,18 +29,18 @@ public class ReaderFileProcessor {
      * @param outputFolder
      *            path of output folder selected by user via GUI
      * @param logoPath
-     *            path of ilogo selected by user via GUI
+     *            path of logo selected by user via GUI
      * @return ReaderStatus
      * @throws ReaderException
      * @throws IOException
-     * @see ReaderStatus
+     * @see ReaderStatusEnum
      */
-    public ReaderStatus processCsvFile(String filePath, String outputFolder, String logoPath)
+    public ReaderStatusEnum processCsvFile(String filePath, String outputFolder, String logoPath)
             throws ReaderException, IOException {
         List<CsvInputLine> debtPositionNoInstallmentList = new ArrayList<CsvInputLine>();
         Map<String, List<CsvInputLine>> debtPositionWithInstallmentMap = new HashMap<String, List<CsvInputLine>>();
         List<CsvOutputLine> csvOutputLineList = new ArrayList<CsvOutputLine>();
-        ReaderStatus readerStatus = ReaderStatus.OK;
+        ReaderStatusEnum readerStatus = ReaderStatusEnum.OK;
 
         ReaderFileProcessorBusiness.checkInputData(filePath, outputFolder, logoPath);
 

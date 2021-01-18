@@ -17,7 +17,7 @@ import pagopa.gov.it.toolkit.paymentNoticeGenerator.bean.PNCreditorInstitution;
 import pagopa.gov.it.toolkit.reader.bean.CsvInputLine;
 import pagopa.gov.it.toolkit.reader.bean.CsvOutputLine;
 import pagopa.gov.it.toolkit.reader.constants.ReaderInterfaceConstants;
-import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatus;
+import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatusEnum;
 import pagopa.gov.it.toolkit.reader.exception.ReaderException;
 import pagopa.gov.it.toolkit.rptGenerator.bean.RptContainer;
 
@@ -34,7 +34,7 @@ public class ReaderFileProcessorBusiness {
      * @param outputFolder
      *            path of output folder selected by user via GUI
      * @param logoPath
-     *            path of ilogo selected by user via GUI
+     *            path of logo selected by user via GUI
      * @throws ReaderException
      */
     public static void checkInputData(String filePath, String outputFolder, String logoPath) throws ReaderException {
@@ -92,11 +92,11 @@ public class ReaderFileProcessorBusiness {
      *            date of the operation
      * @return ReaderStatus
      * @throws IOException
-     * @see ReaderStatus
+     * @see ReaderStatusEnum
      */
-    public static ReaderStatus readFile(String outputFolder, List<CsvInputLine> debtPositionNoInstallmentList,
+    public static ReaderStatusEnum readFile(String outputFolder, List<CsvInputLine> debtPositionNoInstallmentList,
             Map<String, List<CsvInputLine>> debtPositionWithInstallmentMap, List<CsvOutputLine> csvOutputLineList,
-            ReaderStatus readerStatus, File logoFile, BufferedReader bufferedReader, Date currentDate)
+            ReaderStatusEnum readerStatus, File logoFile, BufferedReader bufferedReader, Date currentDate)
             throws IOException {
         String line = "";
         while ((line = bufferedReader.readLine()) != null) {
@@ -107,7 +107,7 @@ public class ReaderFileProcessorBusiness {
                 byte[] logo = Files.readAllBytes(logoFile.toPath());
                 CsvInputLine csvInputLine = InputFileBusiness.generateCsvInputLine(line, logo);
                 if (csvInputLine == null) {
-                    readerStatus = ReaderStatus.WARNING;
+                    readerStatus = ReaderStatusEnum.WARNING;
                     csvOutputLineList.add(new CsvOutputLine(line, null, "", "",
                             ReaderInterfaceConstants.UPLOAD_RESULT_KO, ReaderInterfaceConstants.INVALID_LINE_MSG));
                     continue;
@@ -118,7 +118,7 @@ public class ReaderFileProcessorBusiness {
                     addCsvInputLineToMap(debtPositionWithInstallmentMap, csvInputLine);
                 }
             } catch (Exception exception) {
-                readerStatus = ReaderStatus.WARNING;
+                readerStatus = ReaderStatusEnum.WARNING;
                 csvOutputLineList.add(new CsvOutputLine(line, null, "", "", ReaderInterfaceConstants.UPLOAD_RESULT_KO,
                         exception.getMessage()));
             }
@@ -140,11 +140,11 @@ public class ReaderFileProcessorBusiness {
      * @param currentDate
      *            date of the operation
      * @return ReaderStatus
-     * @see ReaderStatus
+     * @see ReaderStatusEnum
      */
-    public static ReaderStatus noInstallmentManagement(String outputFolder,
+    public static ReaderStatusEnum noInstallmentManagement(String outputFolder,
             List<CsvInputLine> debtPositionNoInstallmentList, List<CsvOutputLine> csvOutputLineList,
-            ReaderStatus readerStatus, Date currentDate) {
+            ReaderStatusEnum readerStatus, Date currentDate) {
         DebtPosition debtPosition = null;
         for (CsvInputLine csvInputLine : debtPositionNoInstallmentList) {
             try {
@@ -163,7 +163,7 @@ public class ReaderFileProcessorBusiness {
                         debtPosition.getPaymentDetail().getIuv(), debtPosition.getPaymentDetail().getNoticeNumber(),
                         ReaderInterfaceConstants.UPLOAD_RESULT_OK, ""));
             } catch (Exception exception) {
-                readerStatus = ReaderStatus.WARNING;
+                readerStatus = ReaderStatusEnum.WARNING;
                 String iuv = debtPosition != null ? debtPosition.getPaymentDetail().getIuv() : "";
                 String noticeNumber = debtPosition != null ? debtPosition.getPaymentDetail().getNoticeNumber() : "";
                 csvOutputLineList.add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine, iuv,
@@ -187,11 +187,11 @@ public class ReaderFileProcessorBusiness {
      *            operation status
      * @param currentDate
      * @return ReaderStatus
-     * @see ReaderStatus
+     * @see ReaderStatusEnum
      */
-    public static ReaderStatus installmentManagement(String outputFolder,
+    public static ReaderStatusEnum installmentManagement(String outputFolder,
             Map<String, List<CsvInputLine>> debtPositionWithInstallmentMap, List<CsvOutputLine> csvOutputLineList,
-            ReaderStatus readerStatus, Date currentDate) {
+            ReaderStatusEnum readerStatus, Date currentDate) {
         for (Map.Entry<String, List<CsvInputLine>> entry : debtPositionWithInstallmentMap.entrySet()) {
             List<CsvInputLine> csvInputLineList = entry.getValue();
             List<DebtPosition> debtPositionList = new ArrayList<DebtPosition>();
@@ -205,7 +205,7 @@ public class ReaderFileProcessorBusiness {
                     FileCreationBusiness.createRptXmlFile(rptContainer, outputFolder, currentDate);
                     debtPositionList.add(debtPosition);
                 } catch (Exception exception) {
-                    readerStatus = ReaderStatus.WARNING;
+                    readerStatus = ReaderStatusEnum.WARNING;
                     String iuv = debtPosition != null ? debtPosition.getPaymentDetail().getIuv() : "";
                     String noticeNumber = debtPosition != null ? debtPosition.getPaymentDetail().getNoticeNumber() : "";
                     csvOutputLineList.add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine, iuv,
@@ -227,7 +227,7 @@ public class ReaderFileProcessorBusiness {
                                     csvInputLine.getNoticeNumber(), ReaderInterfaceConstants.UPLOAD_RESULT_OK, ""));
                 }
             } catch (Exception exception) {
-                readerStatus = ReaderStatus.WARNING;
+                readerStatus = ReaderStatusEnum.WARNING;
                 for (CsvInputLine csvInputLine : csvInputLineList) {
                     csvOutputLineList.add(new CsvOutputLine(csvInputLine.getTextInputLine(), csvInputLine,
                             csvInputLine.getIuv(), csvInputLine.getNoticeNumber(),

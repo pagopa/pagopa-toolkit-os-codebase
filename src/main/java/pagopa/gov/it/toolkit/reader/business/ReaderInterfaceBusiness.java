@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileFilter;
 import pagopa.gov.it.toolkit.reader.business.processor.ReaderFileProcessor;
 import pagopa.gov.it.toolkit.reader.business.template.ReaderTemplateFileHandler;
 import pagopa.gov.it.toolkit.reader.constants.ReaderInterfaceConstants;
-import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatus;
+import pagopa.gov.it.toolkit.reader.enumeration.ReaderStatusEnum;
 import pagopa.gov.it.toolkit.reader.exception.ReaderException;
 
 /**
@@ -271,7 +271,7 @@ public class ReaderInterfaceBusiness {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ReaderFileProcessor readerFileProcessor = new ReaderFileProcessor();
-                ReaderStatus readerStatus = null;
+                ReaderStatusEnum readerStatus = null;
                 try {
                     readerStatus = readerFileProcessor.processCsvFile(csvFilePicker.getText(), outputFolder.getText(),
                             logoPicker.getText());
@@ -279,7 +279,7 @@ public class ReaderInterfaceBusiness {
                     JOptionPane.showMessageDialog(jFrame, readerException.getMessage(),
                             ReaderInterfaceConstants.MESSAGE_TITLE, JOptionPane.ERROR_MESSAGE);
                 } catch (IOException ioException) {
-                    readerStatus = ReaderStatus.KO;
+                    readerStatus = ReaderStatusEnum.KO;
                 }
                 if (readerStatus != null) {
                     switch (readerStatus) {

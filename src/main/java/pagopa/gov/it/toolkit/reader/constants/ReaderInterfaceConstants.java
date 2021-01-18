@@ -5,6 +5,7 @@ package pagopa.gov.it.toolkit.reader.constants;
  */
 public class ReaderInterfaceConstants {
 
+    //TODO to move in properties file for internationalization
     public static final String RI_FRAME_TITLE = "Caricamento posizioni debitorie da file CSV";
     public static final int RI_FRAME_WIDTH = 705;
     public static final int RI_FRAME_HEIGHT = 400;

@@ -8,7 +8,7 @@ package pagopa.gov.it.toolkit.reader.enumeration;
  * <li>KO - No debt position was successfully generated
  * </ul>
  */
-public enum ReaderStatus {
+public enum ReaderStatusEnum {
     OK(1), WARNING(2), KO(3);
 
     private final Integer value;
@@ -20,8 +20,8 @@ public enum ReaderStatus {
      *            a value
      * @return the enum value
      */
-    public static ReaderStatus fromValue(Integer v) {
-        for (ReaderStatus enumValue : ReaderStatus.values()) {
+    public static ReaderStatusEnum fromValue(Integer v) {
+        for (ReaderStatusEnum enumValue : ReaderStatusEnum.values()) {
             if (enumValue.value.equals(v)) {
                 return enumValue;
             }
@@ -32,7 +32,7 @@ public enum ReaderStatus {
     /**
      * @param v
      */
-    private ReaderStatus(Integer v) {
+    private ReaderStatusEnum(Integer v) {
         value = v;
     }
 
