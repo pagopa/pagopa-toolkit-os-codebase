@@ -19,8 +19,8 @@ public class InputOutputFileConstants {
     public static final String OUTPUT_FILE_NAME_EXTENSION = "csv";
     public static final String OUTPUT_FILE_NAME = "Esito_" + OUTPUT_FILE_NAME_DATE_PLACEHOLDER + "."
             + OUTPUT_FILE_NAME_EXTENSION;
-    
-    //TODO to move in properties file for internationalization
+
+    // TODO to move in properties file for internationalization
     public static final String OUTPUT_FILE_HEADER = "\"Aux Digit\";\"Segregation Code\";\"Application Code\";\"EC CodiceFiscale/P.IVA\";"
             + "\"EC Denominazione\";\"EC Codice Unita Operativa\";\"EC Denominazione Unita Operativa\";\"EC Indirizzo\";\"EC Civico\";"
             + "\"EC Localita\";\"EC Provincia\";\"EC CAP\";\"EC Nazione\";\"EC Settore\";\"EC Codice CBILL\";"
@@ -30,5 +30,6 @@ public class InputOutputFileConstants {
             + "\"PD Importo\";\"PD Causale\";\"PD Data Scadenza (" + InputOutputFileConstants.CSV_INPUT_DATE_FORMAT
             + ")\";\"PD Dati Specifici Riscossione\";\"PD Numero Documento\";\"PD Numero Rata\";\"PD IBAN Addebito\";"
             + "\"PD BIC Addebito\";\"PD Descrizione Causale RPT\";\"PD IBAN Accredito\";\"PD BIC Accredito\";\"PD IBAN Supporto\";"
-            + "\"PD BIC Supporto\";\"PD Tipo Bollo\";\"PD Hash Documento Bollo\";\"PD Provincia Residenza Bollo\";\"PD Modello 1\"";
+            + "\"PD BIC Supporto\";\"PD Tipo Bollo\";\"PD Hash Documento Bollo\";\"PD Provincia Residenza Bollo\";\"PD Modello 1\";\"IUV\";"
+            + "\"Numero Avviso\";\"Esito Operazione\";\"Descrizione Esito\"";
 }

@@ -39,22 +39,12 @@ public class InputFileBusiness {
 
         csvInputLine.setTextInputLine(textInputLine);
 
-        csvInputLine
-                .setDomainAuxDigit(
-                        getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_AUX_DIGIT_INDEX.value()]) != null
-                                ? Integer.parseInt(
-                                        getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_AUX_DIGIT_INDEX.value()]))
-                                : null);
-        csvInputLine.setDomainSegregationCode(
-                getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_SEGREGATION_CODE_INDEX.value()]) != null
-                        ? Integer.parseInt(
-                                getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_SEGREGATION_CODE_INDEX.value()]))
-                        : null);
-        csvInputLine.setDomainApplicationCode(
-                getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_APPLICATION_CODE_INDEX.value()]) != null
-                        ? Integer.parseInt(
-                                getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_APPLICATION_CODE_INDEX.value()]))
-                        : null);
+        String auxDigit = getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_AUX_DIGIT_INDEX.value()]);
+        csvInputLine.setDomainAuxDigit(auxDigit != null ? Integer.parseInt(auxDigit) : null);
+        String segregationCode = getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_SEGREGATION_CODE_INDEX.value()]);
+        csvInputLine.setDomainSegregationCode(segregationCode != null ? Integer.parseInt(segregationCode) : null);
+        String applicationCode = getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_APPLICATION_CODE_INDEX.value()]);
+        csvInputLine.setDomainApplicationCode(applicationCode != null ? Integer.parseInt(applicationCode) : null);
 
         csvInputLine
                 .setDomainFiscalCode(getValue(arrayInputLine[ReaderInputIndexEnum.DOMAIN_FISCAL_CODE_INDEX.value()]));
@@ -101,21 +91,18 @@ public class InputFileBusiness {
         csvInputLine.setPayerMobile(getValue(arrayInputLine[ReaderInputIndexEnum.PAYER_MOBILE_INDEX.value()]));
 
         csvInputLine.setTenantId(getValue(arrayInputLine[ReaderInputIndexEnum.TENANT_ID_INDEX.value()]));
-        csvInputLine.setTotalAmountPayment(
-                new BigDecimal(getValue(arrayInputLine[ReaderInputIndexEnum.TOTAL_AMOUNT_PAYMENT_INDEX.value()]))
-                        .divide((BigDecimal.valueOf(100)).setScale(2, BigDecimal.ROUND_HALF_UP)));
+        String amount = getValue(arrayInputLine[ReaderInputIndexEnum.TOTAL_AMOUNT_PAYMENT_INDEX.value()]);
+        csvInputLine.setTotalAmountPayment(amount != null
+                ? new BigDecimal(amount).divide((BigDecimal.valueOf(100)).setScale(2, BigDecimal.ROUND_HALF_UP))
+                : null);
         csvInputLine.setCausal(getValue(arrayInputLine[ReaderInputIndexEnum.CAUSAL_INDEX.value()]));
-        Date expirationDate = dateFormat
-                .parse(getValue(arrayInputLine[ReaderInputIndexEnum.EXPIRATION_DATE_INDEX.value()]));
-        csvInputLine.setExpirationDate(expirationDate);
+        String expirationDate = getValue(arrayInputLine[ReaderInputIndexEnum.EXPIRATION_DATE_INDEX.value()]);
+        csvInputLine.setExpirationDate(expirationDate != null ? dateFormat.parse(expirationDate) : null);
         csvInputLine.setSpecificCollectionData(
                 getValue(arrayInputLine[ReaderInputIndexEnum.SPECIFIC_COLLECTION_DATA_INDEX.value()]));
         csvInputLine.setDocumentNumber(getValue(arrayInputLine[ReaderInputIndexEnum.DOCUMENT_NUMBER_INDEX.value()]));
-        csvInputLine.setInstallmentNumber(
-                getValue(arrayInputLine[ReaderInputIndexEnum.INSTALLMENT_NUMBER_INDEX.value()]) != null
-                        ? Integer.parseInt(
-                                getValue(arrayInputLine[ReaderInputIndexEnum.INSTALLMENT_NUMBER_INDEX.value()]))
-                        : null);
+        String installmentNumber = getValue(arrayInputLine[ReaderInputIndexEnum.INSTALLMENT_NUMBER_INDEX.value()]);
+        csvInputLine.setInstallmentNumber(installmentNumber != null ? Integer.parseInt(installmentNumber) : null);
         csvInputLine.setDebitIban(
                 StringUtils.upperCase(getValue(arrayInputLine[ReaderInputIndexEnum.DEBIT_IBAN_INDEX.value()])));
         csvInputLine.setDebitBic(
