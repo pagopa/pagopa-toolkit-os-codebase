@@ -23,7 +23,7 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
     - name: Build with Maven
-      run: mvn install -X -U
+      run: mvn clean install -X -U
 
   codecoverage:
     needs: [build]
