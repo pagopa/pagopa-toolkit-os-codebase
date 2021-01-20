@@ -68,8 +68,6 @@ public class ReaderInterfaceConstants {
     public static final String RI_TEMPLATE_DOWNLOADER_ERROR_MSG = "Si è verificato un errore durante il download del template";
     public static final String TEMPLATE_APA_CSV_FILE_PATH = "/resources/templates/reader/";
     public static final String TEMPLATE_APA_CSV_FILE_NAME = "templateAPA.csv";
-    public static final String GLOSSARY_APA_CSV_FILE_PATH = "/resources/templates/reader/";
-    public static final String GLOSSARY_APA_CSV_FILE_NAME = "glossarioAPA.xls";
 
     public static final String RI_CONFIRM_BUTTON = "Conferma";
     public static final int RI_CONFIRM_BUTTON_X_COORDINATE = 355;

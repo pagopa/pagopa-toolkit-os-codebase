@@ -26,8 +26,6 @@ public class ReaderTemplateFileHandler {
     public void moveFilesToFolder(String outputFolder) throws Exception {
         saveFile(outputFolder, ReaderInterfaceConstants.TEMPLATE_APA_CSV_FILE_PATH,
                 ReaderInterfaceConstants.TEMPLATE_APA_CSV_FILE_NAME);
-        saveFile(outputFolder, ReaderInterfaceConstants.GLOSSARY_APA_CSV_FILE_PATH,
-                ReaderInterfaceConstants.GLOSSARY_APA_CSV_FILE_NAME);
     }
 
     private void saveFile(String outputFolder, String filePath, String fileName)

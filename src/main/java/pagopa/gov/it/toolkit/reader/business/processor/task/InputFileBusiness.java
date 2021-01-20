@@ -2,7 +2,6 @@ package pagopa.gov.it.toolkit.reader.business.processor.task;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 
