@@ -11,7 +11,6 @@
 [![codecov](https://codecov.io/gh/pagopa/pagopa-toolkit-os-codebase/branch/main/graph/badge.svg)](https://codecov.io/gh/pagopa/pagopa-toolkit-os-codebase)
 ![example workflow name](https://github.com/pagopa/pagopa-toolkit-os-codebase/workflows/Java%20CI%20with%20Maven/badge.svg)
 
-
 - [`pagoPa` toolkit](#pagopa-toolkit)
   - [Context](#context)
   - [Prerequisites](#prerequisites)
