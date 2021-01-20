@@ -25,7 +25,7 @@
     - [Run GUI](#run-gui)
     - [Documentation](#documentation)
     - [Useful things for developers](#useful-things-for-developers)
-  
+  - [License](#license)
   
 ## Context
 
@@ -213,3 +213,6 @@ mvn -Dtest=Iuv* test
 > in this case, `mvn` will run all test case related to *IUV* that match with _Iuv*_, to more details see [documentation](https://maven.apache.org/plugins-archives/maven-surefire-plugin-2.12.4/examples/single-test.html)
 
 > **NOTE** : after every change run command `mvn checkstyle:checkstyle` see [here](https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html)
+## License
+
+Please refer to `LICENSE.txt` for more info about the adopted license.
