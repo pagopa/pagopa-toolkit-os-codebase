@@ -3,4 +3,7 @@
 *.classpath
 *.project
 src/test/resources/*.pdf
-
+script/resources
+script/*.jar
+.vscode
+.DS_Store

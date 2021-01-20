@@ -5,17 +5,17 @@ package pagopa.gov.it.toolkit.paymentNoticeGenerator.constants;
  */
 public class PaymentNoticeConstants {
 
-    public static final String basePath = "src/main/resources";
-    public static final String baseTemplate = basePath + "/templates/baseTemplate.png";
+    public static final String basePath = "resources";
+    public static final String baseTemplate = basePath + "/templates/pdfPaymentNotice/baseTemplate.png";
     public static final String baseTemplate_NoPostalSection_NoSingleInstallment = basePath
-            + "/templates/baseTemplate_noPS_noSI.png";
-    public static final String baseTemplate_NoPostalSection = basePath + "/templates/baseTemplate_noPS.png";
-    public static final String twoInstallmentsTemplate = basePath + "/templates/twoInstallmentsTemplate.png";
+            + "/templates/pdfPaymentNotice/baseTemplate_noPS_noSI.png";
+    public static final String baseTemplate_NoPostalSection = basePath + "/templates/pdfPaymentNotice/baseTemplate_noPS.png";
+    public static final String twoInstallmentsTemplate = basePath + "/templates/pdfPaymentNotice/twoInstallmentsTemplate.png";
     public static final String twoInstallmentsTemplate_noPostalSection = basePath
-            + "/templates/twoInstallmentsTemplate_noPS.png";
-    public static final String threeInstallmentsTemplate = basePath + "/templates/threeInstallmentsTemplate.png";
+            + "/templates/pdfPaymentNotice/twoInstallmentsTemplate_noPS.png";
+    public static final String threeInstallmentsTemplate = basePath + "/templates/pdfPaymentNotice/threeInstallmentsTemplate.png";
     public static final String threeInstallmentsTemplate_noPostalSection = basePath
-            + "/templates/threeInstallmentsTemplate_noPS.png";
+            + "/templates/pdfPaymentNotice/threeInstallmentsTemplate_noPS.png";
 
     public static final String robotoFontRegular = basePath + "/fonts/RobotoMono-Regular.ttf";
     public static final String robotoFontBold = basePath + "/fonts/RobotoMono-Bold.ttf";

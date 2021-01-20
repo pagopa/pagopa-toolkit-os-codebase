@@ -20,10 +20,12 @@
     - [**DebtPosition Generator**](#debtposition-generator)
     - [**NoticePayment Generator**](#noticepayment-generator)
     - [**RPT Generator**](#rpt-generator)
-  - [Future features under development](#future-features-under-development)
   - [Get started](#get-started)
+    - [Build & Test](#build--test)
+    - [Run GUI](#run-gui)
+    - [Documentation](#documentation)
+    - [Useful things for developers](#useful-things-for-developers)
   - [License](#license)
-  
   
 ## Context
 
@@ -146,15 +148,11 @@ RptGeneration.validate(rptContainer)
 RptGeneration.makeXXX(rptContainer)
 ```
 
-## Future features under development
-
-Input/output layer for generating the PDF of the payment notice (and more).
-
-
 ## Get started
 
 Developer's guidelines who wants build and run tests present in the repo 🚀 :
 
+### Build & Test
 to build e run all test typing 
 
 ```
@@ -174,14 +172,40 @@ after that if all rights, you will see something like that below 👍
 > **NOTE** : after this command you'll see some strange change to `resources/application.properties`
 > this is necessary to be sure of the uniqueness of generated IUV, you can discard it typing `git checkout -- resources/application.properties`
 
+
+### Run GUI
+This project in addition to define a series of features, described [here](#feature-areas), also provides a graphical interface that uses them.
+
+In order to run GUI you should follow the guidelines shown [here](https://github.com/pagopa/pagopa-toolkit-os-best-practice).
+
+After build, go under `script` folder and typing the following commad : 
+
+On _MacOS/Linux_ systems
+```
+chmod +x start_pagoPA_wizard_gui.sh && ./start_pagoPA_wizard_gui.sh
+```
+
+On _Window_ systems double click on
+```
+ToBeDefine.bat
+```
+
+> **NOTE** : `scirpt` folder contains an example input file `csv` (`input.csv`) too, useful to play with GUI 👍
+
+if all right you'll see something like that 🚀
+![](docs/media/img/gui.png)
+
+
+### Documentation
 To build locally [javadoc](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) documentation typing : 
 
 ```
 mvn javadoc:javadoc
 ```
 
-or available online [here](https://pagopa.github.io/pagopa-toolkit-os-codebase/) to show it :
+or available online [here](https://pagopa.github.io/pagopa-toolkit-os-codebase/) to show it.
 
+### Useful things for developers
 > NOTE : if you want to run a specific test ( or a subset ), typing example 
 ```
 mvn -Dtest=Iuv* test
@@ -189,7 +213,6 @@ mvn -Dtest=Iuv* test
 > in this case, `mvn` will run all test case related to *IUV* that match with _Iuv*_, to more details see [documentation](https://maven.apache.org/plugins-archives/maven-surefire-plugin-2.12.4/examples/single-test.html)
 
 > **NOTE** : after every change run command `mvn checkstyle:checkstyle` see [here](https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html)
-
 ## License
 
 Please refer to `LICENSE.txt` for more info about the adopted license.
